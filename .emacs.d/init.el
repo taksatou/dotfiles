@@ -76,6 +76,8 @@
      (add-hook 'after-save-hook 'make-file-executable)
      )
 
+(use 'my-ghc)
+
 (use 'dired
      (define-key dired-mode-map (kbd "C-<return>") 'dired-find-file)
      (define-key dired-mode-map (kbd "C-j") 'dired-find-file))
