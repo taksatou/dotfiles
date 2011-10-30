@@ -42,5 +42,13 @@
       (kill-buffer (current-buffer))))
   )
 
+(defun template-blog (title)
+  "generate blog template"
+  (interactive "stitle: ")
+  (let ((now (format-time-string "%Y-%m-%d")))
+    (find-file (if (> 1 (length title))
+		   (format "%s.txt" now)
+		 (format "%s_%s.txt" now title)
+		 ))))
 
 (provide 'my-elisp)
