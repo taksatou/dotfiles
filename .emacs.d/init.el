@@ -4,9 +4,9 @@
 (setq load-path (append load-path '("~/.emacs.d"
                                     "~/.emacs.d/my"
 				    "~/.emacs.d/auto-install"
-				    ;; 
+				    ;;
                                     ;; add paths here
-				    ;; 
+				    ;;
 				    )))
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -32,13 +32,16 @@
 
 (global-set-key "\C-x\C-w" 'delete-trailing-whitespace)
 
-(global-set-key "\C-t" nil) ;; avoid conflict
+(global-set-key (kbd "C-<return>") "\n")
 
+(global-set-key "\C-t" nil) ;; avoid conflict
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
 (menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 (setq column-number-mode t)
@@ -46,9 +49,11 @@
 (setq backup-directory-alist
       (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/bak"))
             backup-directory-alist))
-
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+
+(cond (window-system
+       (setq x-select-enable-clipboard t)))
 
 (when (require 'color-theme nil t)
   (color-theme-zenburn))
@@ -76,7 +81,6 @@
      (add-hook 'after-save-hook 'make-file-executable)
      )
 
-(use 'my-ghc)
 
 (use 'dired
      (define-key dired-mode-map (kbd "C-<return>") 'dired-find-file)
@@ -87,9 +91,9 @@
      (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
      (setq uniquify-ignore-bufffeers-re "*[*^]+*"))
 
-(use 'ffap
-     (ffap-bindings)
-     )
+;; (use 'ffap
+;;      (ffap-bindings)
+;;      )
 
 ;; http://homepage3.nifty.com/oatu/emacs/archives/auto-save-buffers.el
 (use 'auto-save-buffers
@@ -131,4 +135,4 @@
      (setq recentf-exclude '("/tmp/")))
 
 
-
+(use 'my-ghc)
