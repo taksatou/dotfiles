@@ -23,7 +23,7 @@ setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 
 
-export PAGER='lv'
+export PAGER='lv -c'
 export EDITOR='vim'
 export RI='--format ansi'
 

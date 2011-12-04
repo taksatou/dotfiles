@@ -123,6 +123,9 @@
 
 (use 'gist)
 
+;;;;;;;;;;;;;;
+;; wget http://www.emacswiki.org/emacs/download/auto-install.el
+;; see also. http://d.hatena.ne.jp/rubikitch/20091221/autoinstall
 (use 'auto-install
      (auto-install-update-emacswiki-package-name t)
      (auto-install-compatibility-setup)
@@ -134,5 +137,10 @@
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
 
+
+;; http://d.hatena.ne.jp/syohex/20111201/1322665378
+(use 'quickrun
+;;     (push '("*quickrun*") popwin:special-display-config)
+     (global-set-key (kbd "<f5>") 'quickrun))
 
 (use 'my-ghc)

@@ -12,7 +12,6 @@
 (add-hook 'haskell-mode-hook 'font-lock-mode)
 
 
-
 ;;
 ;; http://www.mew.org/~kazu/proj/ghc-mod/en/
 ;; 
