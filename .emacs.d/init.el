@@ -42,6 +42,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(setq frame-background-mode 'dark)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 (setq column-number-mode t)
