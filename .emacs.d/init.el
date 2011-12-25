@@ -144,3 +144,5 @@
      (global-set-key (kbd "<f5>") 'quickrun))
 
 (use 'my-ghc)
+
+(use 'my-local)
