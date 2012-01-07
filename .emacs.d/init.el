@@ -3,6 +3,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq load-path (append load-path '("~/.emacs.d"
                                     "~/.emacs.d/my"
+                                    "~/share/emacs"
+                                    "~/share/emacs/color-theme"
 				    "~/.emacs.d/auto-install"
 				    ;;
                                     ;; add paths here
@@ -56,8 +58,8 @@
 (cond (window-system
        (setq x-select-enable-clipboard t)))
 
-(when (require 'color-theme nil t)
-  (color-theme-zenburn))
+(set-language-environment 'Japanese)
+(prefer-coding-system 'utf-8)
 
 (iswitchb-mode 0)
 
@@ -71,6 +73,11 @@
 	      (message (format "Using %s" ,pkg)))
      (message (format "Unable to use %s" ,pkg))
      ))
+
+(use 'color-theme
+     (require 'cus-edit)
+     (require 'org-faces)
+     (color-theme-zenburn))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -148,8 +155,8 @@
 
 (use 'my-local)
 
-
 ;; http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.el
 ;; http://d.hatena.ne.jp/n9d/20080419/1208614482
 (use 'graphviz-dot-mode)
 ;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el") 
+
