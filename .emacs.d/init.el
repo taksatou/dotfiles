@@ -56,8 +56,8 @@
 (cond (window-system
        (setq x-select-enable-clipboard t)))
 
-(when (require 'color-theme nil t)
-  (color-theme-zenburn))
+(set-language-environment 'Japanese)
+(prefer-coding-system 'utf-8)
 
 (iswitchb-mode 0)
 
@@ -71,6 +71,9 @@
 	      (message (format "Using %s" ,pkg)))
      (message (format "Unable to use %s" ,pkg))
      ))
+
+(use 'color-theme
+     (color-theme-zenburn))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
