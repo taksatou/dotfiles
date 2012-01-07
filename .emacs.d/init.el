@@ -3,6 +3,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq load-path (append load-path '("~/.emacs.d"
                                     "~/.emacs.d/my"
+                                    "~/share/emacs"
+                                    "~/share/emacs/color-theme"
 				    "~/.emacs.d/auto-install"
 				    ;;
                                     ;; add paths here
@@ -73,6 +75,8 @@
      ))
 
 (use 'color-theme
+     (require 'cus-edit)
+     (require 'org-faces)
      (color-theme-zenburn))
 
 ;;;;;;;;;;;;;;;;;;;;;;

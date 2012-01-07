@@ -1,10 +1,10 @@
 ;; 
 ;; http://projects.haskell.org/haskellmode-emacs/
 ;; 
-(when (file-exists-p "~/lib/emacs/haskell-mode/haskell-site-file")
-  (add-to-list 'load-path "~/lib/emacs/haskell-mode")
+(when (file-exists-p "~/share/emacs/haskell-mode/haskell-site-file.el")
+  (add-to-list 'load-path "~/share/emacs/haskell-mode")
   (add-to-list 'load-path "~/.cabal/share/ghc-mod-0.6.2")
-  (load "~/lib/emacs/haskell-mode/haskell-site-file")
+  (load "~/share/emacs/haskell-mode/haskell-site-file")
 
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
