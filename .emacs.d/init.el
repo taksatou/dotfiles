@@ -62,7 +62,10 @@
 (prefer-coding-system 'utf-8)
 
 (iswitchb-mode 0)
+
+;; elisp bible p.268
 (require 'generic-x)
+(add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base utils
@@ -159,6 +162,8 @@
 (use 'quickrun
 ;;     (push '("*quickrun*") popwin:special-display-config)
      (global-set-key (kbd "<f5>") 'quickrun))
+
+(use 'paredit)
 
 (use 'my-ghc)
 
