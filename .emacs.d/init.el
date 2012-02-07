@@ -62,7 +62,7 @@
 (prefer-coding-system 'utf-8)
 
 (iswitchb-mode 0)
-
+(require 'generic-x)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base utils
