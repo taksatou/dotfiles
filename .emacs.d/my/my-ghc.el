@@ -3,7 +3,7 @@
 ;; 
 (when (file-exists-p "~/share/emacs/haskell-mode/haskell-site-file.el")
   (add-to-list 'load-path "~/share/emacs/haskell-mode")
-  (add-to-list 'load-path "~/.cabal/share/ghc-mod-0.6.2")
+  (add-to-list 'load-path "~/.cabal/share/ghc-mod-1.0.6")
   (load "~/share/emacs/haskell-mode/haskell-site-file")
 
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)

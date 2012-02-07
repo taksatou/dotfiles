@@ -139,11 +139,20 @@
      (auto-install-compatibility-setup)
      (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
-(use 'anything-startup)
 
 (use 'recentf-ext
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
+     
+(use 'anything-startup
+     (global-set-key (kbd "C-c C-j") 'anything)
+
+     (use 'anything-config
+	  (add-to-list 'anything-sources
+		       'anything-c-source-files-in-current-dir
+		       'anything-c-source-emacs-commands
+		  )))
+
 
 
 ;; http://d.hatena.ne.jp/syohex/20111201/1322665378
