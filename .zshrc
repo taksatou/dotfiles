@@ -47,6 +47,8 @@ alias l='ls'
 alias e='emacs -nw'
 alias sc='screen -r -RR'
 alias ri='ri --format ansi'
+alias grepl='grep --line-buffered'
+alias ssh='ssh -o ServerAliveInterval=60'
 
 function tmr() {
     if [ `tmux list-sessions | grep -v attached | wc -l` = 0 ]; then
