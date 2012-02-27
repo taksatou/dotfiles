@@ -1,2 +1,4 @@
 *.elc
 my-local.el
+
+tramp

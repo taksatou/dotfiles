@@ -4,6 +4,7 @@
 (setq load-path (append load-path '("~/.emacs.d"
                                     "~/.emacs.d/my"
                                     "~/share/emacs"
+                                    "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
 				    "~/.emacs.d/auto-install"
 				    ;;
@@ -174,3 +175,22 @@
 (use 'graphviz-dot-mode)
 ;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el") 
 
+(use 'tramp
+     (setq tramp-default-method "scpx")
+     )
+
+(use 'yaml-mode
+     (add-to-list 'auto-mode-alist '("\\.yml?\\'" . yaml-mode))
+     (add-to-list 'auto-mode-alist '("\\.yaml?\\'" . yaml-mode))
+     )
+(use 'php-mode)
+;; (use 'mmm-mode
+;;      (setq mmm-global-mode 'maybe)
+;;      (mmm-add-mode-ext-class nil "\\.php?\\'" 'html-php)
+;;      (mmm-add-classes
+;;       '((html-php
+;; 	 :submode php-mode
+;; 	 :front "<\\?\\(php\\)?"
+;; 	 :back "\\?>")))
+;;      (add-to-list 'auto-mode-alist '("\\.php?\\'" . html-mode))
+;;      )

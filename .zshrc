@@ -1,5 +1,8 @@
 # Created by newuser for 4.3.6
 
+fpath=(~/.zsh.d $fpath)
+autoload -U ~/.zsh.d/*(:t)
+
 autoload -U compinit
 compinit
 
