@@ -81,14 +81,23 @@
      (message (format "Unable to use %s" ,pkg))
      ))
 
+(defvar kmacro-save-file "~/.emacs.d/my/kmacro-save.el" "keymacro file")
+(defun kmacro-save (symbol)
+  (interactive "SName for last kbd macro: ")
+  (name-last-kbd-macro symbol)
+  (with-current-buffer (find-file-noselect kmacro-save-file)
+    (goto-char (point-max))
+    (insert-kbd-macro symbol)
+    (basic-save-buffer)))
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; packages
+;;;;;;;;;;;;;;;;;;;;;;
 (use 'color-theme
      (require 'cus-edit)
      (require 'org-faces)
      (color-theme-zenburn))
 
-;;;;;;;;;;;;;;;;;;;;;;
-;; packages
-;;;;;;;;;;;;;;;;;;;;;;
 (use 'my-elisp
      (global-set-key "\M-p" 'previous-line-and-recenter)
      (global-set-key "\M-n" 'next-line-and-recenter)
