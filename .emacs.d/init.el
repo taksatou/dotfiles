@@ -206,3 +206,9 @@
 ;; 	 :back "\\?>")))
 ;;      (add-to-list 'auto-mode-alist '("\\.php?\\'" . html-mode))
 ;;      )
+
+
+
+(use 'my-overriding-mode
+     (add-hook 'html-mode-hook '(lambda () (auto-fill-mode 0)))
+     )
