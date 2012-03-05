@@ -179,6 +179,7 @@
 (use 'paredit)
 
 (use 'my-ghc)
+(use 'my-codingstyles)
 
 (use 'my-local)
 
@@ -195,7 +196,12 @@
      (add-to-list 'auto-mode-alist '("\\.yml?\\'" . yaml-mode))
      (add-to-list 'auto-mode-alist '("\\.yaml?\\'" . yaml-mode))
      )
-(use 'php-mode)
+
+(use 'php-mode
+     (add-hook 'php-mode-hook
+	       '(lambda ()
+		  (c-set-style "php/symfony"))))
+
 ;; (use 'mmm-mode
 ;;      (setq mmm-global-mode 'maybe)
 ;;      (mmm-add-mode-ext-class nil "\\.php?\\'" 'html-php)
@@ -208,6 +214,19 @@
 ;;      )
 
 
+(use 'highlight-parentheses
+     (define-globalized-minor-mode global-highlight-parentheses-mode
+       highlight-parentheses-mode
+       (lambda ()
+	 (highlight-parentheses-mode t)))
+     (global-highlight-parentheses-mode t))
+
+(use 'highline     
+     (highline-mode-on)
+     (setq highline-face 'highlight)
+     )
+
+(use 'highlight-symbol)
 
 (use 'my-overriding-mode
      (add-hook 'html-mode-hook '(lambda () (auto-fill-mode 0)))
