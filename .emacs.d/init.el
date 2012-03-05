@@ -123,6 +123,9 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
+(use 'auto-complete
+     (auto-complete-mode))  
+
 ;; from-emacswiki
 (use 'point-undo
      (define-key global-map (kbd "<f7>") 'point-undo)
