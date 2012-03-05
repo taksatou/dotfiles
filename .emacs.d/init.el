@@ -6,11 +6,11 @@
                                     "~/share/emacs"
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
-				    "~/.emacs.d/auto-install"
-				    ;;
+                                    "~/.emacs.d/auto-install"
+                                    ;;
                                     ;; add paths here
-				    ;;
-				    )))
+                                    ;;
+                                    )))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; global keybinds
@@ -77,7 +77,7 @@
 (defmacro use (pkg &rest body)
   `(if (require ,pkg nil t)
        (progn ,@body
-	      (message (format "Using %s" ,pkg)))
+              (message (format "Using %s" ,pkg)))
      (message (format "Unable to use %s" ,pkg))
      ))
 
@@ -159,21 +159,21 @@
 (use 'recentf-ext
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
-     
+
 (use 'anything-startup
      (global-set-key (kbd "C-c C-j") 'anything)
 
      (use 'anything-config
-	  (add-to-list 'anything-sources
-		       'anything-c-source-files-in-current-dir
-		       'anything-c-source-emacs-commands
-		  )))
+          (add-to-list 'anything-sources
+                       'anything-c-source-files-in-current-dir
+                       'anything-c-source-emacs-commands
+		       )))
 
 
 
 ;; http://d.hatena.ne.jp/syohex/20111201/1322665378
 (use 'quickrun
-;;     (push '("*quickrun*") popwin:special-display-config)
+     ;;     (push '("*quickrun*") popwin:special-display-config)
      (global-set-key (kbd "<f5>") 'quickrun))
 
 (use 'paredit)
@@ -198,7 +198,7 @@
      )
 
 (use 'php-mode
-      (use 'symfony
+     (use 'symfony
           (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
           (define-key sf:minor-mode-map (kbd "C-c ; a") 'sf-cmd:action-files)
           (define-key sf:minor-mode-map (kbd "C-c ; h") 'sf-cmd:helper-files)
@@ -208,17 +208,17 @@
           (define-key sf:minor-mode-map (kbd "C-c ; c") 'sf-cmd:config-files))
      
      (add-hook 'php-mode-hook
-	       '(lambda ()
-		  (c-set-style "php/symfony"))))
+               '(lambda ()
+                  (c-set-style "php/symfony"))))
 
 ;; (use 'mmm-mode
 ;;      (setq mmm-global-mode 'maybe)
 ;;      (mmm-add-mode-ext-class nil "\\.php?\\'" 'html-php)
 ;;      (mmm-add-classes
 ;;       '((html-php
-;; 	 :submode php-mode
-;; 	 :front "<\\?\\(php\\)?"
-;; 	 :back "\\?>")))
+;;       :submode php-mode
+;;       :front "<\\?\\(php\\)?"
+;;       :back "\\?>")))
 ;;      (add-to-list 'auto-mode-alist '("\\.php?\\'" . html-mode))
 ;;      )
 
@@ -227,7 +227,7 @@
      (define-globalized-minor-mode global-highlight-parentheses-mode
        highlight-parentheses-mode
        (lambda ()
-	 (highlight-parentheses-mode t)))
+         (highlight-parentheses-mode t)))
      (global-highlight-parentheses-mode t))
 
 (use 'highline     
