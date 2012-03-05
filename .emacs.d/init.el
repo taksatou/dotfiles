@@ -198,6 +198,15 @@
      )
 
 (use 'php-mode
+      (use 'symfony
+          (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; a") 'sf-cmd:action-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; h") 'sf-cmd:helper-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; j") 'sf-cmd:js-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; v") 'sf-cmd:template-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; e") 'sf-cmd:relative-files)
+          (define-key sf:minor-mode-map (kbd "C-c ; c") 'sf-cmd:config-files))
+     
      (add-hook 'php-mode-hook
 	       '(lambda ()
 		  (c-set-style "php/symfony"))))
