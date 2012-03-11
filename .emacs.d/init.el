@@ -231,11 +231,14 @@
        highlight-parentheses-mode
        (lambda ()
          (highlight-parentheses-mode t)))
-     (global-highlight-parentheses-mode t))
+     (global-highlight-parentheses-mode t)
+     (setq hl-paren-colors '("color-208" "color-213" "color-148" ""))
+
+     )
 
 (use 'highline     
      (highline-mode-on)
-     (setq highline-face 'highlight)
+     (setq highline-face 'fringe)
      )
 
 (use 'highlight-symbol)
