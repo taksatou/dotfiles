@@ -67,6 +67,10 @@
 
 (iswitchb-mode 0)
 
+(add-hook 'before-save-hook
+	  (lambda ()
+	    (delete-trailing-whitespace)))
+
 ;; elisp bible p.268
 (require 'generic-x)
 (add-hook 'text-mode-hook 'auto-fill-mode)
@@ -124,7 +128,7 @@
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
 (use 'auto-complete
-     (auto-complete-mode))  
+     (auto-complete-mode))
 
 ;; from-emacswiki
 (use 'point-undo
@@ -189,7 +193,7 @@
 ;; http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.el
 ;; http://d.hatena.ne.jp/n9d/20080419/1208614482
 (use 'graphviz-dot-mode)
-;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el") 
+;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el")
 
 (use 'tramp
      (setq tramp-default-method "scpx")
@@ -209,7 +213,7 @@
           (define-key sf:minor-mode-map (kbd "C-c ; v") 'sf-cmd:template-files)
           (define-key sf:minor-mode-map (kbd "C-c ; e") 'sf-cmd:relative-files)
           (define-key sf:minor-mode-map (kbd "C-c ; c") 'sf-cmd:config-files))
-     
+
      (add-hook 'php-mode-hook
                '(lambda ()
                   (c-set-style "php/symfony"))))
@@ -236,7 +240,7 @@
 
      )
 
-(use 'highline     
+(use 'highline
      (highline-mode-on)
      (setq highline-face 'fringe)
      )
