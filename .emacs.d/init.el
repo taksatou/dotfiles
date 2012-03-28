@@ -66,6 +66,7 @@
 (prefer-coding-system 'utf-8)
 
 (iswitchb-mode 0)
+(setq-default indent-tabs-mode nil)
 
 (add-hook 'before-save-hook
 	  (lambda ()
@@ -74,6 +75,8 @@
 ;; elisp bible p.268
 (require 'generic-x)
 (add-hook 'text-mode-hook 'auto-fill-mode)
+
+(show-paren-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base utils
@@ -93,6 +96,7 @@
     (goto-char (point-max))
     (insert-kbd-macro symbol)
     (basic-save-buffer)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -128,7 +132,22 @@
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
 (use 'auto-complete
-     (auto-complete-mode))
+
+     (global-auto-complete-mode t)
+     (define-key ac-complete-mode-map "\C-n" 'ac-next)
+     (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+     (define-key ac-complete-mode-map "\M-/" 'ac-stop)
+
+     (setq ac-auto-start nil)
+     (global-set-key "\C-c\C-a" 'ac-start)
+     (global-set-key "\C-c\C-q" 'ac-stop)
+
+     (defun emacs-lisp-ac-setup ()
+       (setq ac-sources '(ac-source-words-in-same-mode-buffers
+                          ac-source-symbols)))
+     (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
+)
+
 
 ;; from-emacswiki
 (use 'point-undo
@@ -250,3 +269,5 @@
 (use 'my-overriding-mode
      (add-hook 'html-mode-hook '(lambda () (auto-fill-mode 0)))
      )
+
+(use 'my-lisp-mode)
