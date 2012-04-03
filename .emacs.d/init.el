@@ -12,6 +12,7 @@
                                     ;;
                                     )))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; global keybinds
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -131,16 +132,20 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
-(use 'auto-complete
+(use 'auto-complete-config
+     (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
+     (ac-config-default)
 
      (global-auto-complete-mode t)
+;;     (auto-complete-mode t)
+
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
-     (define-key ac-complete-mode-map "\M-/" 'ac-stop)
+     ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
-     (setq ac-auto-start nil)
-     (global-set-key "\C-c\C-a" 'ac-start)
-     (global-set-key "\C-c\C-q" 'ac-stop)
+     ;; (setq ac-auto-start nil)
+     ;; (global-set-key "\C-c\C-a" 'ac-start)
+     ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
      (defun emacs-lisp-ac-setup ()
        (setq ac-sources '(ac-source-words-in-same-mode-buffers
@@ -205,8 +210,8 @@
 (use 'paredit)
 
 (use 'my-ghc)
+(use 'my-c-mode)
 (use 'my-codingstyles)
-
 (use 'my-local)
 
 ;; http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.el
@@ -270,4 +275,6 @@
      (add-hook 'html-mode-hook '(lambda () (auto-fill-mode 0)))
      )
 
-(use 'my-lisp-mode)
+(use 'my-lisp-mode
+     (slime)
+     )
