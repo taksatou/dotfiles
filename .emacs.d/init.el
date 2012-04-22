@@ -228,6 +228,11 @@
      (add-to-list 'auto-mode-alist '("\\.yaml?\\'" . yaml-mode))
      )
 
+(use 'markdown-mode
+     (add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
+     (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
+     )
+
 (use 'php-mode
      (use 'symfony
           (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
