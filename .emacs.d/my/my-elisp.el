@@ -51,4 +51,8 @@
 		 (format "%s_%s.txt" now title)
 		 ))))
 
+(defun count-words-buffer ()
+  (interactive)
+  (message (format "words: %d" (length (split-string (buffer-string) " ")))))
+
 (provide 'my-elisp)
