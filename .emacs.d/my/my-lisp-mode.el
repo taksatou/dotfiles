@@ -42,8 +42,8 @@
 ;;     ad-do-it))
 
 (use 'popwin
-
      (slime-setup '(slime-repl slime-fancy slime-banner))
+
      ;; Apropos
      (push '("*slime-apropos*") popwin:special-display-config)
      ;; Macroexpand

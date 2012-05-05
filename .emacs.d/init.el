@@ -76,7 +76,7 @@
 ;; elisp bible p.268
 (require 'generic-x)
 (add-hook 'text-mode-hook 'auto-fill-mode)
-
+(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
 (show-paren-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -283,3 +283,5 @@
 (use 'my-lisp-mode
      (slime)
      )
+
+;(use 'my-python-mode)
