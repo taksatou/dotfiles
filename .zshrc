@@ -1,7 +1,9 @@
 # Created by newuser for 4.3.6
 
-fpath=(~/.zsh.d $fpath)
-autoload -U ~/.zsh.d/*(:t)
+if [ -e ~/.zsh.d ]; then
+    fpath=(~/.zsh.d $fpath)
+    autoload -U ~/.zsh.d/*(:t)
+fi;
 
 autoload -U compinit
 compinit
@@ -78,4 +80,14 @@ function cd() {
 
 if [ $EMACS ]; then unsetopt zle; fi
 
-
+### vcs info
+# http://d.hatena.ne.jp/mollifier/20090814/p1
+autoload -Uz vcs_info
+#zstyle ':vcs_info:*' enable svn hg git bzr
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}

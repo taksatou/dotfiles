@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
 PROMPT="%B%(?..[%?] )%b%{[38;5;38m%}%n@%U%m%%%u%{[m%} "
-RPROMPT="%{$fg_no_bold[${1:-green}]%}%~%{$reset_color%}"
+RPROMPT="%1(v|%F{blue}%1v%f|) %{$fg_no_bold[${1:-green}]%}%~%{$reset_color%}"
 
 alias ls="ls --color=auto"
 
