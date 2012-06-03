@@ -282,9 +282,7 @@
      (add-hook 'html-mode-hook '(lambda () (auto-fill-mode 0)))
      )
 
-(use 'my-lisp-mode
-     (slime)
-     )
+(use 'my-lisp-mode)
 
 (use 'popwin
      (setq display-buffer-function 'popwin:display-buffer))
