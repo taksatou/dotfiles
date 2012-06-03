@@ -75,7 +75,7 @@
 
 ;; elisp bible p.268
 (require 'generic-x)
-(add-hook 'text-mode-hook 'auto-fill-mode)
+;(add-hook 'text-mode-hook 'auto-fill-mode)
 ;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
 
 (show-paren-mode t)
@@ -189,6 +189,7 @@
 
 
 (use 'recentf-ext
+     (setq recent-auto-cleanup 'never)
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
 
@@ -284,5 +285,8 @@
 (use 'my-lisp-mode
      (slime)
      )
+
+(use 'popwin
+     (setq display-buffer-function 'popwin:display-buffer))
 
 ;(use 'my-python-mode)
