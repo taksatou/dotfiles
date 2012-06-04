@@ -6,7 +6,9 @@
                                     "~/share/emacs"
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
+
                                     "~/.emacs.d/auto-install"
+                                    "~/share/emacs/site-lisp/skk"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -75,8 +77,8 @@
 
 ;; elisp bible p.268
 (require 'generic-x)
-;(add-hook 'text-mode-hook 'auto-fill-mode)
-;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
+                                        ;(add-hook 'text-mode-hook 'auto-fill-mode)
+                                        ;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
 
 (show-paren-mode t)
 
@@ -138,7 +140,7 @@
      (ac-config-default)
 
      (global-auto-complete-mode t)
-;;     (auto-complete-mode t)
+     ;;     (auto-complete-mode t)
 
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
@@ -152,7 +154,7 @@
        (setq ac-sources '(ac-source-words-in-same-mode-buffers
                           ac-source-symbols)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
-)
+     )
 
 
 ;; from-emacswiki
@@ -287,4 +289,23 @@
 (use 'popwin
      (setq display-buffer-function 'popwin:display-buffer))
 
-;(use 'my-python-mode)
+                                        ;(use 'my-python-mode)
+
+(use 'edit-server
+     (edit-server-start)
+     )
+
+(use 'skk
+     (setq skk-server-portnum 1178)
+     (setq skk-server-host "localhost")
+
+     ;; (add-hook 'isearch-mode-hook
+     ;;           (function (lambda ()
+     ;;                       (and (boundp 'skk-mode) skk-mode
+     ;;                            (skk-isearch-mode-setup)))))
+     ;; (add-hook 'isearch-mode-end-hook
+     ;;           (function (lambda ()
+     ;;                       (and (boundp 'skk-mode) skk-mode (skk-isearch-mode-cleanup))
+     ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
+     ;;                            (skk-set-cursor-properly)))))
+     )

@@ -57,7 +57,7 @@ alias ssh='ssh -o ServerAliveInterval=60'
 
 function tmr() {
     if [ `tmux list-sessions | grep -v attached | wc -l` = 0 ]; then
-	tmux;
+	tmux -u;
     else
 	tmux attach
     fi
