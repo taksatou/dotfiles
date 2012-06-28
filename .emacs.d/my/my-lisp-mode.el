@@ -7,7 +7,7 @@
      (setq auto-mode-alist (append '(("\\.lisp$" . lisp-mode)) auto-mode-alist))
      (setq auto-mode-alist (append '(("\\.cl$" . lisp-mode)) auto-mode-alist))
 
-     (setq inferior-lisp-program "sbcl")
+     (setq inferior-lisp-program "/usr/local/bin/sbcl")
      (setq slime-net-coding-system 'utf-8-unix)
 
      (setq common-lisp-hyperspec-root
