@@ -12,8 +12,9 @@
   default = tracking       # defaultのpush先はtrackingしているリポジトリ
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
-  autocrlf = input             # CRLFを自動変換
+#  autocrlf = input             # CRLFを自動変換
 [alias]
+  s = status
   st = status
   sh = show
   so = remote show origin
@@ -58,5 +59,4 @@
   # grep関連
   gr = grep
   gn = grep -n
-[gui]
 [gui]
