@@ -192,7 +192,10 @@
 
 
 (use 'recentf-ext
-     (setq recent-auto-cleanup 'never)
+
+     (custom-set-variables
+      '(recentf-auto-cleanup (quote never)))
+                                        ;     (setq recentf-auto-cleanup 'never)
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
 
@@ -290,12 +293,6 @@
 (use 'popwin
      (setq display-buffer-function 'popwin:display-buffer))
 
-                                        ;(use 'my-python-mode)
-
-(use 'edit-server
-     (edit-server-start)
-     )
-
 (use 'skk
      (setq skk-server-portnum 1178)
      (setq skk-server-host "localhost")
@@ -310,3 +307,8 @@
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
      )
+
+;(use 'my-python-mode)
+
+
+(use 'my-javascript-mode)
