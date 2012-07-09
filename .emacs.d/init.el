@@ -190,7 +190,10 @@
 
 
 (use 'recentf-ext
-     (setq recent-auto-cleanup 'never)
+
+     (custom-set-variables
+      '(recentf-auto-cleanup (quote never)))
+                                        ;     (setq recentf-auto-cleanup 'never)
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
 
@@ -289,3 +292,4 @@
      (setq display-buffer-function 'popwin:display-buffer))
 
 ;(use 'my-python-mode)
+(use 'my-javascript-mode)
