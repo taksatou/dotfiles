@@ -3,3 +3,4 @@ my-local.el
 
 tramp
 kmacro-save.el
+.emacs.d/session.*
