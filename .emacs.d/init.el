@@ -6,9 +6,7 @@
                                     "~/share/emacs"
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
-
                                     "~/.emacs.d/auto-install"
-                                    "~/share/emacs/site-lisp/skk"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -45,11 +43,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
+(if (boundp 'wwindow-system-initialization-alist)
 (if (assq 'x window-system-initialization-alist)
     (progn
       (tool-bar-mode 0)
       (scroll-bar-mode 0)
-      ))
+      )))
 (menu-bar-mode 0)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
@@ -77,8 +76,8 @@
 
 ;; elisp bible p.268
 (require 'generic-x)
-                                        ;(add-hook 'text-mode-hook 'auto-fill-mode)
-                                        ;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
+;(add-hook 'text-mode-hook 'auto-fill-mode)
+;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
 
 (show-paren-mode t)
 
@@ -140,7 +139,7 @@
      (ac-config-default)
 
      (global-auto-complete-mode t)
-     ;;     (auto-complete-mode t)
+;;     (auto-complete-mode t)
 
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
@@ -154,7 +153,7 @@
        (setq ac-sources '(ac-source-words-in-same-mode-buffers
                           ac-source-symbols)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
-     )
+)
 
 
 ;; from-emacswiki
@@ -191,15 +190,9 @@
 
 
 (use 'recentf-ext
-<<<<<<< Updated upstream
-     (setq recent-auto-cleanup 'never)
-     (setq recentf-max-saved-item 50000)
-     (setq recentf-exclude '("/tmp/")))
-=======
      (custom-set-variables '(recentf-auto-cleanup (quote never)))
      (custom-set-variables '(recentf-max-saved-items 9999999))
      (custom-set-variables '(recentf-exclude '("tmp"))))
->>>>>>> Stashed changes
 
 (use 'anything-startup
      (global-set-key (kbd "C-c C-j") 'anything)
@@ -295,7 +288,9 @@
 (use 'popwin
      (setq display-buffer-function 'popwin:display-buffer))
 
-                                        ;(use 'my-python-mode)
+
+
+;(use 'my-python-mode)
 
 (use 'edit-server
      (edit-server-start)

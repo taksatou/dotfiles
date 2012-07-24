@@ -12,8 +12,9 @@
   default = tracking       # defaultのpush先はtrackingしているリポジトリ
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
-  autocrlf = input             # CRLFを自動変換
+#  autocrlf = input             # CRLFを自動変換
 [alias]
+  s = status
   st = status
   sh = show
   so = remote show origin
@@ -40,6 +41,7 @@
   # logをtree表示
   log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
   log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+  l = log --graph --all --date=short --color --pretty='%x09%h %C(yellow)%cd%Creset %C(red bold)%d%Creset %s %Cgreen<%cn, %ar>%Creset'
   # diff関連
   dm = diff master           # masterとのdiff
   dw = diff --color-words    # 単語単位でいろつけてdiff
@@ -58,5 +60,4 @@
   # grep関連
   gr = grep
   gn = grep -n
-[gui]
 [gui]
