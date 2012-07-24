@@ -298,7 +298,7 @@
 
 (use 'skk
      (setq skk-server-portnum 1178)
-     (setq skk-server-host "localhost")
+     (setq skk-server-host "localhost"))
 
      ;; (add-hook 'isearch-mode-hook
      ;;           (function (lambda ()
