@@ -191,9 +191,15 @@
 
 
 (use 'recentf-ext
+<<<<<<< Updated upstream
      (setq recent-auto-cleanup 'never)
      (setq recentf-max-saved-item 50000)
      (setq recentf-exclude '("/tmp/")))
+=======
+     (custom-set-variables '(recentf-auto-cleanup (quote never)))
+     (custom-set-variables '(recentf-max-saved-items 9999999))
+     (custom-set-variables '(recentf-exclude '("tmp"))))
+>>>>>>> Stashed changes
 
 (use 'anything-startup
      (global-set-key (kbd "C-c C-j") 'anything)
@@ -308,4 +314,7 @@
      ;;                       (and (boundp 'skk-mode) skk-mode (skk-isearch-mode-cleanup))
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
-     )
+
+(use 'my-objetivec-mode)
+(use 'applescript-mode)
+(use 'my-javascript-mode)
