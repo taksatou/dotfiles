@@ -41,20 +41,21 @@
       ;;      (ffap-kpathsea-expand-path `(,(concat xcode:sdkframeworks "//")))
       (defun xcode:buildandrun ()
         (interactive)
+        (sleep-for 0 300)
         (do-applescript
          (format
           (concat
            "tell application \"Xcode\" to activate \r"
            "tell application \"System Events\" \r"
            "     tell process \"Xcode\" \r"
-           "          key code 11 using {control down} \r" ;
+           "          keystroke \"r\" using {command down} \r"
            "    end tell \r"
            "end tell \r"
            ))))
 
       (add-hook 'objc-mode-hook
                 (lambda()
-                  (define-key objc-mode-map (kbd "C-c C-x C-c") 'xcode:buildandrun)
+                  (define-key objc-mode-map (kbd "C-c r") 'xcode:buildandrun)
                   (define-key objc-mode-map (kbd "C-c C-m") 'flymake-display-err-menu-for-current-line)
 
                   (push 'ac-source-company-xcode ac-sources)
