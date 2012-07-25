@@ -14,9 +14,9 @@
   "Set local key defs for inf-ruby in ruby-mode")
 ;;(define-key global-map "\C-cr" 'run-ruby)
 
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook
-	  (lambda () (rinari-launch)))
+(use 'rhtml-mode
+     (add-hook 'rhtml-mode-hook
+               (lambda () (rinari-launch))))
 
 (add-hook 'ruby-mode-hook
 	  '(lambda ()

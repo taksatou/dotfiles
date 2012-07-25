@@ -310,6 +310,30 @@
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
 
-(use 'my-objetivec-mode)
+(use 'my-objectivec-mode)
 (use 'applescript-mode)
 (use 'my-javascript-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ffap settings
+(ffap-bindings)
+(setq ff-other-file-alist
+      '(("\\.mm$" (".h"))
+        ("\\.m$" (".h"))
+        ("\\.cc$"  (".hh" ".h"))
+        ("\\.hh$"  (".cc" ".C"))
+
+        ("\\.c$"   (".h"))
+        ("\\.h$"   (".m" ".mm" ".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ))
+
+        ("\\.C$"   (".H"  ".hh" ".h"))
+        ("\\.H$"   (".C"  ".CC"))
+
+        ("\\.CC$"  (".HH" ".H"  ".hh" ".h"))
+        ("\\.HH$"  (".CC"))
+
+        ("\\.cxx$" (".hh" ".h"))
+        ("\\.cpp$" (".hpp" ".hh" ".h"))
+
+        ("\\.hpp$" (".cpp" ".c"))))
