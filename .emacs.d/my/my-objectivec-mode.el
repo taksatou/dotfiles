@@ -41,7 +41,7 @@
       ;;      (ffap-kpathsea-expand-path `(,(concat xcode:sdkframeworks "//")))
       (defun xcode:buildandrun ()
         (interactive)
-        (sleep-for 0 300)
+        (sleep-for 0 300)               ; ugly work-around. sleep 300msec to avoid key conflict
         (do-applescript
          (format
           (concat
