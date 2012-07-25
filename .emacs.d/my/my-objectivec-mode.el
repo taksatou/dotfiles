@@ -18,15 +18,15 @@
       (ac-company-define-source ac-source-company-xcode company-xcode)
 
       (require 'flymake)
-      (defvar xcode:gccver "4.2.1")
       (defvar xcode:sdkver "5.1")
       (defvar xcode:sdkpath "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer")
       (defvar xcode:sdk (concat xcode:sdkpath "/SDKs/iPhoneSimulator" xcode:sdkver ".sdk"))
       (defvar xcode:sdkframeworks (concat xcode:sdk "/System/Library/Frameworks"))
-      (defvar flymake-objc-compiler "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc")
-      (defvar flymake-objc-compile-default-options (list "-Wall" "-Wextra" "-fsyntax-only" "-ObjC" "-std=c99" "-isysroot" xcode:sdk))
+      ;; (defvar flymake-objc-compiler "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc")
+      (defvar flymake-objc-compiler "clang")
+      (defvar flymake-objc-compile-default-options (list "-Wall" "-Wextra" "-Wno-unused-parameter" "-fsyntax-only" "-miphoneos-version-min=4.3" "-xobjective-c" "-std=c99" "-isysroot" xcode:sdk))
       (defvar flymake-last-position nil)
-      (defvar flymake-objc-compile-options '("-I."))
+      (defvar flymake-objc-compile-options '(""))
       (defun flymake-objc-init ()
         (let* ((temp-file (flymake-init-create-temp-buffer-copy
                            'flymake-create-temp-inplace))
@@ -39,9 +39,24 @@
 
       ;; TODO
       ;;      (ffap-kpathsea-expand-path `(,(concat xcode:sdkframeworks "//")))
+      (defun xcode:buildandrun ()
+        (interactive)
+        (do-applescript
+         (format
+          (concat
+           "tell application \"Xcode\" to activate \r"
+           "tell application \"System Events\" \r"
+           "     tell process \"Xcode\" \r"
+           "          key code 11 using {control down} \r" ;
+           "    end tell \r"
+           "end tell \r"
+           ))))
 
       (add-hook 'objc-mode-hook
                 (lambda()
+                  (define-key objc-mode-map (kbd "C-c C-x C-c") 'xcode:buildandrun)
+                  (define-key objc-mode-map (kbd "C-c C-m") 'flymake-display-err-menu-for-current-line)
+
                   (push 'ac-source-company-xcode ac-sources)
 
                   (push '("\\.m$" flymake-objc-init) flymake-allowed-file-name-masks)
@@ -53,7 +68,6 @@
                       (flymake-mode t))
 
                   ))
-
       ))
 
 (setq ac-modes (append ac-modes '(objc-mode)))
