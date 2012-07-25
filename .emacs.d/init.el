@@ -143,6 +143,8 @@
 
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+     (ac-set-trigger-key "C-M-i")
+
      ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
      ;; (setq ac-auto-start nil)
@@ -318,6 +320,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ffap settings
 (ffap-bindings)
+(setq ffap-kpathsea-depth 5)
 (setq ff-other-file-alist
       '(("\\.mm$" (".h"))
         ("\\.m$" (".h"))
@@ -337,3 +340,27 @@
         ("\\.cpp$" (".hpp" ".hh" ".h"))
 
         ("\\.hpp$" (".cpp" ".c"))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flymake
+;; flymake 現在行のエラーをpopup.elのツールチップで表示する
+(defun flymake-display-err-menu-for-current-line ()
+  (interactive)
+  (let* ((line-no             (flymake-current-line-no))
+         (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no))))
+    (when line-err-info-list
+      (let* ((count           (length line-err-info-list))
+             (menu-item-text  nil))
+        (while (> count 0)
+          (setq menu-item-text (flymake-ler-text (nth (1- count) line-err-info-list)))
+          (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
+                 (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
+            (if file
+                (setq menu-item-text (concat menu-item-text " - " file "(" (format "%d" line) ")"))))
+          (setq count (1- count))
+          (if (> count 0) (setq menu-item-text (concat menu-item-text "\n")))
+          )
+        (popup-tip menu-item-text)))))
+
+(global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
