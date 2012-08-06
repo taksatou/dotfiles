@@ -24,7 +24,7 @@
       (defvar xcode:sdkframeworks (concat xcode:sdk "/System/Library/Frameworks"))
       ;; (defvar flymake-objc-compiler "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc")
       (defvar flymake-objc-compiler "clang")
-      (defvar flymake-objc-compile-default-options (list "-Wall" "-Wextra" "-Wno-unused-parameter" "-fsyntax-only" "-miphoneos-version-min=4.3" "-xobjective-c" "-std=c99" "-isysroot" xcode:sdk))
+      (defvar flymake-objc-compile-default-options (list "-I../" "-Wall" "-Wextra" "-Wno-unused-parameter" "-fsyntax-only" "-miphoneos-version-min=4.3" "-xobjective-c" "-std=c99" "-isysroot" xcode:sdk))
       (defvar flymake-last-position nil)
       (defvar flymake-objc-compile-options '(""))
       (defun flymake-objc-init ()
@@ -53,9 +53,24 @@
            "end tell \r"
            ))))
 
+      (defun xcode:build ()
+        (interactive)
+        (sleep-for 0 300)               ; ugly work-around. sleep 300msec to avoid key conflict
+        (do-applescript
+         (format
+          (concat
+           "tell application \"Xcode\" to activate \r"
+           "tell application \"System Events\" \r"
+           "     tell process \"Xcode\" \r"
+           "          keystroke \"b\" using {command down} \r"
+           "    end tell \r"
+           "end tell \r"
+           ))))
+
       (add-hook 'objc-mode-hook
                 (lambda()
                   (define-key objc-mode-map (kbd "C-c r") 'xcode:buildandrun)
+                  (define-key objc-mode-map (kbd "C-c b") 'xcode:build)
                   (define-key objc-mode-map (kbd "C-c C-m") 'flymake-display-err-menu-for-current-line)
 
                   (push 'ac-source-company-xcode ac-sources)
