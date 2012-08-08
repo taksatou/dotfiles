@@ -6,9 +6,9 @@
                                     "~/share/emacs"
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
-
                                     "~/.emacs.d/auto-install"
                                     "~/share/emacs/site-lisp/skk"
+                                    "~/.emacs.d/malabar-1.4.0/lisp"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -66,8 +66,9 @@
 (cond (window-system
        (setq x-select-enable-clipboard t)))
 
-(set-language-environment 'Japanese)
+(set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
+;;(set-language-environment 'Japanese)
 
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
@@ -78,8 +79,8 @@
 
 ;; elisp bible p.268
 (require 'generic-x)
-                                        ;(add-hook 'text-mode-hook 'auto-fill-mode)
-                                        ;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
+;(add-hook 'text-mode-hook 'auto-fill-mode)
+;(add-hook 'text-mode-hook '(lambda () (skk-mode 1)))
 
 (show-paren-mode t)
 
@@ -141,10 +142,12 @@
      (ac-config-default)
 
      (global-auto-complete-mode t)
-     ;;     (auto-complete-mode t)
+;;     (auto-complete-mode t)
 
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+     (ac-set-trigger-key "C-M-i")
+
      ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
      ;; (setq ac-auto-start nil)
@@ -155,7 +158,7 @@
        (setq ac-sources '(ac-source-words-in-same-mode-buffers
                           ac-source-symbols)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
-     )
+)
 
 
 ;; from-emacswiki
@@ -192,12 +195,9 @@
 
 
 (use 'recentf-ext
-
-     (custom-set-variables
-      '(recentf-auto-cleanup (quote never)))
-                                        ;     (setq recentf-auto-cleanup 'never)
-     (setq recentf-max-saved-item 50000)
-     (setq recentf-exclude '("/tmp/")))
+     (custom-set-variables '(recentf-auto-cleanup (quote never)))
+     (custom-set-variables '(recentf-max-saved-items 9999999))
+     (custom-set-variables '(recentf-exclude '("tmp"))))
 
 (use 'anything-startup
      (global-set-key (kbd "C-c C-j") 'anything)
@@ -209,6 +209,14 @@
 		       )))
 
 
+;;;;;;;;;;;;;;;;;;;;;;
+;; html-mode
+(use 'html-mode
+     (define-key html-mode-map (kbd "C-c C-v") 'compile))
+
+(use 'mustache-mode
+     (add-to-list 'auto-mode-alist '("\\.mustache?\\'" . mustache-mode))
+     )
 
 ;; http://d.hatena.ne.jp/syohex/20111201/1322665378
 (use 'quickrun
@@ -290,12 +298,19 @@
 
 (use 'my-lisp-mode)
 
-(use 'popwin
-     (setq display-buffer-function 'popwin:display-buffer))
+;; (use 'popwin
+;;      (setq display-buffer-function 'popwin:display-buffer))
+
+
+;(use 'my-python-mode)
+
+(use 'edit-server
+     (edit-server-start)
+     )
 
 (use 'skk
      (setq skk-server-portnum 1178)
-     (setq skk-server-host "localhost")
+     (setq skk-server-host "localhost"))
 
      ;; (add-hook 'isearch-mode-hook
      ;;           (function (lambda ()
@@ -306,9 +321,81 @@
      ;;                       (and (boundp 'skk-mode) skk-mode (skk-isearch-mode-cleanup))
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
-     )
 
-;(use 'my-python-mode)
-
-
+(use 'my-objectivec-mode)
+(use 'applescript-mode)
 (use 'my-javascript-mode)
+
+(use 'dired-x
+     (setq dired-omit-files "^\\...+$"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ffap settings
+(ffap-bindings)
+(setq ffap-kpathsea-depth 5)
+(setq ff-other-file-alist
+      '(("\\.mm$" (".h"))
+        ("\\.m$" (".h"))
+        ("\\.cc$"  (".hh" ".h"))
+        ("\\.hh$"  (".cc" ".C"))
+
+        ("\\.c$"   (".h"))
+        ("\\.h$"   (".m" ".mm" ".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ))
+
+        ("\\.C$"   (".H"  ".hh" ".h"))
+        ("\\.H$"   (".C"  ".CC"))
+
+        ("\\.CC$"  (".HH" ".H"  ".hh" ".h"))
+        ("\\.HH$"  (".CC"))
+
+        ("\\.cxx$" (".hh" ".h"))
+        ("\\.cpp$" (".hpp" ".hh" ".h"))
+
+        ("\\.hpp$" (".cpp" ".c"))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flymake
+;; flymake 現在行のエラーをpopup.elのツールチップで表示する
+(defun flymake-display-err-menu-for-current-line ()
+  (interactive)
+  (let* ((line-no             (flymake-current-line-no))
+         (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no))))
+    (when line-err-info-list
+      (let* ((count           (length line-err-info-list))
+             (menu-item-text  nil))
+        (while (> count 0)
+          (setq menu-item-text (flymake-ler-text (nth (1- count) line-err-info-list)))
+          (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
+                 (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
+            (if file
+                (setq menu-item-text (concat menu-item-text " - " file "(" (format "%d" line) ")"))))
+          (setq count (1- count))
+          (if (> count 0) (setq menu-item-text (concat menu-item-text "\n")))
+          )
+        (popup-tip menu-item-text)))))
+
+(global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
+
+(use 'csharp-mode
+     (setq auto-mode-alist
+           (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
+     (defun my-csharp-mode-fn ()
+       "function that runs when csharp-mode is initialized for a buffer."
+       (turn-on-auto-revert-mode)
+       (setq indent-tabs-mode nil)
+       (require 'flymake)
+       (flymake-mode 1)
+       (require 'yasnippet)
+       (yas/minor-mode-on)
+       (require 'rfringe)
+       ...insert more code here...
+       ...including any custom key bindings you might want ...
+       )
+     (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t))
+
+;; (use 'multi-term
+;;      (setq multi-term-program "/bin/zsh"))
+
+(use 'my-java-mode)
