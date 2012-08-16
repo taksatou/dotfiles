@@ -204,6 +204,14 @@
 		       )))
 
 
+;;;;;;;;;;;;;;;;;;;;;;
+;; html-mode
+(use 'html-mode
+     (define-key html-mode-map (kbd "C-c C-v") 'compile))
+
+(use 'mustache-mode
+     (add-to-list 'auto-mode-alist '("\\.mustache?\\'" . mustache-mode))
+     )
 
 ;; http://d.hatena.ne.jp/syohex/20111201/1322665378
 (use 'quickrun
@@ -313,3 +321,6 @@
 (use 'my-objetivec-mode)
 (use 'applescript-mode)
 (use 'my-javascript-mode)
+
+(use 'dired-x
+     (setq dired-omit-files "^\\...+$"))
