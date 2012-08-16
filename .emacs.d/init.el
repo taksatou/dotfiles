@@ -65,8 +65,9 @@
 (cond (window-system
        (setq x-select-enable-clipboard t)))
 
-(set-language-environment 'Japanese)
+(set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
+;;(set-language-environment 'Japanese)
 
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
@@ -288,9 +289,8 @@
 
 (use 'my-lisp-mode)
 
-(use 'popwin
-     (setq display-buffer-function 'popwin:display-buffer))
-
+;; (use 'popwin
+;;      (setq display-buffer-function 'popwin:display-buffer))
 
 
 ;(use 'my-python-mode)
@@ -383,3 +383,6 @@
        ...including any custom key bindings you might want ...
        )
      (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t))
+
+;; (use 'multi-term
+;;      (setq multi-term-program "/bin/zsh"))
