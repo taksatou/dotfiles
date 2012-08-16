@@ -7,6 +7,7 @@
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
                                     "~/.emacs.d/auto-install"
+                                    "~/share/emacs/site-lisp/skk"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -143,6 +144,8 @@
 
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+     (ac-set-trigger-key "C-M-i")
+
      ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
      ;; (setq ac-auto-start nil)
@@ -318,9 +321,76 @@
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
 
-(use 'my-objetivec-mode)
+(use 'my-objectivec-mode)
 (use 'applescript-mode)
 (use 'my-javascript-mode)
 
 (use 'dired-x
      (setq dired-omit-files "^\\...+$"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ffap settings
+(ffap-bindings)
+(setq ffap-kpathsea-depth 5)
+(setq ff-other-file-alist
+      '(("\\.mm$" (".h"))
+        ("\\.m$" (".h"))
+        ("\\.cc$"  (".hh" ".h"))
+        ("\\.hh$"  (".cc" ".C"))
+
+        ("\\.c$"   (".h"))
+        ("\\.h$"   (".m" ".mm" ".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ))
+
+        ("\\.C$"   (".H"  ".hh" ".h"))
+        ("\\.H$"   (".C"  ".CC"))
+
+        ("\\.CC$"  (".HH" ".H"  ".hh" ".h"))
+        ("\\.HH$"  (".CC"))
+
+        ("\\.cxx$" (".hh" ".h"))
+        ("\\.cpp$" (".hpp" ".hh" ".h"))
+
+        ("\\.hpp$" (".cpp" ".c"))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flymake
+;; flymake 現在行のエラーをpopup.elのツールチップで表示する
+(defun flymake-display-err-menu-for-current-line ()
+  (interactive)
+  (let* ((line-no             (flymake-current-line-no))
+         (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no))))
+    (when line-err-info-list
+      (let* ((count           (length line-err-info-list))
+             (menu-item-text  nil))
+        (while (> count 0)
+          (setq menu-item-text (flymake-ler-text (nth (1- count) line-err-info-list)))
+          (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
+                 (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
+            (if file
+                (setq menu-item-text (concat menu-item-text " - " file "(" (format "%d" line) ")"))))
+          (setq count (1- count))
+          (if (> count 0) (setq menu-item-text (concat menu-item-text "\n")))
+          )
+        (popup-tip menu-item-text)))))
+
+(global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
+
+(use 'csharp-mode
+     (setq auto-mode-alist
+           (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
+     (defun my-csharp-mode-fn ()
+       "function that runs when csharp-mode is initialized for a buffer."
+       (turn-on-auto-revert-mode)
+       (setq indent-tabs-mode nil)
+       (require 'flymake)
+       (flymake-mode 1)
+       (require 'yasnippet)
+       (yas/minor-mode-on)
+       (require 'rfringe)
+       ...insert more code here...
+       ...including any custom key bindings you might want ...
+       )
+     (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t))
+
