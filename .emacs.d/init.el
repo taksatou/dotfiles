@@ -8,6 +8,7 @@
                                     "~/share/emacs/color-theme"
                                     "~/.emacs.d/auto-install"
                                     "~/share/emacs/site-lisp/skk"
+                                    "~/.emacs.d/malabar-1.4.0/lisp"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -396,3 +397,5 @@
 
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
+
+(use 'my-java-mode)
