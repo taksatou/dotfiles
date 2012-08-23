@@ -399,3 +399,6 @@
 ;;      (setq multi-term-program "/bin/zsh"))
 
 (use 'my-java-mode)
+(use 'open-junk-file)
+(use 'summarye)
+
