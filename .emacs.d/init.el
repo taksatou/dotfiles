@@ -7,7 +7,7 @@
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
                                     "~/.emacs.d/auto-install"
-                                    "~/share/emacs/site-lisp/skk"
+                                    "~/.emacs.d/ddskk-14.4"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
                                     ;;
                                     ;; add paths here
@@ -377,23 +377,23 @@
 
 (global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
 
-(use 'csharp-mode
-     (setq auto-mode-alist
-           (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+;; (use 'csharp-mode
+;;      (setq auto-mode-alist
+;;            (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
-     (defun my-csharp-mode-fn ()
-       "function that runs when csharp-mode is initialized for a buffer."
-       (turn-on-auto-revert-mode)
-       (setq indent-tabs-mode nil)
-       (require 'flymake)
-       (flymake-mode 1)
-       (require 'yasnippet)
-       (yas/minor-mode-on)
-       (require 'rfringe)
-       ...insert more code here...
-       ...including any custom key bindings you might want ...
-       )
-     (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t))
+;;      (defun my-csharp-mode-fn ()
+;;        "function that runs when csharp-mode is initialized for a buffer."
+;;        (turn-on-auto-revert-mode)
+;;        (setq indent-tabs-mode nil)
+;;        (require 'flymake)
+;;        (flymake-mode 1)
+;;        (require 'yasnippet)
+;;        (yas/minor-mode-on)
+;;        (require 'rfringe)
+;;        ...insert more code here...
+;;        ...including any custom key bindings you might want ...
+;;        )
+;;      (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t))
 
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
@@ -401,4 +401,3 @@
 (use 'my-java-mode)
 (use 'open-junk-file)
 (use 'summarye)
-
