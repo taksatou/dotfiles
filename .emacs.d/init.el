@@ -189,7 +189,7 @@
 ;; wget http://www.emacswiki.org/emacs/download/auto-install.el
 ;; see also. http://d.hatena.ne.jp/rubikitch/20091221/autoinstall
 (use 'auto-install
-     (auto-install-update-emacswiki-package-name t)
+;     (auto-install-update-emacswiki-package-name t)
      (auto-install-compatibility-setup)
      (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 

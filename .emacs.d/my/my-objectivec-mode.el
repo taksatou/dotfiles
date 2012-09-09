@@ -18,22 +18,16 @@
       (ac-company-define-source ac-source-company-xcode company-xcode)
 
       (require 'flymake)
-      (defvar xcode:sdkver "5.1")
-      (defvar xcode:sdkpath "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer")
-      (defvar xcode:sdk (concat xcode:sdkpath "/SDKs/iPhoneSimulator" xcode:sdkver ".sdk"))
-      (defvar xcode:sdkframeworks (concat xcode:sdk "/System/Library/Frameworks"))
-      ;; (defvar flymake-objc-compiler "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc")
-      (defvar flymake-objc-compiler "clang")
-      (defvar flymake-objc-compile-default-options (list (concat "-I" (getenv "HOME") "/include") "-Wall" "-Wextra" "-Wno-unused-parameter" "-fsyntax-only" "-miphoneos-version-min=4.3" "-xobjective-c" "-std=c99" "-isysroot" xcode:sdk))
-      (defvar flymake-last-position nil)
-      (defvar flymake-objc-compile-options '(""))
-      (defun flymake-objc-init ()
-        (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                           'flymake-create-temp-inplace))
-               (local-file (file-relative-name
-                            temp-file
-                            (file-name-directory buffer-file-name))))
-          (list flymake-objc-compiler (append flymake-objc-compile-default-options flymake-objc-compile-options (list local-file)))))
+      (defun flymake-objc-init () (flymake-simple-make-init))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; makefile exsample
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; INCLUDE=./vendor/some_library
+;; .PHONY: check-syntax
+;; check-syntax:
+;; 	clang -I${INCLUDE} -Wall -Wextra -Wno-unused-parameter -fsyntax-only  -miphoneos-version-min=4.3 -xobjective-c -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk *.m
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
       (setq ffap-c-path (append ffap-c-path `(,xcode:sdkframeworks)))
 
