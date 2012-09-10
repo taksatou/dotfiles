@@ -64,7 +64,8 @@
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
 (cond (window-system
-       (setq x-select-enable-clipboard t)))
+       (setq x-select-enable-clipboard t)
+       (setenv "LC_ALL" "en_US.UTF-8")))
 
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
