@@ -44,7 +44,8 @@
      ;;     ad-do-it))
 
      (use 'popwin
-          (slime-setup '(slime-repl slime-fancy slime-banner))
+          (if (boundp 'slime-setup)
+              (slime-setup '(slime-repl slime-fancy slime-banner)))
 
           ;; Apropos
           (push '("*slime-apropos*") popwin:special-display-config)
@@ -74,6 +75,7 @@
                (add-to-list 'ac-modes 'slime-mode)
                (add-to-list 'ac-modes 'slime-repl-mode)
                ))
-     (slime)
-     )
+     (if (file-exists-p inferior-lisp-program)
+         (slime)))
+
 (provide 'my-lisp-mode)

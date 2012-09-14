@@ -47,7 +47,9 @@
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
 (tool-bar-mode 0)
-(scroll-bar-mode 0)
+
+(if (boundp 'scroll-bar-mode)
+    (scroll-bar-mode 0))
 
 ;; (if (boundp 'x-window-system-initialization-alist)
 ;;     (if (assq 'x-window-system-initialization-alist)
