@@ -1,8 +1,8 @@
-(add-to-list 'load-path "~/share/emacs/site-lisp/python-mode")
-(add-to-list 'load-path "~/share/emacs/site-lisp/python-mode/completion")
-(setq py-install-directory "~/share/emacs/site-lisp/python-mode")
+;; (add-to-list 'load-path "~/share/emacs/site-lisp/python-mode")
+;; (add-to-list 'load-path "~/share/emacs/site-lisp/python-mode/completion")
+;; (setq py-install-directory "~/share/emacs/site-lisp/python-mode")
 
-(require 'python-mode)
+;(require 'python)
 ;; (require 'pymacs)
 ;; (require 'pycomplete)
 
@@ -44,5 +44,8 @@
 ;;   (define-key python-mode-map "\C-c\C-g" 'python-send-buffer)
 ;; )
 
-(add-to-list 'auto-mode-alist '("\\.mako?\\'" . html-mode))
+(use 'python
+     (add-to-list 'auto-mode-alist '("\\.mako?\\'" . html-mode))
+     (define-key python-mode-map (kbd "C-c C-k") 'kill-current-buffer))
+
 (provide 'my-python-mode)

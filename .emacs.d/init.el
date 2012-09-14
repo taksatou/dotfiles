@@ -42,15 +42,19 @@
 
 (global-set-key "\C-t" nil) ;; avoid conflict
 
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
-(if (boundp 'wwindow-system-initialization-alist)
-(if (assq 'x window-system-initialization-alist)
-    (progn
-      (tool-bar-mode 0)
-      (scroll-bar-mode 0)
-      )))
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+;; (if (boundp 'x-window-system-initialization-alist)
+;;     (if (assq 'x-window-system-initialization-alist)
+;;         (progn
+;;           (tool-bar-mode 0)
+;;           (scroll-bar-mode 0)
+;;           )))
 (menu-bar-mode 0)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
@@ -64,7 +68,8 @@
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
 (cond (window-system
-       (setq x-select-enable-clipboard t)))
+       (setq x-select-enable-clipboard t)
+       (setenv "LC_ALL" "en_US.UTF-8")))
 
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -189,7 +194,7 @@
 ;; wget http://www.emacswiki.org/emacs/download/auto-install.el
 ;; see also. http://d.hatena.ne.jp/rubikitch/20091221/autoinstall
 (use 'auto-install
-     (auto-install-update-emacswiki-package-name t)
+;     (auto-install-update-emacswiki-package-name t)
      (auto-install-compatibility-setup)
      (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
@@ -302,7 +307,7 @@
 ;;      (setq display-buffer-function 'popwin:display-buffer))
 
 
-;(use 'my-python-mode)
+(use 'my-python-mode)
 
 (use 'edit-server
      (edit-server-start)
@@ -331,8 +336,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ffap settings
-(ffap-bindings)
-(setq ffap-kpathsea-depth 5)
+;; (ffap-bindings)
+;; (setq ffap-kpathsea-depth 5)
 (setq ff-other-file-alist
       '(("\\.mm$" (".h"))
         ("\\.m$" (".h"))
@@ -356,26 +361,32 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake
-;; flymake 現在行のエラーをpopup.elのツールチップで表示する
-(defun flymake-display-err-menu-for-current-line ()
-  (interactive)
-  (let* ((line-no             (flymake-current-line-no))
-         (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no))))
-    (when line-err-info-list
-      (let* ((count           (length line-err-info-list))
-             (menu-item-text  nil))
-        (while (> count 0)
-          (setq menu-item-text (flymake-ler-text (nth (1- count) line-err-info-list)))
-          (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
-                 (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
-            (if file
-                (setq menu-item-text (concat menu-item-text " - " file "(" (format "%d" line) ")"))))
-          (setq count (1- count))
-          (if (> count 0) (setq menu-item-text (concat menu-item-text "\n")))
-          )
-        (popup-tip menu-item-text)))))
+(use 'flymake
+     (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
+       (setq flymake-check-was-interrupted t))
+     (ad-activate 'flymake-post-syntax-check)
 
-(global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
+     ;; flymake 現在行のエラーをpopup.elのツールチップで表示する
+     (defun flymake-display-err-menu-for-current-line ()
+       (interactive)
+       (let* ((line-no             (flymake-current-line-no))
+              (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no))))
+         (when line-err-info-list
+           (let* ((count           (length line-err-info-list))
+                  (menu-item-text  nil))
+             (while (> count 0)
+               (setq menu-item-text (flymake-ler-text (nth (1- count) line-err-info-list)))
+               (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
+                      (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
+                 (if file
+                     (setq menu-item-text (concat menu-item-text " - " file "(" (format "%d" line) ")"))))
+               (setq count (1- count))
+               (if (> count 0) (setq menu-item-text (concat menu-item-text "\n")))
+               )
+             (popup-tip menu-item-text)))))
+
+     (global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
+     )
 
 ;; (use 'csharp-mode
 ;;      (setq auto-mode-alist
@@ -401,3 +412,10 @@
 (use 'my-java-mode)
 (use 'open-junk-file)
 (use 'summarye)
+
+(use 'all)
+(use 'tail)
+
+;; override keybinds
+(use 'nxml-mode
+     (define-key nxml-mode-map (kbd "M-h") 'backward-kill-word))
