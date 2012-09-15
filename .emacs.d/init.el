@@ -45,12 +45,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
-(if (boundp 'wwindow-system-initialization-alist)
-(if (assq 'x window-system-initialization-alist)
-    (progn
-      (tool-bar-mode 0)
-      (scroll-bar-mode 0)
-      )))
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+;; (if (boundp 'x-window-system-initialization-alist)
+;;     (if (assq 'x-window-system-initialization-alist)
+;;         (progn
+;;           (tool-bar-mode 0)
+;;           (scroll-bar-mode 0)
+;;           )))
 (menu-bar-mode 0)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
