@@ -42,6 +42,9 @@
 
 (global-set-key "\C-t" nil) ;; avoid conflict
 
+;; override keybinds
+(define-key nxml-mode-map (kbd "M-h") 'backward-kill-word)
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
