@@ -42,8 +42,6 @@
 
 (global-set-key "\C-t" nil) ;; avoid conflict
 
-;; override keybinds
-(define-key nxml-mode-map (kbd "M-h") 'backward-kill-word)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
@@ -309,7 +307,7 @@
 ;;      (setq display-buffer-function 'popwin:display-buffer))
 
 
-;(use 'my-python-mode)
+(use 'my-python-mode)
 
 (use 'edit-server
      (edit-server-start)
@@ -417,3 +415,7 @@
 
 (use 'all)
 (use 'tail)
+
+;; override keybinds
+(use 'nxml-mode
+     (define-key nxml-mode-map (kbd "M-h") 'backward-kill-word))
