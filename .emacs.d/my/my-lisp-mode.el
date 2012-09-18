@@ -44,8 +44,7 @@
      ;;     ad-do-it))
 
      (use 'popwin
-          (if (boundp 'slime-setup)
-              (slime-setup '(slime-repl slime-fancy slime-banner)))
+          (slime-setup '(slime-repl slime-fancy slime-banner))
 
           ;; Apropos
           (push '("*slime-apropos*") popwin:special-display-config)
