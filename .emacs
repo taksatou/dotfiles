@@ -19,3 +19,5 @@
 
 (load-file "~/.emacs.d/init.el")
 
+(if (file-exists-p "~/.emacs.include.el")
+    (load-file "~/.emacs.include.el"))
