@@ -54,6 +54,7 @@ alias sc='screen -r -RR'
 alias ri='ri --format ansi'
 alias grepl='grep --line-buffered'
 alias ssh='ssh -o ServerAliveInterval=60'
+alias tr='tree -L 2'
 
 function tmr() {
     if [ `tmux list-sessions | grep -v attached | wc -l` = 0 ]; then
@@ -91,3 +92,4 @@ precmd () {
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
+
