@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-<return>") "\n")
 
 (global-set-key "\C-t" nil) ;; avoid conflict
+(global-set-key "\C-c\C-l" nil) ;; disable toggle-electric-state
 
 
 ;;;;;;;;;;;;;;;;;;;;;;

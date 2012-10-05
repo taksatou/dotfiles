@@ -29,7 +29,7 @@
 ;; 	clang -I${INCLUDE} -Wall -Wextra -Wno-unused-parameter -fsyntax-only  -miphoneos-version-min=4.3 -xobjective-c -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk *.m
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-      (defvar xcode:sdkver "5.1")
+      (defvar xcode:sdkver "6.0")
       (defvar xcode:sdkpath "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer")
       (defvar xcode:sdk (concat xcode:sdkpath "/SDKs/iPhoneSimulator" xcode:sdkver ".sdk"))
       (defvar xcode:sdkframeworks (concat xcode:sdk "/System/Library/Frameworks"))
