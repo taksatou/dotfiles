@@ -422,3 +422,18 @@
 ;; override keybinds
 (use 'nxml-mode
      (define-key nxml-mode-map (kbd "M-h") 'backward-kill-word))
+
+(use 'color-moccur
+     (use 'moccur-edit))
+
+;;
+;; http://kray.jp/blog/emacs-lisp-7/
+;;
+(use 'wdired
+     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+     (define-key wdired-mode-map (kbd "C-g") 'wdired-abort-changes))
+
+(use 'browse-kill-ring
+     (global-set-key (kbd "C-c C-l k") 'browse-kill-ring)
+     (setq browse-kill-ring-quit-action 'kill-and-delete-window)
+     (setq browse-kill-ring-highlight-current-entry t))
