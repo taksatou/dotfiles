@@ -255,7 +255,10 @@
 (use 'markdown-mode
      (add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
      (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
-     )
+
+     (define-key markdown-mode-map (kbd "C-M-b") 'backward-sexp)
+     (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp))
+
 
 (use 'php-mode
      (use 'symfony
