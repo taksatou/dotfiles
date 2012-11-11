@@ -49,7 +49,7 @@
           ;; Apropos
           (push '("*slime-apropos*") popwin:special-display-config)
           ;; Macroexpand
-          (push '("*slime-macroexpansion*") popwin:special-display-config)
+          (push '("*slime-macroexpansion*" :noselect t) popwin:special-display-config)
           ;; Help
           (push '("*slime-description*") popwin:special-display-config)
           ;; Compilation

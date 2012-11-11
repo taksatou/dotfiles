@@ -24,17 +24,19 @@
 (if (file-exists-p "~/.emacs.include.el")
     (load-file "~/.emacs.include.el"))
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(popwin:special-display-config (quote ((slime-connection-list-mode) (slime-repl-mode) (sldb-mode :stick t) ("*slime-xref*") ("*slime-compilation*" :noselect t) ("*slime-description*") ("*slime-macroexpansion*" :noselect t) ("*slime-apropos*") ("*Help*") ("*Completions*" :noselect t) ("*compilation*" :noselect t) ("*Occur*" :noselect t))))
  '(recentf-auto-cleanup (quote never))
  '(recentf-exclude (quote ("tmp")))
  '(recentf-max-saved-items 9999999)
+ '(safe-local-variable-values (quote ((Package . CL-USER) (Syntax . COMMON-LISP) (change-log-indent-text . 2) (add-log-time-format lambda nil (let* ((time (current-time)) (system-time-locale "C") (diff (+ (cadr time) 32400)) (lo (% diff 65536)) (hi (+ (car time) (/ diff 65536)))) (format-time-string "%a %b %e %H:%M:%S %Y" (list hi lo) t))) (Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(use-dialog-box nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )

@@ -1,5 +1,6 @@
 syntax on
 set number
+set binary
 set shiftwidth=4
 set autoindent
 set cindent
