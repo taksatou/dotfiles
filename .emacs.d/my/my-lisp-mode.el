@@ -18,6 +18,9 @@
            (expand-file-name "~/share//emacs/site-lisp/hyperspec/Data/Data/Map_Sym.txt"))
 
      (add-hook 'slime-mode-hook (lambda ()
+                                  (define-key slime-mode-map (kbd "M-p") 'previous-line-and-recenter)
+                                  (define-key slime-mode-map (kbd "M-n") 'next-line-and-recenter)
+
                                   (define-key slime-mode-map (kbd "C-C C-k") 'kill-current-buffer)
                                   (define-key slime-mode-map (kbd "C-C C-o") 'slime-compile-and-load-hook)
                                   (define-key slime-mode-map (kbd "C-C C-j") 'anything)

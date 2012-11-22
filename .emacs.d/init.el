@@ -283,15 +283,13 @@
 ;;      )
 
 
-(use 'highlight-parentheses
-     (define-globalized-minor-mode global-highlight-parentheses-mode
-       highlight-parentheses-mode
-       (lambda ()
-         (highlight-parentheses-mode t)))
-     (global-highlight-parentheses-mode t)
-     (setq hl-paren-colors '("color-208" "color-213" "color-148" ""))
-
-     )
+;; (use 'highlight-parentheses
+;;      (define-globalized-minor-mode global-highlight-parentheses-mode
+;;        highlight-parentheses-mode
+;;        (lambda ()
+;;          (highlight-parentheses-mode t)))
+;;      (global-highlight-parentheses-mode t)
+;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
      (highline-mode-on)
