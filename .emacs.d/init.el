@@ -81,9 +81,11 @@
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
 
-(add-hook 'before-save-hook
-	  (lambda ()
-	    (delete-trailing-whitespace)))
+(setq-default require-final-newline nil)
+
+;; (add-hook 'before-save-hook
+;; 	  (lambda ()
+;; 	    (delete-trailing-whitespace)))
 
 ;; elisp bible p.268
 (require 'generic-x)
@@ -111,6 +113,9 @@
     (insert-kbd-macro symbol)
     (basic-save-buffer)))
 
+(define-prefix-command 'my-global-map)
+(global-set-key (kbd "C-c 0") 'my-global-map)
+(define-key my-global-map (kbd "C-o") 'moccur-grep-find)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -152,13 +157,16 @@
      (global-auto-complete-mode t)
 ;;     (auto-complete-mode t)
 
+     (setq ac-auto-start nil)
+     (global-set-key (kbd "M-/") 'ac-start) ;; override dabbrev-expand
+     (define-key ac-complete-mode-map (kbd "RET") 'ac-stop) ;; test
+
      (define-key ac-complete-mode-map "\C-n" 'ac-next)
      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
      (ac-set-trigger-key "C-M-i")
 
      ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
-     ;; (setq ac-auto-start nil)
      ;; (global-set-key "\C-c\C-a" 'ac-start)
      ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
@@ -240,7 +248,7 @@
 
 ;; http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.el
 ;; http://d.hatena.ne.jp/n9d/20080419/1208614482
-(use 'graphviz-dot-mode)
+;(use 'graphviz-dot-mode)
 ;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el")
 
 (use 'tramp
@@ -255,7 +263,12 @@
 (use 'markdown-mode
      (add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
      (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
-     )
+
+     (define-key markdown-mode-map (kbd "C-M-b") 'backward-sexp)
+     (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp)
+     (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
+     (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter))
+
 
 (use 'php-mode
      (use 'symfony
@@ -304,8 +317,8 @@
 
 (use 'my-lisp-mode)
 
-;; (use 'popwin
-;;      (setq display-buffer-function 'popwin:display-buffer))
+(use 'popwin
+     (setq display-buffer-function 'popwin:display-buffer))
 
 
 (use 'my-python-mode)
@@ -435,3 +448,4 @@
      (global-set-key (kbd "C-c C-l k") 'browse-kill-ring)
      (setq browse-kill-ring-quit-action 'kill-and-delete-window)
      (setq browse-kill-ring-highlight-current-entry t))
+

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 OLD_DOTFILES=$HOME/.old_dotfiles.d
-DOTFILES='.emacs.d  .gitconfig  .vimrc .emacs .tmux.conf .zshrc'
+DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc'
 
 PWD=`pwd`
 BACKUP_DIR=$OLD_DOTFILES/`date +%s`
