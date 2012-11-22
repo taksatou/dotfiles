@@ -113,6 +113,9 @@
     (insert-kbd-macro symbol)
     (basic-save-buffer)))
 
+(define-prefix-command 'my-global-map)
+(global-set-key (kbd "C-c 0") 'my-global-map)
+(define-key my-global-map (kbd "C-o") 'moccur-grep-find)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -245,7 +248,7 @@
 
 ;; http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.el
 ;; http://d.hatena.ne.jp/n9d/20080419/1208614482
-(use 'graphviz-dot-mode)
+;(use 'graphviz-dot-mode)
 ;;(load-file "PATH_TO_FILE/graphviz-dot-mode.el")
 
 (use 'tramp
@@ -262,7 +265,9 @@
      (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
 
      (define-key markdown-mode-map (kbd "C-M-b") 'backward-sexp)
-     (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp))
+     (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp)
+     (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
+     (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter))
 
 
 (use 'php-mode
