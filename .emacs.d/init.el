@@ -59,6 +59,7 @@
 ;;           (scroll-bar-mode 0)
 ;;           )))
 (menu-bar-mode 0)
+(setq scroll-step 1)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
