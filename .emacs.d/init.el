@@ -95,6 +95,8 @@
 
 (show-paren-mode t)
 
+;(hs-minor-mode t)                       ;
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base utils
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -115,8 +117,18 @@
     (basic-save-buffer)))
 
 (define-prefix-command 'my-global-map)
+(define-prefix-command 'my-global-map-a)
 (global-set-key (kbd "C-c 0") 'my-global-map)
+(global-set-key (kbd "C-c C-a") 'my-global-map-a)
+
 (define-key my-global-map (kbd "C-o") 'moccur-grep-find)
+(use 'fold-dwim
+     (define-key my-global-map-a (kbd "0") 'hs-minor-mode)
+     (define-key my-global-map-a (kbd "C-f") 'fold-dwim-toggle)
+
+     ;; useful aliases
+     ;; (define-key my-global-map-a (kbd "C-<SPC>") 'pop-global-mark)
+     )
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
