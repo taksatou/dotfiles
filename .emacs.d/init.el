@@ -436,7 +436,9 @@
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
 
-(use 'my-java-mode)
+(use 'my-java-mode
+     (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map-a))
+
 (use 'open-junk-file)
 (use 'summarye)
 
