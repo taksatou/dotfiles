@@ -59,7 +59,9 @@
 ;;           (scroll-bar-mode 0)
 ;;           )))
 (menu-bar-mode 0)
-(setq scroll-step 1)
+
+(setq scroll-step 2)
+(setq scroll-conservatively 100000)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
@@ -81,6 +83,7 @@
 
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 (setq-default require-final-newline nil)
 
@@ -330,8 +333,8 @@
 
 (use 'my-lisp-mode)
 
-(use 'popwin
-     (setq display-buffer-function 'popwin:display-buffer))
+;; (use 'popwin
+;;      (setq display-buffer-function 'popwin:display-buffer))
 
 
 (use 'my-python-mode)
