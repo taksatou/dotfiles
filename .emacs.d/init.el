@@ -388,6 +388,9 @@
 
         ("\\.hpp$" (".cpp" ".c"))))
 
+(define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+(define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake
