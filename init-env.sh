@@ -8,6 +8,7 @@ BACKUP_DIR=$OLD_DOTFILES/`date +%s`
 mkdir -p $BACKUP_DIR
 
 make -C $PWD/.emacs.d/ddskk-14.4
+touch ~/.skk-jisyo
 
 for i in $DOTFILES; do
     if [ ! -e $PWD/$i ]; then
