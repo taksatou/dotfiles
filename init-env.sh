@@ -3,10 +3,11 @@
 OLD_DOTFILES=$HOME/.old_dotfiles.d
 DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc'
 
-PWD=`pwd`
+PWD=`dirname $0`
 BACKUP_DIR=$OLD_DOTFILES/`date +%s`
 mkdir -p $BACKUP_DIR
 
+make -C $PWD/.emacs.d/ddskk-14.4 clean
 
 for i in $DOTFILES; do
     if [ ! -e $PWD/$i ]; then

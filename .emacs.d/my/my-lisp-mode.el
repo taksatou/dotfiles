@@ -8,7 +8,8 @@
      (setq auto-mode-alist (append '(("\\.cl$" . lisp-mode)) auto-mode-alist))
 
      (cond ((eq system-type 'darwin) (setq inferior-lisp-program "/usr/local/bin/sbcl"))
-           (t (setq inferior-lisp-program "/usr/bin/sbcl")))
+           (t (setq inferior-lisp-program "/home/takayuki/data/build/clozure-cl/ccl/./lx86cl64")))
+           ;; (t (setq inferior-lisp-program "/usr/bin/sbcl")))
 
      (setq slime-net-coding-system 'utf-8-unix)
 

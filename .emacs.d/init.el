@@ -81,6 +81,10 @@
 (prefer-coding-system 'utf-8)
 ;;(set-language-environment 'Japanese)
 
+;; set font size
+(if (display-graphic-p)
+    (set-face-attribute 'default nil :height 105))
+
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
