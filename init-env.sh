@@ -3,7 +3,7 @@
 OLD_DOTFILES=$HOME/.old_dotfiles.d
 DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc'
 
-PWD=`dirname $0`
+PWD=`pwd`
 BACKUP_DIR=$OLD_DOTFILES/`date +%s`
 mkdir -p $BACKUP_DIR
 
