@@ -6,3 +6,4 @@ kmacro-save.el
 .emacs.d/session.*
 .emacs.d/srecode-map.el
 .emacs.d/ddskk-14.4/skk-autoloads.el
+.emacs.d/elpa/*
