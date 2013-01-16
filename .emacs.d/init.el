@@ -392,8 +392,9 @@
 
         ("\\.hpp$" (".cpp" ".c"))))
 
-(define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-(define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+(use 'c-mode
+     (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+     (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
