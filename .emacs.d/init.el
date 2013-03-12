@@ -170,6 +170,7 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
+(use 'auto-complete)
 (use 'auto-complete-config
      (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
      (ac-config-default)
