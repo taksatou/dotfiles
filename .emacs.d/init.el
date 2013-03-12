@@ -191,10 +191,12 @@
      ;; (global-set-key "\C-c\C-a" 'ac-start)
      ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
+     (add-to-list 'ac-sources 'ac-source-yasnippet)
+     
      (defun emacs-lisp-ac-setup ()
-       (setq ac-sources '(ac-source-words-in-same-mode-buffers
-                          ac-source-symbols)))
+       (setq ac-sources (append '(ac-source-words-in-same-mode-buffers ac-source-symbols) ac-sources)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
+
 )
 
 
@@ -471,3 +473,20 @@
      (setq browse-kill-ring-quit-action 'kill-and-delete-window)
      (setq browse-kill-ring-highlight-current-entry t))
 
+
+;; yas
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(use 'yasnippet
+     (yas-global-mode 1)
+     (use 'dropdown-list
+          (setq yas-prompt-functions '(yas-dropdown-prompt
+                                       yas-ido-prompt
+                                       yas-completing-prompt)))
+
+     (define-prefix-command 'my-yas-map)
+     (global-set-key (kbd "C-c C-y") 'my-yas-map)
+     (define-key my-yas-map (kbd "C-y") 'yas/insert-snippet)
+
+     (use 'auto-complete-yasnippet)
+
+     )
