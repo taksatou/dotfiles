@@ -72,6 +72,7 @@
             backup-directory-alist))
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+(add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
 (cond (window-system
        (setq x-select-enable-clipboard t)
@@ -211,13 +212,13 @@
 
 ;; http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el
 (use 'bm
-     (setq-default bm-buffer-persistence t)
-     (setq bm-restore-repository-on-load t)
-     (add-hook 'find-file-hooks 'bm-buffer-restore)
-     (add-hook 'kill-buffer-hook 'bm-buffer-save)
-     (add-hook 'after-save-hook 'bm-buffer-save)
-     (add-hook 'after-revert-hook 'bm-buffer-restore)
-     (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
+     ;; (setq-default bm-buffer-persistence t)
+     ;; (setq bm-restore-repository-on-load t)
+     ;; (add-hook 'find-file-hooks 'bm-buffer-restore)
+     ;; (add-hook 'kill-buffer-hook 'bm-save)
+     ;; (add-hook 'after-save-hook 'bm-save)
+     ;; (add-hook 'after-revert-hook 'bm-buffer-restore)
+     ;; (add-hook 'vc-before-checkin-hook 'bm-save)
      (global-set-key (kbd "M-SPC") 'bm-toggle)
      (global-set-key (kbd "M-[") 'bm-previous)
      (global-set-key (kbd "M-]") 'bm-next))
@@ -423,6 +424,13 @@
 
      (global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
      )
+
+;; cshartp
+;; (add-to-list 'auto-mode-alist '("\\.cs?\\'" . (lambda ()
+;;                                                 ;; load csharp-mode lazily
+;;                                                 (use 'csharp-mode)
+;;                                                 (csharp-mode))))
+
 
 ;; (use 'csharp-mode
 ;;      (setq auto-mode-alist
