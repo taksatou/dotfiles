@@ -55,4 +55,14 @@
   (interactive)
   (message (format "words: %d" (length (split-string (buffer-string) " ")))))
 
+
+(defun shell-command-with-color (cmd)
+  (interactive "sShell command: ")
+  (let ((buf (get-buffer-create "*Shell Command Output ext*")))
+    (switch-to-buffer buf)
+    (shell-command cmd buf buf)
+    (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
+    (ansi-color-apply-on-region 0 (buffer-size))))
+
+
 (provide 'my-elisp)

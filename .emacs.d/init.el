@@ -149,6 +149,7 @@
      (global-set-key "\M-p" 'previous-line-and-recenter)
      (global-set-key "\M-n" 'next-line-and-recenter)
      (global-set-key "\C-c\C-k" 'kill-current-buffer)
+     (global-set-key "\M-@" 'shell-command-with-color)
      (add-hook 'after-save-hook 'make-file-executable)
      )
 
@@ -486,7 +487,10 @@
      (define-prefix-command 'my-yas-map)
      (global-set-key (kbd "C-c C-y") 'my-yas-map)
      (define-key my-yas-map (kbd "C-y") 'yas/insert-snippet)
+     (define-key my-yas-map (kbd "C-c") 'yas/new-snippet)
 
      (use 'auto-complete-yasnippet)
 
      )
+
+(use 'my-ruby-mode)
