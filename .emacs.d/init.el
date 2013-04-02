@@ -81,6 +81,7 @@
 
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 ;;(set-language-environment 'Japanese)
 
 ;; set font size
@@ -145,7 +146,10 @@
 (use 'color-theme
      (require 'cus-edit)
      (require 'org-faces)
-     (color-theme-zenburn))
+     ;(color-theme-zenburn)
+     (color-theme-initialize)
+     (color-theme-deep-blue)
+     )
 
 (use 'my-elisp
      (global-set-key "\M-p" 'previous-line-and-recenter)
