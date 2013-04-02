@@ -1,6 +1,6 @@
-[submodule ".emacs.d/yasnippet"]
-	path = .emacs.d/yasnippet
-	url = https://github.com/capitaomorte/yasnippet
 [submodule ".emacs.d/auto-complete"]
 	path = .emacs.d/auto-complete
 	url = git://github.com/auto-complete/auto-complete.git
+[submodule ".emacs.d/yasnippet"]
+	path = .emacs.d/yasnippet
+	url = git@github.com:taksatou/yasnippet.git
