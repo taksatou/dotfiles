@@ -9,6 +9,7 @@
                                     "~/.emacs.d/auto-install"
                                     "~/.emacs.d/ddskk-14.4"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
+                                    "~/.emacs.d/auto-complete"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -172,7 +173,11 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
-(use 'auto-complete)
+(use 'auto-complete
+     (setq load-path (append load-path '("~/.emacs.d/auto-complete/lib/ert"
+                                         "~/.emacs.d/auto-complete/lib/fuzzy"
+                                         "~/.emacs.d/auto-complete/lib/popup"))))
+
 (use 'auto-complete-config
      (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
      (ac-config-default)
