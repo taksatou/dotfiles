@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: phony
+# key: phony
+# --
+.PHONY: 
+all:: 
