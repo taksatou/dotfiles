@@ -7,7 +7,7 @@
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
                                     "~/.emacs.d/auto-install"
-                                    "~/.emacs.d/ddskk-14.4"
+                                    "~/.emacs.d/ddskk-15.1"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
                                     "~/.emacs.d/auto-complete"
                                     ;;
