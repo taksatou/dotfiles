@@ -10,6 +10,7 @@
                                     "~/.emacs.d/ddskk-15.1"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
                                     "~/.emacs.d/auto-complete"
+                                    "~/.emacs.d/vendor"
                                     ;;
                                     ;; add paths here
                                     ;;
