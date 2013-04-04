@@ -9,4 +9,4 @@ set backspace=2
 colorscheme darkblue 
 set t_Co=256
 set paste
-
+set encoding=utf-8
