@@ -1,7 +1,6 @@
 #!/bin/bash
 
-git submodule init
-git submodule update
+./reload-submodules.sh
 
 OLD_DOTFILES=$HOME/.old_dotfiles.d
 DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc'
