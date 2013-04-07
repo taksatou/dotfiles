@@ -514,3 +514,7 @@
      )
 
 (use 'my-ruby-mode)
+
+(use 'inf-php
+     ;(setq inf-php-enable-launch-workaround t)
+     )
