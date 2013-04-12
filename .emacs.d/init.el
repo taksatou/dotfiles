@@ -148,8 +148,8 @@
      (require 'cus-edit)
      (require 'org-faces)
      ;(color-theme-zenburn)
-     (color-theme-initialize)
-     (color-theme-deep-blue)
+     ;; (color-theme-initialize)
+     ;; (color-theme-deep-blue)
      )
 
 (use 'my-elisp
@@ -518,3 +518,7 @@
 (use 'inf-php
      ;(setq inf-php-enable-launch-workaround t)
      )
+
+(if (file-exists-p "~/.emacs.include.el")
+    (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
+
