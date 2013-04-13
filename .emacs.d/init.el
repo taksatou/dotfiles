@@ -47,7 +47,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
-(tool-bar-mode 0)
+(if (boundp 'tool-bar-mode)
+    (tool-bar-mode 0))
+
 
 (if (boundp 'scroll-bar-mode)
     (scroll-bar-mode 0))
@@ -75,7 +77,8 @@
 
 (cond (window-system
        (setq x-select-enable-clipboard t)
-       (setenv "LC_ALL" "en_US.UTF-8")))
+       ;(setenv "LC_ALL" "en_US.UTF-8")
+       ))
 
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
