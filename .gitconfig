@@ -1,6 +1,6 @@
 [user]
-  name = takayuki
-  email = takayuki.sato.dev@gmail.com
+#  name = takayuki
+#  email = takayuki.sato.dev@gmail.com
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status = auto

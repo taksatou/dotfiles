@@ -7,8 +7,10 @@
                                     "~/share/emacs/site-lisp"
                                     "~/share/emacs/color-theme"
                                     "~/.emacs.d/auto-install"
-                                    "~/.emacs.d/ddskk-14.4"
+                                    "~/.emacs.d/ddskk-15.1"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
+                                    "~/.emacs.d/auto-complete"
+                                    "~/.emacs.d/vendor"
                                     ;;
                                     ;; add paths here
                                     ;;
@@ -74,6 +76,7 @@
             backup-directory-alist))
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+(add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
 (cond (window-system
        (setq x-select-enable-clipboard t)
@@ -82,6 +85,7 @@
 
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 ;;(set-language-environment 'Japanese)
 
 ;; set font size
@@ -146,12 +150,16 @@
 (use 'color-theme
      (require 'cus-edit)
      (require 'org-faces)
-     (color-theme-zenburn))
+     ;(color-theme-zenburn)
+     ;; (color-theme-initialize)
+     ;; (color-theme-deep-blue)
+     )
 
 (use 'my-elisp
      (global-set-key "\M-p" 'previous-line-and-recenter)
      (global-set-key "\M-n" 'next-line-and-recenter)
      (global-set-key "\C-c\C-k" 'kill-current-buffer)
+     (global-set-key "\M-@" 'shell-command-with-color)
      (add-hook 'after-save-hook 'make-file-executable)
      )
 
@@ -173,6 +181,11 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
+(use 'auto-complete
+     (setq load-path (append load-path '("~/.emacs.d/auto-complete/lib/ert"
+                                         "~/.emacs.d/auto-complete/lib/fuzzy"
+                                         "~/.emacs.d/auto-complete/lib/popup"))))
+
 (use 'auto-complete-config
      (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
      (ac-config-default)
@@ -193,10 +206,12 @@
      ;; (global-set-key "\C-c\C-a" 'ac-start)
      ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
+     (add-to-list 'ac-sources 'ac-source-yasnippet)
+     
      (defun emacs-lisp-ac-setup ()
-       (setq ac-sources '(ac-source-words-in-same-mode-buffers
-                          ac-source-symbols)))
+       (setq ac-sources (append '(ac-source-words-in-same-mode-buffers ac-source-symbols) ac-sources)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
+
 )
 
 
@@ -211,13 +226,13 @@
 
 ;; http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el
 (use 'bm
-     (setq-default bm-buffer-persistence t)
-     (setq bm-restore-repository-on-load t)
-     (add-hook 'find-file-hooks 'bm-buffer-restore)
-     (add-hook 'kill-buffer-hook 'bm-buffer-save)
-     (add-hook 'after-save-hook 'bm-buffer-save)
-     (add-hook 'after-revert-hook 'bm-buffer-restore)
-     (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
+     ;; (setq-default bm-buffer-persistence t)
+     ;; (setq bm-restore-repository-on-load t)
+     ;; (add-hook 'find-file-hooks 'bm-buffer-restore)
+     ;; (add-hook 'kill-buffer-hook 'bm-save)
+     ;; (add-hook 'after-save-hook 'bm-save)
+     ;; (add-hook 'after-revert-hook 'bm-buffer-restore)
+     ;; (add-hook 'vc-before-checkin-hook 'bm-save)
      (global-set-key (kbd "M-SPC") 'bm-toggle)
      (global-set-key (kbd "M-[") 'bm-previous)
      (global-set-key (kbd "M-]") 'bm-next))
@@ -290,7 +305,9 @@
      (define-key markdown-mode-map (kbd "C-M-b") 'backward-sexp)
      (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp)
      (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
-     (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter))
+     (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter)
+
+     (add-hook 'markdown-mode-hook 'skk-mode))
 
 
 (use 'php-mode
@@ -424,6 +441,13 @@
      (global-set-key "\C-c\C-m" 'flymake-display-err-menu-for-current-line)
      )
 
+;; cshartp
+;; (add-to-list 'auto-mode-alist '("\\.cs?\\'" . (lambda ()
+;;                                                 ;; load csharp-mode lazily
+;;                                                 (use 'csharp-mode)
+;;                                                 (csharp-mode))))
+
+
 ;; (use 'csharp-mode
 ;;      (setq auto-mode-alist
 ;;            (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
@@ -472,4 +496,32 @@
      (global-set-key (kbd "C-c C-l k") 'browse-kill-ring)
      (setq browse-kill-ring-quit-action 'kill-and-delete-window)
      (setq browse-kill-ring-highlight-current-entry t))
+
+
+;; yas
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(use 'yasnippet
+     (yas-global-mode 1)
+     (use 'dropdown-list
+          (setq yas-prompt-functions '(yas-dropdown-prompt
+                                       yas-ido-prompt
+                                       yas-completing-prompt)))
+
+     (define-prefix-command 'my-yas-map)
+     (global-set-key (kbd "C-c C-y") 'my-yas-map)
+     (define-key my-yas-map (kbd "C-y") 'yas/insert-snippet)
+     (define-key my-yas-map (kbd "C-c") 'yas/new-snippet)
+
+     (use 'auto-complete-yasnippet)
+
+     )
+
+(use 'my-ruby-mode)
+
+(use 'inf-php
+     ;(setq inf-php-enable-launch-workaround t)
+     )
+
+(if (file-exists-p "~/.emacs.include.el")
+    (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
 

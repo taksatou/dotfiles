@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./reload-submodules.sh
+
 OLD_DOTFILES=$HOME/.old_dotfiles.d
 DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc'
 
@@ -8,6 +10,7 @@ BACKUP_DIR=$OLD_DOTFILES/`date +%s`
 mkdir -p $BACKUP_DIR
 
 make -C $PWD/.emacs.d/ddskk-14.4
+make -C $PWD/.emacs.d/ddskk-15.1
 touch ~/.skk-jisyo
 
 for i in $DOTFILES; do
