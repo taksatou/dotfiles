@@ -13,10 +13,15 @@
 ;;     (kill-buffer (current-buffer))))
 
 (setq flymake-gui-warnings-enabled nil)
+(setq recentf-auto-cleanup 'never)
 
 (when
     (load
      (expand-file-name "~/.emacs.d/elpa/package.el"))
+  
+  ;; (require 'package)
+  ;; (add-to-list 'package-archives 
+  ;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize))
 
 (load-file "~/.emacs.d/init.el")
