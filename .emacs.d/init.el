@@ -524,21 +524,21 @@
     (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
 
 
-
-
-;; (use 'fringe
-;;      (use 'fringe-helper))
+;; 
+;; git-gutter
+;; 
 (if window-system
     (use 'git-gutter-fringe
          (set-face-foreground 'git-gutter-fr:modified "yellow")
          (set-face-foreground 'git-gutter-fr:added    "blue")
          (set-face-foreground 'git-gutter-fr:deleted  "white"))
-  (use 'git-gutter)
+  (use 'git-gutter))
 
-  (define-key my-global-map (kbd "C-l") 'git-gutter:toggle)
-  (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
-  (define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
-  (define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
-  (define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
+(define-key my-global-map (kbd "C-l") 'git-gutter:toggle)
+(define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
+(define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
+(define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
+(define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
 
-  )
+
+
