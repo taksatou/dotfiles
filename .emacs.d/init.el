@@ -131,14 +131,12 @@
     (basic-save-buffer)))
 
 (define-prefix-command 'my-global-map)
-(define-prefix-command 'my-global-map-a)
-(global-set-key (kbd "C-c 0") 'my-global-map)
-(global-set-key (kbd "C-c C-a") 'my-global-map-a)
+(global-set-key (kbd "C-c C-a") 'my-global-map)
 
 (define-key my-global-map (kbd "C-o") 'moccur-grep-find)
 (use 'fold-dwim
-     (define-key my-global-map-a (kbd "0") 'hs-minor-mode)
-     (define-key my-global-map-a (kbd "C-f") 'fold-dwim-toggle)
+     (define-key my-global-map (kbd "0") 'hs-minor-mode)
+     (define-key my-global-map (kbd "C-f") 'fold-dwim-toggle)
 
      ;; useful aliases
      ;; (define-key my-global-map-a (kbd "C-<SPC>") 'pop-global-mark)
@@ -207,7 +205,7 @@
      ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
      (add-to-list 'ac-sources 'ac-source-yasnippet)
-     
+
      (defun emacs-lisp-ac-setup ()
        (setq ac-sources (append '(ac-source-words-in-same-mode-buffers ac-source-symbols) ac-sources)))
      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
@@ -525,10 +523,22 @@
 (if (file-exists-p "~/.emacs.include.el")
     (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
 
-(use 'fringe
-     (use 'fringe-helper))
-(use 'git-gutter
-     (use 'git-gutter-fringe
-          (set-face-foreground 'git-gutter-fr:modified "yellow")
-          (set-face-foreground 'git-gutter-fr:added    "blue")
-          (set-face-foreground 'git-gutter-fr:deleted  "white")))
+
+
+
+;; (use 'fringe
+;;      (use 'fringe-helper))
+(if window-system
+    (use 'git-gutter-fringe
+         (set-face-foreground 'git-gutter-fr:modified "yellow")
+         (set-face-foreground 'git-gutter-fr:added    "blue")
+         (set-face-foreground 'git-gutter-fr:deleted  "white"))
+  (use 'git-gutter)
+
+  (define-key my-global-map (kbd "C-l") 'git-gutter:toggle)
+  (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
+  (define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
+  (define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
+  (define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
+
+  )
