@@ -5,6 +5,9 @@ if [ -e ~/.zsh.d ]; then
     autoload -U ~/.zsh.d/*(:t)
 fi;
 
+## 重複パスを登録しない
+typeset -U path cdpath fpath manpath
+
 autoload -U compinit
 compinit
 
@@ -43,7 +46,6 @@ setopt list_packed
 
 # no beep sound when complete list displayed
 setopt nolistbeep
-
 
 [ -f ~/.zshrc.include ] && source ~/.zshrc.include
 
@@ -93,3 +95,8 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
+
+if [ -d $HOME/.rbenv ]; then
+    export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init - zsh)"
+fi
