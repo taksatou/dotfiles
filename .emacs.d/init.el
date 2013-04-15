@@ -525,3 +525,10 @@
 (if (file-exists-p "~/.emacs.include.el")
     (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
 
+(use 'fringe
+     (use 'fringe-helper))
+(use 'git-gutter
+     (use 'git-gutter-fringe
+          (set-face-foreground 'git-gutter-fr:modified "yellow")
+          (set-face-foreground 'git-gutter-fr:added    "blue")
+          (set-face-foreground 'git-gutter-fr:deleted  "white")))

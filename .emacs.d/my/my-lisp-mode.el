@@ -1,5 +1,5 @@
-(add-to-list 'load-path "~/share/emacs/site-lisp/slime")
-(add-to-list 'load-path "~/share/emacs/site-lisp/slime/contrib")
+;; (add-to-list 'load-path "~/share/emacs/site-lisp/slime")
+;; (add-to-list 'load-path "~/share/emacs/site-lisp/slime/contrib")
 
 (use 'slime
      (require 'hyperspec)
@@ -49,7 +49,7 @@
      ;;     ad-do-it))
 
      (use 'popwin
-          (slime-setup '(slime-repl slime-fancy slime-banner))
+          (slime-setup '(slime-repl)); slime-fancy slime-banner))
 
           ;; Apropos
           (push '("*slime-apropos*") popwin:special-display-config)
