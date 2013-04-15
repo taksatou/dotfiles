@@ -534,11 +534,10 @@
          (set-face-foreground 'git-gutter-fr:deleted  "white"))
   (use 'git-gutter))
 
-(define-key my-global-map (kbd "C-l") 'git-gutter:toggle)
+(define-key my-global-map (kbd "C-l") 'git-gutter)
+(define-key my-global-map (kbd "C-o") 'git-gutter:toggle)
 (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
 (define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
 (define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
 (define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
-
-
 
