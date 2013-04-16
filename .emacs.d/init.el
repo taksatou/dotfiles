@@ -308,6 +308,8 @@
 
 
 (use 'php-mode
+     (define-key php-mode-map (kbd "C-c C-a") 'my-global-map)
+     
      (use 'symfony
           (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
           (define-key sf:minor-mode-map (kbd "C-c ; a") 'sf-cmd:action-files)
