@@ -74,3 +74,5 @@
 (define-key yaml-mode-map (kbd "M-C-u") 'yaml-beginning-of-block)
 (define-key yaml-mode-map (kbd "M-C-d") 'yaml-down-block)
 (define-key yaml-mode-map (kbd "M-C-e") 'yaml-end-of-block)
+
+(provide 'yaml-mode-ext)
