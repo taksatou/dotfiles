@@ -25,4 +25,10 @@
 ;;              (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)))
 
 (setq c-default-style "k&r")
+
+(add-hook 'c-mode-hook
+          (lambda()
+            (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+            (gtags-mode 1)))
+
 (provide 'my-c-mode)

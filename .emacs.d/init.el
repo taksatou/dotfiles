@@ -130,16 +130,6 @@
     (insert-kbd-macro symbol)
     (basic-save-buffer)))
 
-(define-prefix-command 'my-global-map)
-(global-set-key (kbd "C-c C-a") 'my-global-map)
-
-(define-key my-global-map (kbd "C-o") 'moccur-grep-find)
-(use 'fold-dwim
-     (define-key my-global-map (kbd "0") 'hs-minor-mode)
-     (define-key my-global-map (kbd "C-f") 'fold-dwim-toggle)
-     ;; useful aliases
-     ;; (define-key my-global-map-a (kbd "C-<SPC>") 'pop-global-mark)
-     )
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -151,6 +141,9 @@
      ;; (color-theme-initialize)
      ;; (color-theme-deep-blue)
      )
+
+(use 'gtags
+     (setq gtags-path-style 'relative))
 
 (use 'my-elisp
      (global-set-key "\M-p" 'previous-line-and-recenter)
@@ -253,6 +246,7 @@
 (use 'anything-startup
      (global-set-key (kbd "C-c C-j") 'anything)
 
+     (use 'anything-gtags)
      (use 'anything-config
           (add-to-list 'anything-sources
                        'anything-c-source-files-in-current-dir
@@ -277,7 +271,9 @@
 (use 'paredit)
 
 (use 'my-ghc)
-(use 'my-c-mode)
+(use 'my-c-mode
+     )
+
 (use 'my-codingstyles)
 (use 'my-local)
 
@@ -343,7 +339,7 @@
 
 (use 'highline
      (highline-mode-on)
-     (setq highline-face 'fringe)
+     (setq highline-face 'hl-line)
      )
 
 (use 'highlight-symbol)
@@ -467,7 +463,7 @@
 ;;      (setq multi-term-program "/bin/zsh"))
 
 (use 'my-java-mode
-     (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map-a))
+     (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
 
 (use 'open-junk-file)
 (use 'summarye)
@@ -533,12 +529,11 @@
          (set-face-foreground 'git-gutter-fr:deleted  "white"))
   (use 'git-gutter))
 
-(define-key my-global-map (kbd "C-l") 'git-gutter)
-(define-key my-global-map (kbd "C-g") 'git-gutter:toggle)
-(define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
-(define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
-(define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
-(define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
-
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+
+
+;;
+;; should be the last
+;; 
+(use 'my-keys)
