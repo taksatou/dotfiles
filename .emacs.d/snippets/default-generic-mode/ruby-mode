@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ruby-mode
+# key: ruby-mode
+# --
+# -*- mode: ruby -*-
