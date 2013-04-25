@@ -1,6 +1,6 @@
 ;;
 ;; my prefix
-;; 
+;;
 (define-prefix-command 'my-global-map)
 (global-set-key (kbd "C-c C-a") 'my-global-map)
 
@@ -15,14 +15,14 @@
 
 ;;
 ;; fix prefixkey
-;; 
+;;
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
 
 
 ;;
 ;; git gutter
-;; 
+;;
 (define-key my-global-map (kbd "C-l") 'git-gutter)
 (define-key my-global-map (kbd "C-g") 'git-gutter:toggle)
 (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
@@ -42,6 +42,8 @@
 
 
 (define-key my-global-map (kbd "C-j") 'anything-gtags-select)
+(define-key my-global-map (kbd "C-k") 'skk-mode)
+(define-key my-global-map (kbd "C-w") 'delete-trailing-whitespace)
 
 
 ;;  this doesnt work...
