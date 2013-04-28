@@ -53,6 +53,8 @@
 ;;    :source '(anything-c-source-gtags-select)
 ;;    :input (thing-at-point 'symbol)))
 
-(define-key my-global-map (kbd "SPC") 'window-toggle-division)
+(define-key my-global-map (kbd "C-SPC") 'window-toggle-division)
+(define-key my-global-map (kbd "t") 'toggle-truncate-lines)
+
 
 (provide 'my-keys)
