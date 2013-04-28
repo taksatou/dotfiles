@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: swi
+# key: swi
+# --
+switch (${1:condition}) {
+case ${2:cond1}:
+    $0
+    break;
+default:
+    break;
+}
