@@ -47,8 +47,6 @@ setopt list_packed
 # no beep sound when complete list displayed
 setopt nolistbeep
 
-[ -f ~/.zshrc.include ] && source ~/.zshrc.include
-
 #alias grep="grep -n"
 alias l='ls'
 alias e='emacs -nw'
@@ -56,6 +54,19 @@ alias sc='screen -r -RR'
 alias ri='ri --format ansi'
 alias grepl='grep --line-buffered'
 alias ssh='ssh -o ServerAliveInterval=60'
+
+case ${OSTYPE} in
+    darwin*)
+        alias ls="ls -G"
+        ;;
+    linux*)
+        alias ls="ls --color=auto"
+esac
+
+export LSCOLORS=ExFxCxdxBxegedabagacad
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+
 #alias tr='tree -L 2'
 
 function tmr() {
@@ -95,8 +106,9 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-
 if [ -d $HOME/.rbenv ]; then
     export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
     eval "$(rbenv init - zsh)"
 fi
+
+[ -f ~/.zshrc.include ] && source ~/.zshrc.include
