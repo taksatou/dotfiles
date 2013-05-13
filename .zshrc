@@ -5,9 +5,6 @@ if [ -e ~/.zsh.d ]; then
     autoload -U ~/.zsh.d/*(:t)
 fi;
 
-## 重複パスを登録しない
-typeset -U path cdpath fpath manpath
-
 autoload -U compinit
 compinit
 
@@ -107,8 +104,12 @@ precmd () {
 }
 
 if [ -d $HOME/.rbenv ]; then
-    export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
+    export PATH=$HOME/.rbenv/bin:$PATH
     eval "$(rbenv init - zsh)"
 fi
 
 [ -f ~/.zshrc.include ] && source ~/.zshrc.include
+
+
+## 重複パスをけす
+typeset -U path cdpath fpath manpath
