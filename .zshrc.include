@@ -10,11 +10,3 @@ export TERM=xterm-256color
 PROMPT="%B%(?..[%?] )%b%{[38;5;38m%}%n@%U%m%%%u%{[m%} "
 RPROMPT="%1(v|%F{blue}%1v%f|) %{$fg_no_bold[${1:-green}]%}%~%{$reset_color%}"
 
-alias ls="ls --color=auto"
-
-export LSCOLORS=ExFxCxdxBxegedabagacad
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-
-
-export MY_ENV_INCLUDED=x$MY_ENV_INCLUDED

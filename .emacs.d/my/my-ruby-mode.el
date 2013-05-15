@@ -5,6 +5,13 @@
 (setq auto-mode-alist (append '(("Rakefile" . ruby-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("rakefile" . ruby-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("Gemfile" . ruby-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("Capfile" . ruby-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("Guardfile" . ruby-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("Vagrantfile" . ruby-mode)) auto-mode-alist))
+
+
+(use 'rinari
+     (global-rinari-mode))
 
 ;; (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
 ;;    				     interpreter-mode-alist))

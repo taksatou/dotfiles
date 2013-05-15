@@ -18,6 +18,14 @@
 ;;
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
+(define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map)
+
+(add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (define-key sql-interactive-mode-map (kbd "C-c C-a") 'my-global-map)))
+;; (add-hook 'inf-ruby-mode-hook
+;;           (lambda ()
+;;             (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map)))
 
 
 ;;
