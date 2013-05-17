@@ -80,6 +80,34 @@
 
 (cond (window-system
        (setq x-select-enable-clipboard t)
+       (set-frame-parameter (selected-frame) 'alpha '(90 70))
+
+       ;; font
+       ;; http://sakito.jp/emacs/emacs23.html#id17
+       (when (>= emacs-major-version 23)
+         (set-face-attribute 'default nil
+                             :family "monaco"
+                             :height 110)
+         (set-fontset-font
+          (frame-parameter nil 'font)
+          'japanese-jisx0208
+          '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+         (set-fontset-font
+          (frame-parameter nil 'font)
+          'japanese-jisx0212
+          '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+         (set-fontset-font
+          (frame-parameter nil 'font)
+          'mule-unicode-0100-24ff
+          '("monaco" . "iso10646-1"))
+         (setq face-font-rescale-alist
+               '(("^-apple-hiragino.*" . 1.2)
+                 (".*osaka-bold.*" . 1.2)
+                 (".*osaka-medium.*" . 1.2)
+                 (".*courier-bold-.*-mac-roman" . 1.0)
+                 (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
+                 (".*monaco-bold-.*-mac-roman" . 0.9)
+                 ("-cdac$" . 1.3))))
        ;(setenv "LC_ALL" "en_US.UTF-8")
        ))
 
@@ -95,6 +123,7 @@
 (iswitchb-mode 0)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq-default Man-notify-method 'pushy)
 
 (setq-default require-final-newline nil)
 
@@ -138,7 +167,10 @@
      (require 'cus-edit)
      (require 'org-faces)
      ;(color-theme-zenburn)
-     ;; (color-theme-initialize)
+     (color-theme-initialize)
+     (cond (window-system
+           (color-theme-dark-blue2)))
+     
      ;; (color-theme-deep-blue)
      )
 
@@ -345,7 +377,7 @@
 
 (use 'highline
      (highline-mode-on)
-     (setq highline-face 'hl-line)
+;     (setq highline-face 'hl-line)
      )
 
 (use 'highlight-symbol)
@@ -531,12 +563,16 @@
 (if window-system
     (use 'git-gutter-fringe
          (set-face-foreground 'git-gutter-fr:modified "yellow")
-         (set-face-foreground 'git-gutter-fr:added    "blue")
-         (set-face-foreground 'git-gutter-fr:deleted  "white"))
+         (set-face-foreground 'git-gutter-fr:added    "cyan")
+         (set-face-foreground 'git-gutter-fr:deleted  "magenta"))
   (use 'git-gutter))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
+
+;; http://d.hatena.ne.jp/syohex/20120304/1330822993
+(use 'ace-jump-mode
+     (global-set-key (kbd "C-c C-SPC") 'ace-jump-mode))
 
 
 ;;

@@ -64,6 +64,22 @@
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
     (ansi-color-apply-on-region 0 (buffer-size))))
 
+(defun execute-alc (cmd)
+  (interactive "sQuery: ")
+  (let ((buf (get-buffer-create "*Dic*")))
+    (switch-to-buffer buf)
+    (shell-command (concat "alc " cmd) buf buf)
+    (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
+    (ansi-color-apply-on-region 0 (buffer-size))))
+
+(defun execute-make ()
+  (interactive)
+  (compile "make"))
+
+(defun execute-make-clean ()
+  (interactive)
+  (compile "make clean"))
+
 
 ;; http://www.bookshelf.jp/soft/meadow_30.html#SEC404
 (defun window-toggle-division ()

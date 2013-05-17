@@ -64,5 +64,9 @@
 (define-key my-global-map (kbd "C-SPC") 'window-toggle-division)
 (define-key my-global-map (kbd "t") 'toggle-truncate-lines)
 
+(define-key my-global-map (kbd "C-a") 'execute-alc)
+(define-key my-global-map (kbd "C-c") 'execute-make-clean)
+(define-key my-global-map (kbd "C-v") 'execute-make)
+(define-key my-global-map (kbd "C-m") 'man)
 
 (provide 'my-keys)
