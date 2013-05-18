@@ -79,54 +79,64 @@
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
 (cond (window-system
-       (cond ((eq system-type 'darwin)
-              (setq x-select-enable-clipboard t)
-              (set-frame-parameter (selected-frame) 'alpha '(90 70))
+       (setq x-select-enable-clipboard t)
+       (set-frame-parameter (selected-frame) 'alpha '(93 70))
 
-              ;; font
-              ;; http://sakito.jp/emacs/emacs23.html#id17
-              (when (>= emacs-major-version 23)
-                (set-face-attribute 'default nil
-                                    :family "monaco"
-                                    :height 110)
-                (set-fontset-font
-                 (frame-parameter nil 'font)
-                 'japanese-jisx0208
-                 '("Hiragino Maru Gothic Pro" . "iso10646-1"))
-                (set-fontset-font
-                 (frame-parameter nil 'font)
-                 'japanese-jisx0212
-                 '("Hiragino Maru Gothic Pro" . "iso10646-1"))
-                (set-fontset-font
-                 (frame-parameter nil 'font)
-                 'mule-unicode-0100-24ff
-                 '("monaco" . "iso10646-1"))
-                (setq face-font-rescale-alist
-                      '(("^-apple-hiragino.*" . 1.2)
-                        (".*osaka-bold.*" . 1.2)
-                        (".*osaka-medium.*" . 1.2)
-                        (".*courier-bold-.*-mac-roman" . 1.0)
-                        (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
-                        (".*monaco-bold-.*-mac-roman" . 0.9)
-                        ("-cdac$" . 1.3)))))
-             
-             ((eq system-type 'gnu/linux)
-              (set-face-attribute 'default nil
-                                  :family "Ricty"
-                                  :height 120
-                                  :weight 'normal
-                                  )
-              (set-fontset-font (frame-parameter nil 'font)
-                                'japanese-jisx0208
-                                (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
-              (set-fontset-font (frame-parameter nil 'font)
-                                'japanese-jisx0212
-                                (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
-              (set-fontset-font (frame-parameter nil 'font)
-                                'katakana-jisx0201
-                                (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+       ;; font
+       (cond
+        ;; 
+        ;; mac
+        ;; 
+        ((eq system-type 'darwin)
+         ;; http://sakito.jp/emacs/emacs23.html#id17
+         (when (>= emacs-major-version 23)
+           (set-face-attribute 'default nil
+                               :family "monaco"
+                               :height 110)
+           (set-fontset-font (frame-parameter nil 'font)
+                             'japanese-jisx0208
+                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+           (set-fontset-font (frame-parameter nil 'font)
+                             'japanese-jisx0212
+                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+           (set-fontset-font (frame-parameter nil 'font)
+                             'mule-unicode-0100-24ff
+                             '("monaco" . "iso10646-1"))
+           (setq face-font-rescale-alist
+                 '(("^-apple-hiragino.*" . 1.2)
+                   (".*osaka-bold.*" . 1.2)
+                   (".*osaka-medium.*" . 1.2)
+                   (".*courier-bold-.*-mac-roman" . 1.0)
+                   (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
+                   (".*monaco-bold-.*-mac-roman" . 0.9)
+                   ("-cdac$" . 1.3)))))
+        ;; 
+        ;; linux
+        ;; 
+        ((eq system-type 'gnu/linux)
+         (set-face-attribute 'default nil
+                             :family "Ricty"
+                             :height 110)
+         ;; 
+         ;; なぜか日本語フォントでboldがまざってしまうのを回避するためのwork around
+         ;;
+         (add-hook 'after-init-hook
+                   (lambda ()
+                     (set-fontset-font (frame-parameter nil 'font)
+                                       'japanese-jisx0208
+                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+                     (set-fontset-font (frame-parameter nil 'font)
+                                       'japanese-jisx0212
+                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+                     (set-fontset-font (frame-parameter nil 'font)
+                                       'katakana-jisx0201
+                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+                     (set-fontset-font (frame-parameter nil 'font)
+                                       'mule-unicode-0100-24ff
+                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))))
+;                           '("monaco" . "iso10646-1"))         
 
-              ))
+         ))
                    
               
        ;(setenv "LC_ALL" "en_US.UTF-8")
