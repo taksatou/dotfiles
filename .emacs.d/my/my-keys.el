@@ -18,7 +18,8 @@
 ;;
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
-(define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map)
+(use 'inf-ruby
+     (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map))
 
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
@@ -68,5 +69,7 @@
 (define-key my-global-map (kbd "C-c") 'execute-make-clean)
 (define-key my-global-map (kbd "C-v") 'execute-make)
 (define-key my-global-map (kbd "C-m") 'man)
+(define-key my-global-map (kbd "C-0") 'my-toggle-fullscreen)
+
 
 (provide 'my-keys)

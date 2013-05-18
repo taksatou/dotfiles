@@ -99,5 +99,15 @@
     (switch-to-buffer-other-window other-buf)
     (other-window -1)))
 
+(defun my-toggle-fullscreen ()
+  (interactive)
+  (let ((fullscreen (frame-parameter (selected-frame) 'fullscreen)))
+    (cond
+     ((null fullscreen)
+      (set-frame-parameter (selected-frame) 'fullscreen 'fullboth))
+     (t
+      (set-frame-parameter (selected-frame) 'fullscreen 'nil))))
+  (redisplay))
+
 (provide 'my-elisp)
 
