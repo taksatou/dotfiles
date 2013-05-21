@@ -26,14 +26,19 @@
 
 (setq c-default-style "k&r")
 
-(add-hook 'c-mode-hook
-          (lambda()
-            (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-            (gtags-mode 1)))
+(defun my-c-mode-hook ()
+  (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+  (c-set-offset 'inextern-lang 0)
+  (gtags-mode 1))
 
-(add-hook 'c++-mode-hook
-          (lambda()
-            (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-            (gtags-mode 1)))
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+          ;; (lambda()
+          ;;   (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+          ;;   (gtags-mode 1)))
+
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
+          ;; (lambda()
+          ;;   (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+          ;;   (gtags-mode 1)))
 
 (provide 'my-c-mode)
