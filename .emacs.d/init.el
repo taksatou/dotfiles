@@ -77,6 +77,9 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
+(add-hook 'compilation-filter-hook
+          (lambda ()
+            (ansi-color-apply-on-region 0 (buffer-size))))
 
 (cond (window-system
        (setq x-select-enable-clipboard t)
