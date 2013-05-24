@@ -72,6 +72,11 @@
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
     (ansi-color-apply-on-region 0 (buffer-size))))
 
+(defun execute-make-on-shell ()
+  (interactive)
+  (shell-command-with-color "make")
+  (compilation-mode))
+
 (defun execute-make ()
   (interactive)
   (compile "make"))
