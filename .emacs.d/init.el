@@ -88,7 +88,7 @@
         ((eq system-type 'darwin)
          (setq x-select-enable-clipboard t)
          (set-frame-parameter (selected-frame) 'alpha '(93 70))
-
+         (global-set-key (kbd "s-t") nil)
          
          ;; http://sakito.jp/emacs/emacs23.html#id17
          (when (>= emacs-major-version 23)
@@ -445,7 +445,8 @@
 
 (use 'edit-server
      (edit-server-start)
-     )
+     (define-key edit-server-edit-mode-map (kbd "C-x C-s") 'write-to-temp-file)
+     (define-key edit-server-edit-mode-map (kbd "C-x C-c") 'edit-server-done))
 
 (use 'skk
      (setq skk-server-portnum 1178)

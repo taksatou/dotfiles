@@ -101,13 +101,25 @@
 
 (defun my-toggle-fullscreen ()
   (interactive)
-  (let ((fullscreen (frame-parameter (selected-frame) 'fullscreen)))
-    (cond
-     ((null fullscreen)
-      (set-frame-parameter (selected-frame) 'fullscreen 'fullboth))
-     (t
-      (set-frame-parameter (selected-frame) 'fullscreen 'nil))))
-  (redisplay))
+  (cond ((eq system-type 'darwin)
+         (ns-toggle-fullscreen))
+        (t
+         (let ((fullscreen (frame-parameter (selected-frame) 'fullscreen)))
+           (cond
+            ((null fullscreen)
+             (set-frame-parameter (selected-frame) 'fullscreen 'fullboth))
+            (t
+             (set-frame-parameter (selected-frame) 'fullscreen 'nil))))
+         (redisplay))))
+
+(defun write-to-temp-file ()
+  (interactive)
+  (let ((file-name (concat "/tmp/"
+                           (replace-in-string (buffer-name) "/" "-")
+                           "."
+                           (md5 (current-time-string))
+                           ".backup")))
+    (write-region (point-min) (point-max) file-name)))
 
 (provide 'my-elisp)
 
