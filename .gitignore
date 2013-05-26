@@ -7,3 +7,5 @@ kmacro-save.el
 .emacs.d/srecode-map.el
 .emacs.d/ddskk-14.4/skk-autoloads.el
 .emacs.d/elpa/*
+
+.DS_Store
