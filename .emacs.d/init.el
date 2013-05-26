@@ -86,6 +86,7 @@
         ;; mac
         ;; 
         ((eq system-type 'darwin)
+         (setq ns-use-native-fullscreen nil)
          (setq x-select-enable-clipboard t)
          (set-frame-parameter (selected-frame) 'alpha '(93 70))
          (global-set-key (kbd "s-t") nil)
@@ -425,7 +426,8 @@
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
-     (highline-mode-on)
+     (global-highline-mode)
+     ;; (highline-mode-on)
      (if (or (not (window-system)) (not (eq system-type 'darwin)))
          (setq highline-face 'hl-line)))
 
