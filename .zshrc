@@ -51,6 +51,7 @@ alias sc='screen -r -RR'
 alias ri='ri --format ansi'
 alias grepl='grep --line-buffered'
 alias ssh='ssh -o ServerAliveInterval=60'
+alias pj="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
 
 case ${OSTYPE} in
     darwin*)
@@ -104,7 +105,7 @@ precmd () {
 }
 
 if [ -d $HOME/.rbenv ]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
+    export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
     eval "$(rbenv init - zsh)"
 fi
 
