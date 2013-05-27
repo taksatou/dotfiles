@@ -82,8 +82,6 @@
             (ansi-color-apply-on-region 0 (buffer-size))))
 
 (cond (window-system
-       (setq x-select-enable-clipboard t)
-       (set-frame-parameter (selected-frame) 'alpha '(93 70))
 
        ;; font
        (cond
@@ -91,6 +89,9 @@
         ;; mac
         ;; 
         ((eq system-type 'darwin)
+         (setq ns-use-native-fullscreen nil)
+         (setq x-select-enable-clipboard t)
+         (set-frame-parameter (selected-frame) 'alpha '(93 70))
          (global-set-key (kbd "s-t") nil)
          
          ;; http://sakito.jp/emacs/emacs23.html#id17
@@ -119,26 +120,42 @@
         ;; linux
         ;; 
         ((eq system-type 'gnu/linux)
+         (setq x-select-enable-clipboard t)
+;         (set-frame-parameter (selected-frame) 'alpha '(93 70))
+
          (set-face-attribute 'default nil
                              :family "Ricty"
                              :height 110)
-         ;; 
-         ;; なぜか日本語フォントでboldがまざってしまうのを回避するためのwork around
-         ;;
-         (add-hook 'after-init-hook
-                   (lambda ()
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'japanese-jisx0208
-                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'japanese-jisx0212
-                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'katakana-jisx0201
-                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'mule-unicode-0100-24ff
-                                       (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))))
+
+         (set-face-attribute 'default nil
+                             :family "Ricty Discord"
+                             :height 120)
+         (set-fontset-font (frame-parameter nil 'font)
+                           'japanese-jisx0208
+                           (cons "Ricty Discord" "iso10646-1"))
+         (set-fontset-font (frame-parameter nil 'font)
+                           'japanese-jisx0212
+                           (cons "Ricty Discord" "iso10646-1"))
+         (set-fontset-font (frame-parameter nil 'font)
+                           'katakana-jisx0201
+                           (cons "Ricty Discord" "iso10646-1"))
+         ;; ;; 
+         ;; ;; なぜか日本語フォントでboldがまざってしまうのを回避するためのwork around
+         ;; ;;
+         ;; (add-hook 'after-init-hook
+         ;;           (lambda ()
+         ;;             (set-fontset-font (frame-parameter nil 'font)
+         ;;                               'japanese-jisx0208
+         ;;                               (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+         ;;             (set-fontset-font (frame-parameter nil 'font)
+         ;;                               'japanese-jisx0212
+         ;;                               (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+         ;;             (set-fontset-font (frame-parameter nil 'font)
+         ;;                               'katakana-jisx0201
+         ;;                               (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))
+         ;;             (set-fontset-font (frame-parameter nil 'font)
+         ;;                               'mule-unicode-0100-24ff
+         ;;                               (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))))
 ;                           '("monaco" . "iso10646-1"))         
 
          ))
@@ -412,7 +429,8 @@
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
-     (highline-mode-on)
+     (global-highline-mode)
+     ;; (highline-mode-on)
      (if (or (not (window-system)) (not (eq system-type 'darwin)))
          (setq highline-face 'hl-line)))
 
