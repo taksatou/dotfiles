@@ -40,7 +40,7 @@
  '(paren-face ((t (:foreground "#A6E22A" :background nil))))
 
  ;; コメント
- '(font-lock-comment-face ((t (:foreground "#94614D"))))
+ '(font-lock-comment-face ((t (:foreground "#a4716D"))))
 
  ;; CSS
  '(css-selector ((t (:foreground "#66D9EF"))))
