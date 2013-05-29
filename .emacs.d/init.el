@@ -77,6 +77,9 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
+(add-hook 'compilation-filter-hook
+          (lambda ()
+            (ansi-color-apply-on-region 0 (buffer-size))))
 
 (cond (window-system
 
@@ -86,6 +89,7 @@
         ;; mac
         ;; 
         ((eq system-type 'darwin)
+         (setq ns-use-native-fullscreen nil)
          (setq x-select-enable-clipboard t)
          (set-frame-parameter (selected-frame) 'alpha '(93 70))
          (global-set-key (kbd "s-t") nil)
@@ -425,7 +429,8 @@
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
-     (highline-mode-on)
+     (global-highline-mode)
+     ;; (highline-mode-on)
      (if (or (not (window-system)) (not (eq system-type 'darwin)))
          (setq highline-face 'hl-line)))
 
