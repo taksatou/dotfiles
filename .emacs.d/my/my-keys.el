@@ -18,6 +18,7 @@
 ;;
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
+(define-key objc-mode-map (kbd "C-c C-a") 'my-global-map)
 (use 'inf-ruby
      (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map))
 

@@ -429,10 +429,12 @@
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
-     (global-highline-mode)
+     (global-highline-mode nil)
+     (custom-set-faces
+      '(highline-face ((t (:background "brightblack"))))))
      ;; (highline-mode-on)
-     (if (or (not (window-system)) (not (eq system-type 'darwin)))
-         (setq highline-face 'hl-line)))
+     ;; (if (or (not (window-system)) (not (eq system-type 'darwin)))
+     ;;     (setq highline-face 'hl-line)))
 
 (use 'highlight-symbol)
 
