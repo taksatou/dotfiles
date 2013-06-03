@@ -1,4 +1,5 @@
 ;; example
-(color-theme-initialize)
-(color-theme-dark-laptop)
-
+(cond (window-system
+       (load-theme 'tango-dark))
+      (t
+       (load-theme 'my)))
