@@ -221,8 +221,6 @@
      (require 'org-faces)
      ;(color-theme-zenburn)
      (color-theme-initialize)
-     (cond (window-system
-           (color-theme-dark-blue2)))
      
      ;; (color-theme-deep-blue)
      )
@@ -431,7 +429,7 @@
 (use 'highline
      (global-highline-mode nil)
      (custom-set-faces
-      '(highline-face ((t (:background "brightblack"))))))
+      '(highline-face ((t (:background "#262626"))))))
      ;; (highline-mode-on)
      ;; (if (or (not (window-system)) (not (eq system-type 'darwin)))
      ;;     (setq highline-face 'hl-line)))
