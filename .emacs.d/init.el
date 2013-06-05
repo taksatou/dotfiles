@@ -64,7 +64,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
-(setq scroll-step 2)
+(setq scroll-step 1)
 (setq scroll-conservatively 100000)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
