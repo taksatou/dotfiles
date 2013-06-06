@@ -81,6 +81,26 @@
           (lambda ()
             (ansi-color-apply-on-region 0 (buffer-size))))
 
+;;
+;; 勝手にwindowが分割されてしまうのを抑制
+;; ただし、windowが1つのみの場合は分割する
+;;
+(setq display-buffer-function
+      (lambda (buffer inhibit-same-window)
+        ;; (if (not (null inhibit-same-window))
+        ;;     (if (< (window-height) (/ (window-width) 2))
+        ;;         (split-window-horizontally)
+        ;;       (split-window-vertically)))
+        (if (eql (selected-window) (next-window))
+            (if (< (window-height) (/ (window-width) 2))
+                (split-window-horizontally)
+              (split-window-vertically)))
+            
+        (let ((win (next-window)))
+          (display-buffer-record-window 'reuse win buffer)
+          (set-window-buffer win buffer)
+          win)))
+
 (cond (window-system
 
        ;; font
