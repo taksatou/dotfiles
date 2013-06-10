@@ -64,7 +64,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
-(setq scroll-step 2)
+(setq scroll-step 1)
 (setq scroll-conservatively 100000)
 (setq frame-background-mode 'dark)
 (setq visible-bell nil)
@@ -81,19 +81,52 @@
           (lambda ()
             (ansi-color-apply-on-region 0 (buffer-size))))
 
+;;
+;; 勝手にwindowが分割されてしまうのを抑制
+;; ただし、windowが1つのみの場合は分割する
+;; ansi-colorを適用するためにswitch-bufferしたときは変になるのでなにもしない
+;;
+(setq display-buffer-function
+      (lambda (buffer inhibit-same-window)
+        ;; (if (not (null inhibit-same-window))
+        ;;     (if (< (window-height) (/ (window-width) 2))
+        ;;         (split-window-horizontally)
+        ;;       (split-window-vertically)))
+        (cond ((string-match "(ansi-color)" (buffer-name buffer))
+               (selected-window))
+              (t
+               (let ((had-next-window t))
+                 (if (eql (selected-window) (next-window))
+                     (if (< (window-height) (/ (window-width) 2))
+                         (split-window-horizontally)
+                       (split-window-vertically))
+                   (setq has-next-window nil))
+                 (let ((win (next-window)))
+                   (set-window-buffer win buffer t)
+                   (display-buffer-record-window (if had-next-window 'window 'frame) win buffer)
+                   win))))))
+
+
+;;
+;; http://stackoverflow.com/questions/4076360/error-in-dired-sorting-on-os-x
+;;
+(when (eq system-type 'darwin)
+  (require 'ls-lisp)
+  (setq ls-lisp-use-insert-directory-program nil))
+
 (cond (window-system
 
        ;; font
        (cond
-        ;; 
+        ;;
         ;; mac
-        ;; 
+        ;;
         ((eq system-type 'darwin)
          (setq ns-use-native-fullscreen nil)
          (setq x-select-enable-clipboard t)
          (set-frame-parameter (selected-frame) 'alpha '(93 70))
          (global-set-key (kbd "s-t") nil)
-         
+
          ;; http://sakito.jp/emacs/emacs23.html#id17
          (when (>= emacs-major-version 23)
            (set-face-attribute 'default nil
@@ -116,9 +149,9 @@
                    (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
                    (".*monaco-bold-.*-mac-roman" . 0.9)
                    ("-cdac$" . 1.3)))))
-        ;; 
+        ;;
         ;; linux
-        ;; 
+        ;;
         ((eq system-type 'gnu/linux)
          (setq x-select-enable-clipboard t)
 ;         (set-frame-parameter (selected-frame) 'alpha '(93 70))
@@ -139,7 +172,7 @@
          (set-fontset-font (frame-parameter nil 'font)
                            'katakana-jisx0201
                            (cons "Ricty Discord" "iso10646-1"))
-         ;; ;; 
+         ;; ;;
          ;; ;; なぜか日本語フォントでboldがまざってしまうのを回避するためのwork around
          ;; ;;
          ;; (add-hook 'after-init-hook
@@ -156,11 +189,11 @@
          ;;             (set-fontset-font (frame-parameter nil 'font)
          ;;                               'mule-unicode-0100-24ff
          ;;                               (font-spec :family "Ricty" :weight 'bold :registry "iso10646-1"))))
-;                           '("monaco" . "iso10646-1"))         
+;                           '("monaco" . "iso10646-1"))
 
          ))
-                   
-              
+
+
        ;(setenv "LC_ALL" "en_US.UTF-8")
        ))
 
@@ -221,9 +254,7 @@
      (require 'org-faces)
      ;(color-theme-zenburn)
      (color-theme-initialize)
-     (cond (window-system
-           (color-theme-dark-blue2)))
-     
+
      ;; (color-theme-deep-blue)
      )
 
@@ -394,7 +425,7 @@
 
 (use 'php-mode
      (define-key php-mode-map (kbd "C-c C-a") 'my-global-map)
-     
+
      (use 'symfony
           (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
           (define-key sf:minor-mode-map (kbd "C-c ; a") 'sf-cmd:action-files)
@@ -429,10 +460,12 @@
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
 (use 'highline
-     (global-highline-mode)
+     (global-highline-mode nil)
+     (custom-set-faces
+      '(highline-face ((t (:background "#262626"))))))
      ;; (highline-mode-on)
-     (if (or (not (window-system)) (not (eq system-type 'darwin)))
-         (setq highline-face 'hl-line)))
+     ;; (if (or (not (window-system)) (not (eq system-type 'darwin)))
+     ;;     (setq highline-face 'hl-line)))
 
 (use 'highlight-symbol)
 
@@ -442,8 +475,8 @@
 
 (use 'my-lisp-mode)
 
-;; (use 'popwin
-;;      (setq display-buffer-function 'popwin:display-buffer))
+(use 'popwin
+     (popwin-mode 1))
 
 
 (use 'my-python-mode)
@@ -612,9 +645,9 @@
     (add-hook 'emacs-startup-hook '(lambda () (load-file "~/.emacs.include.el"))))
 
 
-;; 
+;;
 ;; git-gutter
-;; 
+;;
 (if window-system
     (use 'git-gutter-fringe
          (set-face-foreground 'git-gutter-fr:modified "yellow")
@@ -632,5 +665,5 @@
 
 ;;
 ;; should be the last
-;; 
+;;
 (use 'my-keys)

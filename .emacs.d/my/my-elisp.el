@@ -58,7 +58,7 @@
 
 (defun shell-command-with-color (cmd)
   (interactive "sShell command: ")
-  (let ((buf (get-buffer-create "*Shell Command Output ext*")))
+  (let ((buf (get-buffer-create "*Shell Command Output (ansi-color)*")))
     (switch-to-buffer buf)
     (shell-command cmd buf buf)
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
@@ -66,7 +66,7 @@
 
 (defun execute-alc (cmd)
   (interactive "sQuery: ")
-  (let ((buf (get-buffer-create "*Dic*")))
+  (let ((buf (get-buffer-create "*Dic (ansi-color)*")))
     (switch-to-buffer buf)
     (shell-command (concat "alc " cmd) buf buf)
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
