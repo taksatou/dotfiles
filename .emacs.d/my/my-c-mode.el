@@ -28,6 +28,7 @@
 
 (defun my-c-mode-hook ()
   (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+  (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
   (c-set-offset 'inextern-lang 0)
   (gtags-mode 1))
 
