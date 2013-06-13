@@ -101,9 +101,10 @@
 
 (defun my-toggle-fullscreen ()
   (interactive)
-  (cond ((and (>= emacs-major-version 24)
-              (>= emacs-minor-version 3))
-         (toggle-frame-fullscreen))
+  (cond
+   ;; ((and (>= emacs-major-version 24)
+   ;;            (>= emacs-minor-version 3))
+   ;;       (toggle-frame-fullscreen))
         (t
          (if (eq system-type 'darwin)
              (ns-toggle-fullscreen)
