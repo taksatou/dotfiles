@@ -90,6 +90,10 @@ function cd() {
     builtin cd $* && ls
 }
 
+function dam() {
+    open dash://$*
+}
+
 if [ $EMACS ]; then unsetopt zle; fi
 
 ### vcs info

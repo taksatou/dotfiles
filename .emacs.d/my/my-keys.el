@@ -72,5 +72,7 @@
 (define-key my-global-map (kbd "C-m") 'man)
 (define-key my-global-map (kbd "C-0") 'my-toggle-fullscreen)
 
+(use 'dash-at-point
+     (define-key my-global-map (kbd "q") 'dash-at-point))
 
 (provide 'my-keys)
