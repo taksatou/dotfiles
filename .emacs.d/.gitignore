@@ -3,3 +3,7 @@ auto-save-list/*
 *.dat
 semanticdb/*
 SKK-JISYO.L
+url/
+thumbs/
+image-dired/
+abbrev_defs
