@@ -126,5 +126,9 @@
                            ".backup")))
     (write-region (point-min) (point-max) file-name)))
 
+(defun reset-tab-width (w)
+  (interactive "nwidth: ")
+  (setq tab-width w))
+
 (provide 'my-elisp)
 
