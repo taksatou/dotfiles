@@ -669,5 +669,8 @@
 (use 'my-keys)
 
 (use 'go-mode
-     (define-key go-mode-map (kbd "C-c C-a") 'my-global-map))
+     (define-key go-mode-map (kbd "C-c C-a") 'my-global-map)
+     (add-hook 'go-mode-hook
+               '(lambda ()
+                  (setq indent-tabs-mode nil))))
      
