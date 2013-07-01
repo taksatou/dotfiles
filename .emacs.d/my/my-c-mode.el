@@ -29,6 +29,11 @@
 (defun my-c-mode-hook ()
   (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
   (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+  (setq-default ff-search-directories (append cc-search-directories
+                                              '("./include"
+                                                "./include/*"
+                                                ".."
+                                                "../..")))
   (c-set-offset 'inextern-lang 0)
   (gtags-mode 1))
 
