@@ -51,7 +51,7 @@
 ;; git gutter
 ;;
 (define-key my-global-map (kbd "C-l") 'git-gutter)
-;(define-key my-global-map (kbd "C-g") 'git-gutter:toggle)
+(define-key my-global-map (kbd "9") 'git-gutter:toggle)
 (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
 (define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
 (define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
