@@ -433,7 +433,9 @@
           (define-key sf:minor-mode-map (kbd "C-c ; j") 'sf-cmd:js-files)
           (define-key sf:minor-mode-map (kbd "C-c ; v") 'sf-cmd:template-files)
           (define-key sf:minor-mode-map (kbd "C-c ; e") 'sf-cmd:relative-files)
-          (define-key sf:minor-mode-map (kbd "C-c ; c") 'sf-cmd:config-files))
+          (define-key sf:minor-mode-map (kbd "C-c ; c") 'sf-cmd:config-files)
+
+          )
 
      (add-hook 'php-mode-hook
                '(lambda ()
@@ -602,7 +604,9 @@
      (define-key nxml-mode-map (kbd "M-h") 'backward-kill-word))
 
 (use 'color-moccur
-     (use 'moccur-edit))
+     (use 'moccur-edit)
+     (setq dmoccur-exclusion-mask (append dmoccur-exclusion-mask '("vendor")))
+     )
 
 ;;
 ;; http://kray.jp/blog/emacs-lisp-7/

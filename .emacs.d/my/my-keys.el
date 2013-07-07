@@ -20,6 +20,7 @@
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key objc-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key html-mode-map (kbd "C-c C-a") 'my-global-map)
+(define-key diff-mode-map (kbd "C-c C-a") 'my-global-map)
 (use 'inf-ruby
      (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map))
 
@@ -30,12 +31,23 @@
 ;;           (lambda ()
 ;;             (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map)))
 
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (define-key sgml-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'comint-mode-hook
+          (lambda ()
+            (define-key comint-mode-map (kbd "C-c C-a") 'my-global-map)
+            (message "hook for comint")))
+(add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (define-key sql-interactive-mode-map (kbd "C-c C-a") 'my-global-map)))
+
 
 ;;
 ;; git gutter
 ;;
 (define-key my-global-map (kbd "C-l") 'git-gutter)
-(define-key my-global-map (kbd "C-g") 'git-gutter:toggle)
+;(define-key my-global-map (kbd "C-g") 'git-gutter:toggle)
 (define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
 (define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
 (define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
