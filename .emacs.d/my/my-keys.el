@@ -19,8 +19,6 @@
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key objc-mode-map (kbd "C-c C-a") 'my-global-map)
-(define-key html-mode-map (kbd "C-c C-a") 'my-global-map)
-(define-key diff-mode-map (kbd "C-c C-a") 'my-global-map)
 (use 'inf-ruby
      (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map))
 
@@ -31,6 +29,12 @@
 ;;           (lambda ()
 ;;             (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map)))
 
+(add-hook 'diff-mode-hook
+          (lambda ()
+            (define-key diff-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'html-mode-hook
+          (lambda ()
+            (define-key html-mode-map (kbd "C-c C-a") 'my-global-map)))
 (add-hook 'sgml-mode-hook
           (lambda ()
             (define-key sgml-mode-map (kbd "C-c C-a") 'my-global-map)))
