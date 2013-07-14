@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: code
+# key: code
+# --
+$$code(lang=$1)
+$0
+$$/code
