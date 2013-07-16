@@ -89,6 +89,7 @@
 (define-key my-global-map (kbd "C-m") 'man)
 (define-key my-global-map (kbd "C-0") 'my-toggle-fullscreen)
 (define-key my-global-map (kbd "C-r") 'reset-tab-width)
+(define-key my-global-map (kbd "C-b") 'reload-file-as-compile-log)
 
 (use 'dash-at-point
      (define-key my-global-map (kbd "q") 'dash-at-point))
