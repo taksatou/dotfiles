@@ -55,6 +55,15 @@
   (interactive)
   (message (format "words: %d" (length (split-string (buffer-string) " ")))))
 
+(defun apply-ansi-color ()
+  (interactive)
+  (ansi-color-apply-on-region 0 (buffer-size)))
+
+(defun reload-file-as-compile-log ()
+  (interactive)
+  (find-alternate-file (buffer-name))
+  (ansi-color-apply-on-region 0 (buffer-size))
+  (compilation-mode))
 
 (defun shell-command-with-color (cmd)
   (interactive "sShell command: ")
