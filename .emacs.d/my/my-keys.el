@@ -62,7 +62,6 @@
 ;;
 (add-hook 'gtags-mode-hook
           (lambda ()
-            (message "hook")
             (define-key gtags-mode-map (kbd "M-.") 'gtags-find-tag)
             (define-key gtags-mode-map (kbd "M-,") 'gtags-find-rtag)
             (define-key gtags-mode-map (kbd "M-*") 'gtags-pop-stack)))
