@@ -86,25 +86,25 @@
 ;; ただし、windowが1つのみの場合は分割する
 ;; ansi-colorを適用するためにswitch-bufferしたときは変になるのでなにもしない
 ;;
-(setq display-buffer-function
-      (lambda (buffer inhibit-same-window)
-        ;; (if (not (null inhibit-same-window))
-        ;;     (if (< (window-height) (/ (window-width) 2))
-        ;;         (split-window-horizontally)
-        ;;       (split-window-vertically)))
-        (cond ((string-match "(ansi-color)" (buffer-name buffer))
-               (selected-window))
-              (t
-               (let ((had-next-window t))
-                 (if (eql (selected-window) (next-window))
-                     (if (< (window-height) (/ (window-width) 2))
-                         (split-window-horizontally)
-                       (split-window-vertically))
-                   (setq has-next-window nil))
-                 (let ((win (next-window)))
-                   (set-window-buffer win buffer t)
-                   (display-buffer-record-window (if had-next-window 'window 'frame) win buffer)
-                   win))))))
+;; (setq display-buffer-function
+;;       (lambda (buffer inhibit-same-window)
+;;         ;; (if (not (null inhibit-same-window))
+;;         ;;     (if (< (window-height) (/ (window-width) 2))
+;;         ;;         (split-window-horizontally)
+;;         ;;       (split-window-vertically)))
+;;         (cond ((string-match "(ansi-color)" (buffer-name buffer))
+;;                (selected-window))
+;;               (t
+;;                (let ((had-next-window t))
+;;                  (if (eql (selected-window) (next-window))
+;;                      (if (< (window-height) (/ (window-width) 2))
+;;                          (split-window-horizontally)
+;;                        (split-window-vertically))
+;;                    (setq has-next-window nil))
+;;                  (let ((win (next-window)))
+;;                    (set-window-buffer win buffer t)
+;;                    (display-buffer-record-window (if had-next-window 'window 'frame) win buffer)
+;;                    win))))))
 
 
 ;;
@@ -461,13 +461,13 @@
 ;;      (global-highlight-parentheses-mode t)
 ;;      (setq hl-paren-colors '("color-208" "color-213" "color-148" "")))
 
-(use 'highline
-     (global-highline-mode nil)
+
+;; highline changes goal-column behavior, so I switched to hl-line
+(use 'hl-line
+     (global-hl-line-mode)
      (custom-set-faces
-      '(highline-face ((t (:background "#262626"))))))
-     ;; (highline-mode-on)
-     ;; (if (or (not (window-system)) (not (eq system-type 'darwin)))
-     ;;     (setq highline-face 'hl-line)))
+      '(hl-line ((t (:background "#262626"))))))
+
 
 (use 'highlight-symbol)
 
