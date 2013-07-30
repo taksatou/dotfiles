@@ -52,6 +52,7 @@ alias ri='ri --format ansi'
 alias grepl='grep --line-buffered'
 alias ssh='ssh -o ServerAliveInterval=60'
 alias pj="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
+alias py="ruby -ryaml -r pp -e 'pp YAML.load(ARGF.read)'"
 
 case ${OSTYPE} in
     darwin*)

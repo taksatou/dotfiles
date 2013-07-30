@@ -29,7 +29,6 @@
 (defun my-c-mode-hook ()
   (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
   (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-  
   (if (boundp 'cc-search-directories)
       nil
     (use 'find-file

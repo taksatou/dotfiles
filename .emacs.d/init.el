@@ -676,5 +676,6 @@
      (define-key go-mode-map (kbd "C-c C-a") 'my-global-map)
      (add-hook 'go-mode-hook
                '(lambda ()
+                  (c-set-offset 'inextern-lang 0)
                   (setq indent-tabs-mode nil))))
      
