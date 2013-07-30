@@ -81,30 +81,15 @@
           (lambda ()
             (ansi-color-apply-on-region 0 (buffer-size))))
 
-;;
-;; 勝手にwindowが分割されてしまうのを抑制
-;; ただし、windowが1つのみの場合は分割する
-;; ansi-colorを適用するためにswitch-bufferしたときは変になるのでなにもしない
-;;
-;; (setq display-buffer-function
-;;       (lambda (buffer inhibit-same-window)
-;;         ;; (if (not (null inhibit-same-window))
-;;         ;;     (if (< (window-height) (/ (window-width) 2))
-;;         ;;         (split-window-horizontally)
-;;         ;;       (split-window-vertically)))
-;;         (cond ((string-match "(ansi-color)" (buffer-name buffer))
-;;                (selected-window))
-;;               (t
-;;                (let ((had-next-window t))
-;;                  (if (eql (selected-window) (next-window))
-;;                      (if (< (window-height) (/ (window-width) 2))
-;;                          (split-window-horizontally)
-;;                        (split-window-vertically))
-;;                    (setq has-next-window nil))
-;;                  (let ((win (next-window)))
-;;                    (set-window-buffer win buffer t)
-;;                    (display-buffer-record-window (if had-next-window 'window 'frame) win buffer)
-;;                    win))))))
+
+(defadvice split-window (before my-split-window)
+  (interactive "P")
+  ;; letの中でad-set-argしてもなぜか動かない
+  (if (and (null (ad-get-arg 2))
+           (< (window-height) (/ (window-width) 2)))
+      (ad-set-arg 2 t)))
+
+(ad-activate 'split-window)
 
 
 ;;
@@ -477,8 +462,8 @@
 
 (use 'my-lisp-mode)
 
-(use 'popwin
-     (popwin-mode 1))
+;; (use 'popwin
+;;      (popwin-mode 1))
 
 
 (use 'my-python-mode)
@@ -672,7 +657,7 @@
      (global-set-key (kbd "C->") 'mc/mark-next-like-this)
      (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
      (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-     
+
      )
 
 
@@ -687,4 +672,3 @@
                '(lambda ()
                   (c-set-offset 'inextern-lang 0)
                   (setq indent-tabs-mode nil))))
-     
