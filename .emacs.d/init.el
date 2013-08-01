@@ -651,14 +651,13 @@
 (use 'ace-jump-mode
      (global-set-key (kbd "C-c C-SPC") 'ace-jump-mode))
 
-
-(use 'multiple-cursors
-     (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-     (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-     (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-     (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-     )
+(use 'region-bindings-mode
+     (region-bindings-mode-enable)
+     
+     (use 'multiple-cursors
+          ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+          (define-key region-bindings-mode-map (kbd "n") 'mc/mark-next-like-this)
+          (define-key region-bindings-mode-map (kbd "p") 'mc/mark-previous-like-this)))
 
 
 ;;
