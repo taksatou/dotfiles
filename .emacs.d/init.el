@@ -81,10 +81,14 @@
           (lambda ()
             (ansi-color-apply-on-region 0 (buffer-size))))
 
+(defun split-window-below (&optional size)
+  (interactive "P")
+  (split-window nil size'below))
 
 (defadvice split-window (before my-split-window)
   (interactive "P")
   ;; letの中でad-set-argしてもなぜか動かない
+  (message (format "arg: %s, %s, %s" (ad-get-arg 0) (ad-get-arg 1) (ad-get-arg 2)))
   (if (and (null (ad-get-arg 2))
            (< (window-height) (/ (window-width) 2)))
       (ad-set-arg 2 t)))
