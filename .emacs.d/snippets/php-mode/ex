@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ex
+# key: ex
+# --
+var_export($0, true)
