@@ -428,7 +428,8 @@
 
      (add-hook 'php-mode-hook
                '(lambda ()
-                  (c-set-style "php/symfony"))))
+                  (c-set-style "php/symfony")
+                  (gtags-mode))))
 
 ;; (use 'mmm-mode
 ;;      (setq mmm-global-mode 'maybe)
