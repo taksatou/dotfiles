@@ -123,20 +123,21 @@
 (defun my-toggle-fullscreen ()
   (interactive)
   (cond
-   ;; ((and (>= emacs-major-version 24)
-   ;;            (>= emacs-minor-version 3))
-   ;;       (toggle-frame-fullscreen))
-        (t
-         (if (eq system-type 'darwin)
-             (ns-toggle-fullscreen)
-           (progn
-             (let ((fullscreen (frame-parameter (selected-frame) 'fullscreen)))
-               (cond
-                ((null fullscreen)
-                 (set-frame-parameter (selected-frame) 'fullscreen 'fullboth))
-                (t
-                 (set-frame-parameter (selected-frame) 'fullscreen 'nil))))))
-         (redisplay))))
+   (t
+    (if (eq system-type 'darwin)
+        (progn
+          (if (and (>= emacs-major-version 24)
+                   (>= emacs-minor-version 3))
+              (toggle-frame-fullscreen)
+            (ns-toggle-fullscreen)))
+      (progn
+        (let ((fullscreen (frame-parameter (selected-frame) 'fullscreen)))
+          (cond
+           ((null fullscreen)
+            (set-frame-parameter (selected-frame) 'fullscreen 'fullboth))
+           (t
+            (set-frame-parameter (selected-frame) 'fullscreen 'nil))))))
+    (redisplay))))
 
 (defun write-to-temp-file ()
   (interactive)
