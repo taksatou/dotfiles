@@ -429,6 +429,8 @@
      (add-hook 'php-mode-hook
                '(lambda ()
                   (c-set-style "php/symfony")
+                  (setq comment-start "//")
+                  (setq comment-end "")
                   (gtags-mode))))
 
 ;; (use 'mmm-mode

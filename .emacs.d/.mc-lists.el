@@ -8,6 +8,7 @@
         c-electric-delete-forward
         forward-sexp
         kill-region
+        ruby-forward-sexp
         ))
 
 (setq mc/cmds-to-run-once

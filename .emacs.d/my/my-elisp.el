@@ -77,7 +77,7 @@
   (interactive "sQuery: ")
   (let ((buf (get-buffer-create "*Dic (ansi-color)*")))
     (switch-to-buffer buf)
-    (shell-command (concat "alc " cmd) buf buf)
+    (shell-command (concat "endic " cmd) buf buf)
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
     (ansi-color-apply-on-region 0 (buffer-size))))
 
