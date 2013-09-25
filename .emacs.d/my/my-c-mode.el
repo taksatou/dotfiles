@@ -38,6 +38,8 @@
          (setq-default ff-search-directories (append cc-search-directories
                                                      '("./include"
                                                        "./include/*"
+                                                       "../include"
+                                                       "../src"
                                                        ".."
                                                        "../..")))))
   (c-set-offset 'inextern-lang 0)
