@@ -8,6 +8,7 @@
         c-electric-delete-forward
         forward-sexp
         kill-region
+        ruby-backward-sexp
         ruby-forward-sexp
         ))
 
