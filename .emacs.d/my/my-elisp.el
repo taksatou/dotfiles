@@ -89,6 +89,16 @@
   (interactive)
   (compile "make clean"))
 
+(defun execute-current-file ()
+  (interactive)
+  (cond ((eq major-mode 'c++-mode)
+         (compile (format "clang++ -g -std=c++0x %s && ./a.out" (buffer-file-name))))
+        ((eq major-mode 'c-mode)
+         (compile (format "clang -g -std=c++0x %s && ./a.out" (buffer-file-name))))
+        ((eq major-mode 'ruby-mode)
+         (compile (format "ruby %s" (buffer-file-name))))
+        (t
+         (message (format "not implemented for %s" major-mode)))))
 
 ;; http://www.bookshelf.jp/soft/meadow_30.html#SEC404
 (defun window-toggle-division ()

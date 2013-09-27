@@ -85,6 +85,9 @@
 (define-key my-global-map (kbd "C-a") 'execute-alc)
 (define-key my-global-map (kbd "C-c") 'execute-make-clean)
 (define-key my-global-map (kbd "C-v") 'execute-make)
+(define-key my-global-map (kbd ";") 'execute-current-file)
+(define-key my-global-map (kbd "C-;") 'execute-current-file)
+
 (define-key my-global-map (kbd "C-m") 'man)
 (define-key my-global-map (kbd "C-0") 'my-toggle-fullscreen)
 (define-key my-global-map (kbd "C-r") 'reset-tab-width)
