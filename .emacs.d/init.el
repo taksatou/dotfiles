@@ -667,14 +667,18 @@
           (define-key region-bindings-mode-map (kbd "p") 'mc/mark-previous-like-this)))
 
 
-;;
-;; should be the last
-;;
-(use 'my-keys)
-
 (use 'go-mode
+     (use 'my-go-mode)
      (define-key go-mode-map (kbd "C-c C-a") 'my-global-map)
      (add-hook 'go-mode-hook
                '(lambda ()
                   (c-set-offset 'inextern-lang 0)
                   (setq indent-tabs-mode nil))))
+
+
+
+;;
+;; should be the last
+;;
+(use 'my-keys)
+

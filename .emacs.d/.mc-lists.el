@@ -5,11 +5,16 @@
       '(
         backward-delete-char
         backward-sexp
+        c-electric-colon
         c-electric-delete-forward
         forward-sexp
         kill-region
+        markdown-enter-key
         ruby-backward-sexp
         ruby-forward-sexp
+        skk-delete-backward-char
+        skk-insert
+        skk-previous-candidate
         ))
 
 (setq mc/cmds-to-run-once

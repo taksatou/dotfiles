@@ -77,7 +77,7 @@
   (interactive "sQuery: ")
   (let ((buf (get-buffer-create "*Dic (ansi-color)*")))
     (switch-to-buffer buf)
-    (shell-command (concat "endic " cmd) buf buf)
+    (shell-command (concat "alc " cmd) buf buf)
     (help-mode-setup)                   ; help-mode-setup is contained in temp-buffer-setup-hook
     (ansi-color-apply-on-region 0 (buffer-size))))
 
@@ -97,6 +97,8 @@
          (compile (format "clang -g -std=c++0x %s && ./a.out" (buffer-file-name))))
         ((eq major-mode 'ruby-mode)
          (compile (format "ruby %s" (buffer-file-name))))
+        ((eq major-mode 'go-mode)
+         (compile (format "go run %s" (buffer-file-name))))
         (t
          (message (format "not implemented for %s" major-mode)))))
 

@@ -9,6 +9,10 @@
 (setq auto-mode-alist (append '(("Guardfile" . ruby-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("Vagrantfile" . ruby-mode)) auto-mode-alist))
 
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (use 'rcodetools
+                  (define-key ruby-mode-map (kbd "C-c C-q") 'xmp))))
 
 (use 'rinari
      (global-rinari-mode))
