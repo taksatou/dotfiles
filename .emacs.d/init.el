@@ -474,6 +474,7 @@
 
 
 (use 'my-python-mode)
+(use 'my-php-mode)
 
 (use 'edit-server
      (edit-server-start)

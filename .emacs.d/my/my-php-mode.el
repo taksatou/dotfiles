@@ -11,3 +11,11 @@
 ;;                ;; use `ac-source-php-completion-patial' instead of `ac-source-php-completion'.
 ;;                ;; (add-to-list 'ac-sources 'ac-source-php-completion-patial)
 ;;                (auto-complete-mode t))))
+
+(defun my-php-mode-hook ()
+  (gtags-mode 1))
+
+(add-hook 'php-mode-hook 'my-php-mode-hook)
+
+
+(provide 'my-php-mode)
