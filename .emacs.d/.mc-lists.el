@@ -15,6 +15,7 @@
         down-list
         end-of-buffer
         forward-sexp
+        go-mode-insert-and-indent
         indent-region
         kill-region
         markdown-enter-key

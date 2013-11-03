@@ -94,7 +94,7 @@
   (cond ((eq major-mode 'c++-mode)
          (compile (format "clang++ -g -std=c++0x %s && ./a.out" (buffer-file-name))))
         ((eq major-mode 'c-mode)
-         (compile (format "clang -g -std=c++0x %s && ./a.out" (buffer-file-name))))
+         (compile (format "clang -g %s && ./a.out" (buffer-file-name))))
         ((eq major-mode 'ruby-mode)
          (compile (format "ruby %s" (buffer-file-name))))
         ((eq major-mode 'go-mode)

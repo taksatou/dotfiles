@@ -3,7 +3,8 @@
 
 (add-hook 'go-mode-hook
           (lambda ()
-            (local-set-key (kbd "M-.") 'godef-jump)))
+            (local-set-key (kbd "M-.") 'godef-jump)
+            (local-set-key (kbd "C-c ;") 'go-import-add)))
 
 ;; flymake
 (add-to-list 'load-path (format "%s/src/github.com/dougm/goflymake" (getenv "GOPATH")))
