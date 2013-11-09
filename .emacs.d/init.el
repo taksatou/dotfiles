@@ -81,6 +81,8 @@
           (lambda ()
             (ansi-color-apply-on-region 0 (buffer-size))))
 
+(add-to-list 'exec-path "/usr/local/bin")
+
 (defun split-window-below (&optional size)
   (interactive "P")
   (split-window nil size'below))
