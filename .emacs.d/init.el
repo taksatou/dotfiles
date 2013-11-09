@@ -457,10 +457,10 @@
 
 
 ;; highline changes goal-column behavior, so I switched to hl-line
-(use 'hl-line
-     (global-hl-line-mode)
-     (custom-set-faces
-      '(hl-line ((t (:background "#262626"))))))
+;; (use 'hl-line
+;;      (global-hl-line-mode)
+;;      (custom-set-faces
+;;       '(hl-line ((t (:background "#262626"))))))
 
 
 (use 'highlight-symbol)
@@ -680,6 +680,7 @@
 
 
 
+
 ;; evernote
 ;; (use 'evernote-mode
 ;; ;     (setq evernote-ruby-command "/home/takayuki/.rbenv/shims/ruby")
@@ -700,6 +701,23 @@
 
 ;;      )
 
+
+(setq load-path (append load-path '("~/work/projects/taksatou/flashcard.el")))
+(use 'flashcard
+     (define-key global-map (kbd "C-c ; C-c") 'flashcard-new-card)
+     (define-key flashcard-minor-mode-map (kbd "C-c C-c") 'flashcard-append-card)
+     )
+
+
+;; http://www.masteringemacs.org/articles/2010/10/13/highlighting-by-word-line-regexp/
+;; hi-lock
+(global-hi-lock-mode 1)
+(setq hi-lock-file-patterns-policy (lambda (x) t)) ; always enable lock pattern
+(add-hook 'font-lock-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+                                    '(("@@\\(.*?\\(?:\n.*?\\)*?\\)@@" ;always highlight @@ attributed string
+                                       (0 font-lock-keyword-face)(1 'italic append))))) t)
 
 ;;
 ;; should be the last
