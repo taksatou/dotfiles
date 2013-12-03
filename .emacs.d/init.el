@@ -669,12 +669,21 @@
           (define-key region-bindings-mode-map (kbd "n") 'mc/mark-next-like-this)
           (define-key region-bindings-mode-map (kbd "p") 'mc/mark-previous-like-this)))
 
+(defun my-go-switch-test ()
+  (interactive)
+  (let* ((name (file-name-nondirectory (buffer-file-name)))
+         (a (replace-regexp-in-string "\\.go$" "_test.go" name))
+         (b (replace-regexp-in-string "_test\\.go$" ".go" name)))
+    (if (and (not (eql a name)) (file-exists-p a)) (find-file a)
+      (if (and (not (eql b name)) (file-exists-p b)) (find-file b)
+        (message (format "not found <%s> or <%s>" a b))))))
 
 (use 'go-mode
      (use 'my-go-mode)
      (define-key go-mode-map (kbd "C-c C-a") 'my-global-map)
      (add-hook 'go-mode-hook
                '(lambda ()
+                  (define-key go-mode-map (kbd "C-c C-o") 'my-go-switch-test)
                   (c-set-offset 'inextern-lang 0)
                   (setq indent-tabs-mode nil))))
 
