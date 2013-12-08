@@ -674,6 +674,7 @@
   (let* ((name (file-name-nondirectory (buffer-file-name)))
          (a (replace-regexp-in-string "\\.go$" "_test.go" name))
          (b (replace-regexp-in-string "_test\\.go$" ".go" name)))
+    (message (format "trying <%s> or <%s>" a b))
     (if (and (not (eql a name)) (file-exists-p a)) (find-file a)
       (if (and (not (eql b name)) (file-exists-p b)) (find-file b)
         (message (format "not found <%s> or <%s>" a b))))))

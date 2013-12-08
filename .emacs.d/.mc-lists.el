@@ -8,6 +8,7 @@
         c-electric-brace
         c-electric-colon
         c-electric-delete-forward
+        c-electric-lt-gt
         c-electric-paren
         c-electric-semi&comma
         c-electric-star
@@ -28,6 +29,7 @@
         skk-insert
         skk-previous-candidate
         toggle-truncate-lines
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once

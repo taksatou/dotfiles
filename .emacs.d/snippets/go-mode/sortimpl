@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: sortimpl
+# key: sortimpl
+# --
+func (${1:arg} ${2:type}) Less(a, b int) bool { return $1[a] < $1[b] }
+func ($1 $2) Swap(a, b int)      { $1[a], $1[b] = $1[b], $1[a] }
+func ($1 $2) Len() int           { return len($1) }

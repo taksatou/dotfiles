@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: omega
+# key: omega
+# --
+Ω(${1:actual}).${2:Should}(${3:Equal}(${4:expected}))
