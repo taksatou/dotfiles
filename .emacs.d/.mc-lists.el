@@ -19,7 +19,9 @@
         indent-region
         kill-region
         markdown-enter-key
+        reindent-then-newline-and-indent
         ruby-backward-sexp
+        ruby-electric-brace
         ruby-forward-sexp
         shell-command-on-region
         skk-delete-backward-char
