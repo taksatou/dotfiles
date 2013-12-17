@@ -1,5 +1,6 @@
 (load "~/.emacs")
 (list-packages)
 (package-install 'gtags)
+(package-install 'git-gutter)
 (package-install 'region-bindings-mode)
 (package-install 'multiple-cursors)
