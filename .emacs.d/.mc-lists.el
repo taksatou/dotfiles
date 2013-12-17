@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        ac-start
         backward-delete-char
         backward-sexp
         c-electric-brace
@@ -28,6 +29,7 @@
         skk-delete-backward-char
         skk-insert
         skk-previous-candidate
+        skk-undo
         toggle-truncate-lines
         yas-expand
         ))
