@@ -9,9 +9,6 @@ PWD=`pwd`
 BACKUP_DIR=$OLD_DOTFILES/`date +%s`
 mkdir -p $BACKUP_DIR
 
-make -C $PWD/.emacs.d/ddskk-14.4
-make -C $PWD/.emacs.d/ddskk-15.1
-touch ~/.skk-jisyo
 
 for i in $DOTFILES; do
     if [ ! -e $PWD/$i ]; then
@@ -26,3 +23,14 @@ for i in $DOTFILES; do
     fi
     ln -s $PWD/$i $HOME/$i
 done
+
+which emacs > /dev/null
+if [ $? = 0 -a "f" = `emacs --version | head -n 1 | perl -ne 'print($1>23?f:"") if /(\d+)\.(\d+)\.(\d+)/;'` ]; then
+    # init skk
+    make -C $PWD/.emacs.d/ddskk-14.4
+    make -C $PWD/.emacs.d/ddskk-15.1
+    touch ~/.skk-jisyo
+
+    # init package
+    emacs --script setup.el
+fi
