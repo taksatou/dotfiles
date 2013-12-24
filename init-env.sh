@@ -24,13 +24,15 @@ for i in $DOTFILES; do
     ln -s $PWD/$i $HOME/$i
 done
 
-which emacs > /dev/null
-if [ $? = 0 -a "f" = `emacs --version | head -n 1 | perl -ne 'print($1>23?f:"") if /(\d+)\.(\d+)\.(\d+)/;'` ]; then
-    # init skk
-    make -C $PWD/.emacs.d/ddskk-14.4
-    make -C $PWD/.emacs.d/ddskk-15.1
-    touch ~/.skk-jisyo
+EMACS=/usr/bin/env which emacs
+if [ ! -z $EMACS ]; then 
+    if [ "f" = `$EMACS --version | head -n 1 | perl -ne 'print($1>23?f:"") if /(\d+)\.(\d+)\.(\d+)/;'` ]; then
+        # init skk
+        make -C $PWD/.emacs.d/ddskk-14.4
+        make -C $PWD/.emacs.d/ddskk-15.1
+        touch ~/.skk-jisyo
 
-    # init package
-    emacs --script setup.el
+        # init package
+        $EMACS --script setup.el
+    fi
 fi
