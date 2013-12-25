@@ -666,6 +666,10 @@
      
      (use 'multiple-cursors
           ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+          (define-key region-bindings-mode-map (kbd "s") 'mc/skip-to-next-like-this)
+          (define-key region-bindings-mode-map (kbd "M-s") 'mc/skip-to-previous-like-this)
+          (define-key region-bindings-mode-map (kbd "N") 'mc/unmark-next-like-this)
+          (define-key region-bindings-mode-map (kbd "P") 'mc/unmark-previous-like-this)
           (define-key region-bindings-mode-map (kbd "n") 'mc/mark-next-like-this)
           (define-key region-bindings-mode-map (kbd "p") 'mc/mark-previous-like-this)))
 
