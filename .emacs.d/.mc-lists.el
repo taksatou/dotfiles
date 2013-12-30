@@ -25,6 +25,7 @@
         ruby-backward-sexp
         ruby-electric-brace
         ruby-forward-sexp
+        sgml-slash
         shell-command-on-region
         skk-delete-backward-char
         skk-insert
