@@ -21,6 +21,7 @@
         indent-region
         kill-region
         markdown-enter-key
+        recenter
         reindent-then-newline-and-indent
         ruby-backward-sexp
         ruby-electric-brace
@@ -29,9 +30,11 @@
         shell-command-on-region
         skk-delete-backward-char
         skk-insert
+        skk-jisx0208-latin-insert
         skk-previous-candidate
         skk-undo
         toggle-truncate-lines
+        wdired-finish-edit
         yas-expand
         ))
 
