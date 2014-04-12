@@ -97,6 +97,10 @@
          (compile (format "clang -g %s && ./a.out" (buffer-file-name))))
         ((eq major-mode 'ruby-mode)
          (compile (format "ruby %s" (buffer-file-name))))
+        ((eq major-mode 'php-mode)
+         (compile (format "php %s" (buffer-file-name))))
+        ((eq major-mode 'python-mode)
+         (compile (format "python %s" (buffer-file-name))))
         ((eq major-mode 'go-mode)
          (compile (format "go run %s" (buffer-file-name))))
         (t

@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        ac-start
         backward-delete-char
         backward-sexp
         c-electric-brace
@@ -20,15 +21,20 @@
         indent-region
         kill-region
         markdown-enter-key
+        recenter
         reindent-then-newline-and-indent
         ruby-backward-sexp
         ruby-electric-brace
         ruby-forward-sexp
+        sgml-slash
         shell-command-on-region
         skk-delete-backward-char
         skk-insert
+        skk-jisx0208-latin-insert
         skk-previous-candidate
+        skk-undo
         toggle-truncate-lines
+        wdired-finish-edit
         yas-expand
         ))
 

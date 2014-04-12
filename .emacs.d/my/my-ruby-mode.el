@@ -1,6 +1,11 @@
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files" t)
 
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:"
+                       (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims")
+                      (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
+
 (setq auto-mode-alist (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("Rakefile" . ruby-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("rakefile" . ruby-mode)) auto-mode-alist))
