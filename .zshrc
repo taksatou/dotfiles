@@ -120,8 +120,5 @@ fi
 ## 重複パスをけす
 typeset -U path cdpath fpath manpath
 
-
-
-# set iTerm2 tab title
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
