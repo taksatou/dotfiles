@@ -9,3 +9,4 @@ kmacro-save.el
 .emacs.d/elpa/*
 
 .DS_Store
+eshell

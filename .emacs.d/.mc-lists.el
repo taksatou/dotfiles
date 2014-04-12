@@ -18,6 +18,7 @@
         end-of-buffer
         forward-sexp
         go-mode-insert-and-indent
+        indent-for-tab-command
         indent-region
         kill-region
         markdown-enter-key
