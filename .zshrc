@@ -88,7 +88,7 @@ function sudo() {
 }
 
 function cd() {
-    builtin cd $* && ls
+    builtin cd "$*" && ls
 }
 
 function dam() {
