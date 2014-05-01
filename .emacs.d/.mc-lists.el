@@ -22,6 +22,7 @@
         indent-region
         kill-region
         markdown-enter-key
+        next-line-and-recenter
         recenter
         reindent-then-newline-and-indent
         ruby-backward-sexp

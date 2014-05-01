@@ -35,7 +35,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("f5f1165d90f369287f534bf79d7e02cc13f545f925b68715abc1bd896029b1b1" default)))
+ '(custom-safe-themes (quote ("882b72c1027fa501c6723eb26544d193623dbd768e8af60c437491f9b9aea22f" "f5f1165d90f369287f534bf79d7e02cc13f545f925b68715abc1bd896029b1b1" default)))
  '(popwin:special-display-config (quote ((slime-connection-list-mode) (slime-repl-mode) (sldb-mode :stick t) ("*slime-xref*") ("*slime-compilation*" :noselect t) ("*slime-description*") ("*slime-macroexpansion*" :noselect t) ("*slime-apropos*") ("*Help*") ("*Completions*" :noselect t) ("*compilation*" :noselect t) ("*Occur*" :noselect t))))
  '(recentf-auto-cleanup (quote never))
  '(recentf-exclude (quote ("tmp")))
@@ -47,4 +47,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highline-face ((t (:background "#262626")))))
+ '(highline-face ((t (:background "#262626"))) t))
