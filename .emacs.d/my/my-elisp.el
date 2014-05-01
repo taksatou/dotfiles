@@ -102,7 +102,7 @@
         ((eq major-mode 'python-mode)
          (compile (format "python %s" (buffer-file-name))))
         ((eq major-mode 'malabar-mode)
-         (compile (format "javac %s && java %s" (buffer-file-name) (capitalize (file-name-base (buffer-file-name))))))
+         (compile (format "javac -J-Dfile.encoding=UTF8 %s && java %s" (buffer-file-name) (capitalize (file-name-base (buffer-file-name))))))
         ((eq major-mode 'go-mode)
          (compile (format "go run %s" (buffer-file-name))))
         (t
