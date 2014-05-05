@@ -125,10 +125,10 @@
                                :height 110)
            (set-fontset-font (frame-parameter nil 'font)
                              'japanese-jisx0208
-                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+                             '("Hiragino Kaku Gothic Pro" . "iso10646-1"))
            (set-fontset-font (frame-parameter nil 'font)
                              'japanese-jisx0212
-                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+                             '("Hiragino Kaku Gothic Pro" . "iso10646-1"))
            (set-fontset-font (frame-parameter nil 'font)
                              'mule-unicode-0100-24ff
                              '("monaco" . "iso10646-1"))
@@ -478,10 +478,10 @@
 (use 'my-python-mode)
 (use 'my-php-mode)
 
-(use 'edit-server
-     (edit-server-start)
-     (define-key edit-server-edit-mode-map (kbd "C-x C-s") 'write-to-temp-file)
-     (define-key edit-server-edit-mode-map (kbd "C-x C-c") 'edit-server-done))
+;; (use 'edit-server
+;;      (edit-server-start)
+;;      (define-key edit-server-edit-mode-map (kbd "C-x C-s") 'write-to-temp-file)
+;;      (define-key edit-server-edit-mode-map (kbd "C-x C-c") 'edit-server-done))
 
 (use 'skk
      (setq skk-server-portnum 1178)
