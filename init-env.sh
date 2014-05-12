@@ -3,7 +3,7 @@
 ./reload-submodules.sh
 
 OLD_DOTFILES=$HOME/.old_dotfiles.d
-DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc .pryrc .bashrc .my.cnf .sbclrc'
+DOTFILES='.emacs.d .vimrc .emacs .tmux.conf .zshrc .pryrc .bashrc .my.cnf .sbclrc .gemrc'
 
 PWD=`pwd`
 BACKUP_DIR=$OLD_DOTFILES/`date +%s`
