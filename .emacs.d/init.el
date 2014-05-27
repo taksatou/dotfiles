@@ -115,7 +115,7 @@
         ((eq system-type 'darwin)
          (setq ns-use-native-fullscreen nil)
          (setq x-select-enable-clipboard t)
-         (set-frame-parameter (selected-frame) 'alpha '(93 70))
+         (set-frame-parameter (selected-frame) 'alpha '(93 85))
          (global-set-key (kbd "s-t") nil)
 
          ;; http://sakito.jp/emacs/emacs23.html#id17
@@ -125,10 +125,10 @@
                                :height 110)
            (set-fontset-font (frame-parameter nil 'font)
                              'japanese-jisx0208
-                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+                             '("Hiragino Kaku Gothic Pro" . "iso10646-1"))
            (set-fontset-font (frame-parameter nil 'font)
                              'japanese-jisx0212
-                             '("Hiragino Maru Gothic Pro" . "iso10646-1"))
+                             '("Hiragino Kaku Gothic Pro" . "iso10646-1"))
            (set-fontset-font (frame-parameter nil 'font)
                              'mule-unicode-0100-24ff
                              '("monaco" . "iso10646-1"))
@@ -478,10 +478,10 @@
 (use 'my-python-mode)
 (use 'my-php-mode)
 
-(use 'edit-server
-     (edit-server-start)
-     (define-key edit-server-edit-mode-map (kbd "C-x C-s") 'write-to-temp-file)
-     (define-key edit-server-edit-mode-map (kbd "C-x C-c") 'edit-server-done))
+;; (use 'edit-server
+;;      (edit-server-start)
+;;      (define-key edit-server-edit-mode-map (kbd "C-x C-s") 'write-to-temp-file)
+;;      (define-key edit-server-edit-mode-map (kbd "C-x C-c") 'edit-server-done))
 
 (use 'skk
      (setq skk-server-portnum 1178)

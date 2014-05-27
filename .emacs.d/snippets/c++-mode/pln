@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pln
+# key: pln
+# --
+printf("$0");

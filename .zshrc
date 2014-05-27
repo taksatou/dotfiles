@@ -88,7 +88,11 @@ function sudo() {
 }
 
 function cd() {
-    builtin cd $* && ls
+    if [ -z "$*" ]; then
+        builtin cd ~/ && ls
+    else
+        builtin cd "$*" && ls
+    fi
 }
 
 function dam() {
@@ -120,6 +124,5 @@ fi
 ## 重複パスをけす
 typeset -U path cdpath fpath manpath
 
-# set iTerm2 tab title
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
