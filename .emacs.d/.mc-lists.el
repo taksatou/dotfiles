@@ -14,6 +14,7 @@
         c-electric-semi&comma
         c-electric-star
         c-indent-line-or-region
+        comint-delchar-or-maybe-eof
         down-list
         end-of-buffer
         forward-sexp
@@ -33,6 +34,7 @@
         skk-delete-backward-char
         skk-insert
         skk-jisx0208-latin-insert
+        skk-kakutei
         skk-previous-candidate
         skk-undo
         toggle-truncate-lines

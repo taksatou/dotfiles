@@ -115,7 +115,7 @@
         ((eq system-type 'darwin)
          (setq ns-use-native-fullscreen nil)
          (setq x-select-enable-clipboard t)
-         (set-frame-parameter (selected-frame) 'alpha '(93 70))
+         (set-frame-parameter (selected-frame) 'alpha '(93 85))
          (global-set-key (kbd "s-t") nil)
 
          ;; http://sakito.jp/emacs/emacs23.html#id17
