@@ -730,8 +730,12 @@
 (add-hook 'font-lock-mode-hook
           (lambda ()
             (font-lock-add-keywords nil
-                                    '(("@@\\(.*?\\(?:\n.*?\\)*?\\)@@" ;always highlight @@ attributed string
-                                       (0 font-lock-keyword-face)(1 'italic append))))) t)
+                                    '(("@@@\\(.*?\\(?:\n.*?\\)*?\\)@@@" ;always highlight @@ attributed string
+                                       (0 font-lock-keyword-face)
+                                       (1 'italic append))))) t)
+
+;;
+(use 'string-inflection)
 
 ;;
 ;; should be the last

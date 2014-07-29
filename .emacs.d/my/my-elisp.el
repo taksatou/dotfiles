@@ -23,13 +23,6 @@
 		(set-file-modes name (logior mode (logand (/ mode 4) 73)))
 		(message (concat "Wrote " name " (+x)"))))))))
 
-(defun my-compile ()
-  (interactive)
-  (compile
-   (format "c++ %s && ./a.out" (current-buffer)) t)
-  )
-
-
 (defun install-elpa ()
   (interactive)
   (let ((buffer (url-retrieve-synchronously
@@ -96,7 +89,7 @@
         ((eq major-mode 'c-mode)
          (compile (format "clang -g %s && ./a.out" (buffer-file-name))))
         ((eq major-mode 'malabar-mode)
-         (compile (format "javac %s && java -cp ./ %s" (buffer-file-name) (upcase (file-name-base (buffer-file-name))))))
+         (compile (format "javac %s && java -cp ./ %s" (buffer-file-name) (string-inflection-camelize-function (file-name-base (buffer-file-name))))))
         ((eq major-mode 'ruby-mode)
          (compile (format "ruby %s" (buffer-file-name))))
         ((eq major-mode 'php-mode)
