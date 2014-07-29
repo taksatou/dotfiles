@@ -99,6 +99,27 @@ function dam() {
     open dash://$*
 }
 
+
+## --peco
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+## --peco
+
+
 if [ $EMACS ]; then unsetopt zle; fi
 
 ### vcs info
@@ -113,6 +134,7 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
+
 if [ -d $HOME/.rbenv ]; then
     export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
     eval "$(rbenv init - zsh)"
@@ -126,3 +148,6 @@ typeset -U path cdpath fpath manpath
 
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"

@@ -36,3 +36,11 @@ if [ ! -z $EMACS ]; then
         $EMACS --script setup.el
     fi
 fi
+
+
+## setup peco
+TMPDIR=`mktemp -d`
+wget https://github.com/peco/peco/releases/download/v0.2.3/peco_linux_amd64.tar.gz -O $TMPDIR/peco.tgz
+tar xzf $TMPDIR/peco.tgz -C $TMPDIR
+mkdir -p $HOME/bin
+cp $TMPDIR/peco_linux_amd64/peco $HOME/bin
