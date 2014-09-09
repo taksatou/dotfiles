@@ -41,6 +41,8 @@
         toggle-truncate-lines
         wdired-finish-edit
         yaml-electric-dash-and-dot
+        yaml-electric-bar-and-angle
+        yaml-next-block
         yas-expand
         ))
 
