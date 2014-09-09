@@ -4,6 +4,9 @@
 (define-prefix-command 'my-global-map)
 (global-set-key (kbd "C-c C-a") 'my-global-map)
 
+(define-prefix-command 'my-global2-map)
+(global-set-key (kbd "C-c C-q") 'my-global2-map)
+
 (define-key my-global-map (kbd "C-o") 'moccur-grep-find)
 (use 'fold-dwim
      (define-key my-global-map (kbd "0") 'hs-minor-mode)

@@ -40,6 +40,7 @@
         skk-undo
         toggle-truncate-lines
         wdired-finish-edit
+        yaml-electric-dash-and-dot
         yas-expand
         ))
 
