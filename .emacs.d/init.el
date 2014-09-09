@@ -45,6 +45,14 @@
 (global-set-key "\C-t" nil) ;; avoid conflict
 (global-set-key "\C-c\C-l" nil) ;; disable toggle-electric-state
 
+(global-set-key (kbd "C-c C-_") 'shrink-window)
+(global-set-key (kbd "C-c _") 'shrink-window)
+(global-set-key (kbd "C-c C-=") 'enlarge-window)
+(global-set-key (kbd "C-c =") 'enlarge-window)
+(global-set-key (kbd "C-c 0") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c C-0") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c \\") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c C-\\") 'enlarge-window-horizontally)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
