@@ -244,6 +244,11 @@
     (insert-kbd-macro symbol)
     (basic-save-buffer)))
 
+(defun current-buffer-mode ()
+  "Returns the major mode associated with a buffer."
+  (interactive)
+  (message "%s" major-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
@@ -758,6 +763,14 @@
 
 ;;
 (use 'string-inflection)
+
+(use 'ess
+     (add-hook 'ess-mode-hook
+               '(lambda ()
+                  (define-key ess-mode-map (kbd "C-c h") 'windmove-left)))
+     (add-hook 'ess-help-mode-hook
+               '(lambda ()
+                  (define-key ess-help-mode-map (kbd "C-c h") 'windmove-left))))
 
 ;;
 ;; should be the last
