@@ -15,6 +15,7 @@
         c-electric-star
         c-indent-line-or-region
         comint-delchar-or-maybe-eof
+        delete-trailing-whitespace
         down-list
         end-of-buffer
         forward-sexp
