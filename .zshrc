@@ -137,7 +137,8 @@ precmd () {
 
 if [ -d $HOME/.rbenv ]; then
     export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
-    eval "$(rbenv init - zsh)"
+    #eval "$(rbenv init - zsh)"
+    source ~/.rbenv_init
 fi
 
 [ -f ~/.zshrc.include ] && source ~/.zshrc.include
