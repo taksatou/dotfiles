@@ -153,5 +153,12 @@
   (interactive "nwidth: ")
   (setq tab-width w))
 
+
+;; evernote support
+(setq mail-host-address "emacs@mojavy.ddo.jp")
+(defun my-evernote-submit-current-buffer ()
+    (interactive)
+    (compose-mail "taksatou.24b0f@m.evernote.com"))
+
 (provide 'my-elisp)
 
