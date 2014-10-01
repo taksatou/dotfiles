@@ -72,6 +72,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
+(setq hscroll-step 1)
 (setq scroll-step 1)
 (setq scroll-conservatively 100000)
 (setq frame-background-mode 'dark)
