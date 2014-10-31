@@ -150,4 +150,4 @@ echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"
+# [[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"
