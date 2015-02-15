@@ -444,10 +444,10 @@
 
      (add-hook 'php-mode-hook
                '(lambda ()
+                  (gtags-mode t)
                   (c-set-style "php/symfony")
                   (setq comment-start "//")
-                  (setq comment-end "")
-                  (gtags-mode))))
+                  (setq comment-end ""))))
 
 ;; (use 'mmm-mode
 ;;      (setq mmm-global-mode 'maybe)
@@ -665,7 +665,7 @@
 (use 'my-ruby-mode)
 
 (use 'inf-php
-     ;(setq inf-php-enable-launch-workaround t)
+     (setq inf-php-enable-launch-workaround t)
      )
 
 (if (file-exists-p "~/.emacs.include.el")
