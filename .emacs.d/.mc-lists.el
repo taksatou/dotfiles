@@ -48,4 +48,5 @@
 
 (setq mc/cmds-to-run-once
       '(
+        kmacro-start-macro
         ))
