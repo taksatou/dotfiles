@@ -599,8 +599,8 @@
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
 
-(use 'my-java-mode
-     (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
+;; (use 'my-java-mode
+;;      (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
 
 (use 'coffee-mode
      ;; coffeescript
@@ -680,7 +680,7 @@
          (set-face-foreground 'git-gutter-fr:modified "yellow")
          (set-face-foreground 'git-gutter-fr:added    "cyan")
          (set-face-foreground 'git-gutter-fr:deleted  "magenta"))
-  (use 'git-gutter))
+  (use 'git-gutter+))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
