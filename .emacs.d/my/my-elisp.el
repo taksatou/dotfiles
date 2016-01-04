@@ -154,6 +154,21 @@
   (setq tab-width w))
 
 
+(defun execute-five-app-lookup (key)
+  (interactive "sKey: ")
+  (let ((buf (get-buffer-create "*five*")))
+    (shell-command (concat "fivelookup app " key) buf buf)))
+
+(defun execute-five-campaign-lookup (key)
+  (interactive "sKey: ")
+  (let ((buf (get-buffer-create "*five*")))
+    (shell-command (concat "fivelookup campaign " key) buf buf)))
+
+(defun execute-five-creative-lookup (key)
+  (interactive "sKey: ")
+  (let ((buf (get-buffer-create "*five*")))
+    (shell-command (concat "fivelookup creative " key) buf buf)))
+
 ;; evernote support
 (setq mail-host-address "emacs@mojavy.ddo.jp")
 (defun my-evernote-submit-current-buffer ()
