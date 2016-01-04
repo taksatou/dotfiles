@@ -72,6 +72,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
+(setq hscroll-step 1)
 (setq scroll-step 1)
 (setq scroll-conservatively 100000)
 (setq frame-background-mode 'dark)
@@ -443,10 +444,10 @@
 
      (add-hook 'php-mode-hook
                '(lambda ()
+                  (gtags-mode t)
                   (c-set-style "php/symfony")
                   (setq comment-start "//")
-                  (setq comment-end "")
-                  (gtags-mode))))
+                  (setq comment-end ""))))
 
 ;; (use 'mmm-mode
 ;;      (setq mmm-global-mode 'maybe)
@@ -598,8 +599,8 @@
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
 
-(use 'my-java-mode
-     (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
+;; (use 'my-java-mode
+;;      (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
 
 (use 'coffee-mode
      ;; coffeescript
@@ -664,7 +665,7 @@
 (use 'my-ruby-mode)
 
 (use 'inf-php
-     ;(setq inf-php-enable-launch-workaround t)
+     (setq inf-php-enable-launch-workaround t)
      )
 
 (if (file-exists-p "~/.emacs.include.el")
@@ -679,7 +680,7 @@
          (set-face-foreground 'git-gutter-fr:modified "yellow")
          (set-face-foreground 'git-gutter-fr:added    "cyan")
          (set-face-foreground 'git-gutter-fr:deleted  "magenta"))
-  (use 'git-gutter))
+  (use 'git-gutter+))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 

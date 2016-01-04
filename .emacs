@@ -39,6 +39,7 @@
  '(recentf-exclude (quote ("tmp")))
  '(recentf-max-saved-items 9999999)
  '(safe-local-variable-values (quote ((eval when (and (buffer-file-name) (file-regular-p (buffer-file-name)) (string-match-p "^[^.]" (buffer-file-name))) (emacs-lisp-mode) (unless (featurep (quote package-build)) (let ((load-path (cons ".." load-path))) (require (quote package-build)))) (package-build-minor-mode)) (Package . DRAKMA) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby") (Package . CL-FAD) (Package . CL-PPCRE) (Package . CL-USER) (Syntax . COMMON-LISP) (change-log-indent-text . 2) (add-log-time-format lambda nil (let* ((time (current-time)) (system-time-locale "C") (diff (+ (cadr time) 32400)) (lo (% diff 65536)) (hi (+ (car time) (/ diff 65536)))) (format-time-string "%a %b %e %H:%M:%S %Y" (list hi lo) t))) (Syntax . ANSI-Common-Lisp) (Base . 10))))
+ '(send-mail-function (quote sendmail-send-it))
  '(use-dialog-box nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

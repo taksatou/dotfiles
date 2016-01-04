@@ -49,16 +49,15 @@
           (lambda ()
             (define-key sql-interactive-mode-map (kbd "C-c C-a") 'my-global-map)))
 
-
 ;;
 ;; git gutter
 ;;
-(define-key my-global-map (kbd "C-l") 'git-gutter)
-(define-key my-global-map (kbd "9") 'git-gutter:toggle)
-(define-key my-global-map (kbd "C-n") 'git-gutter:next-diff)
-(define-key my-global-map (kbd "C-p") 'git-gutter:previous-diff)
-(define-key my-global-map (kbd "C-d") 'git-gutter:popup-diff)
-(define-key my-global-map (kbd "C-h") 'git-gutter:popup-hunk)
+(define-key my-global-map (kbd "C-l") 'git-gutter+-mode)
+;(define-key my-global-map (kbd "9") 'git-gutter:toggle)
+(define-key my-global-map (kbd "C-n") 'git-gutter+-next-hunk)
+(define-key my-global-map (kbd "C-p") 'git-gutter+-previous-hunk)
+(define-key my-global-map (kbd "C-d") 'git-gutter+-show-hunk)
+;(define-key my-global-map (kbd "C-h") 'git-gutter+-popup-hunk)
 
 ;;
 ;; gtags
