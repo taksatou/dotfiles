@@ -100,4 +100,18 @@
 (use 'dash-at-point
      (define-key my-global-map (kbd "q") 'dash-at-point))
 
+(defun paste-to-osx ()
+  (interactive)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc (buffer-string))
+      (process-send-eof proc))))
+(defun paste-from-osx ()
+  (interactive)
+  (insert (shell-command-to-string "pbpaste")))
+(define-key my-global-map (kbd "C-w") 'paste-to-osx)
+(define-key my-global-map (kbd "C-y") 'paste-from-osx)
+
+
+
 (provide 'my-keys)

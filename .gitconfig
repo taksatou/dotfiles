@@ -1,6 +1,6 @@
 [user]
-#  name = takayuki
-#  email = takayuki.sato.dev@gmail.com
+  name = 
+  email = 
 [pager]
   log = diff-highlight | $PAGER 
   show = diff-highlight | $PAGER
@@ -16,7 +16,8 @@
   default = tracking       # defaultのpush先はtrackingしているリポジトリ
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
-#  autocrlf = input             # CRLFを自動変換
+  autocrlf = input             # CRLFを自動変換
+#  pager =                      # pagerを開かない
 [alias]
   s = status
   st = status
@@ -38,7 +39,6 @@
   wc = whatchanged         # logに変更されたファイルも一緒に出す
   ls = log --stat          # logに変更されたファイルも一緒に出す
   lp = log -p              # diffも一緒に出す
-  la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
   lr = log origin          # originのlog
   oneline = log --pretty=oneline
   ranking = shortlog -s -n --no-merges

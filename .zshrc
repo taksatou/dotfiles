@@ -53,6 +53,7 @@ alias grepl='grep --line-buffered'
 alias ssh='ssh -o ServerAliveInterval=60'
 alias pj="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
 alias py="ruby -ryaml -r pp -e 'pp YAML.load(ARGF.read)'"
+alias gitnp="git --no-pager"
 
 case ${OSTYPE} in
     darwin*)
@@ -148,6 +149,7 @@ typeset -U path cdpath fpath manpath
 
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
+alias pg="ps aux | grep"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-# [[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"
+#[[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"

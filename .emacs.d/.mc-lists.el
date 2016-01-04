@@ -12,9 +12,11 @@
         c-electric-lt-gt
         c-electric-paren
         c-electric-semi&comma
+        c-electric-slash
         c-electric-star
         c-indent-line-or-region
         comint-delchar-or-maybe-eof
+        comment-dwim
         delete-trailing-whitespace
         down-list
         end-of-buffer
@@ -30,7 +32,9 @@
         ruby-backward-sexp
         ruby-electric-brace
         ruby-forward-sexp
+        ruby-indent-line
         sgml-slash
+        sh-assignment
         shell-command-on-region
         skk-delete-backward-char
         skk-insert
@@ -40,8 +44,8 @@
         skk-undo
         toggle-truncate-lines
         wdired-finish-edit
-        yaml-electric-dash-and-dot
         yaml-electric-bar-and-angle
+        yaml-electric-dash-and-dot
         yaml-next-block
         yas-expand
         ))
