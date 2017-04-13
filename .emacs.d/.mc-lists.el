@@ -6,6 +6,7 @@
         ac-start
         backward-delete-char
         backward-sexp
+        backward-up-list
         c-electric-brace
         c-electric-colon
         c-electric-delete-forward
@@ -19,6 +20,7 @@
         comment-dwim
         delete-trailing-whitespace
         down-list
+        electric-newline-and-maybe-indent
         end-of-buffer
         forward-sexp
         go-mode-insert-and-indent
@@ -27,6 +29,7 @@
         kill-region
         markdown-enter-key
         next-line-and-recenter
+        paste-from-osx
         recenter
         reindent-then-newline-and-indent
         ruby-backward-sexp
@@ -40,6 +43,7 @@
         skk-insert
         skk-jisx0208-latin-insert
         skk-kakutei
+        skk-mode
         skk-previous-candidate
         skk-undo
         toggle-truncate-lines

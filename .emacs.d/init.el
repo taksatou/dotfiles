@@ -9,7 +9,7 @@
                                     "~/.emacs.d/auto-install"
                                     "~/.emacs.d/ddskk-15.1"
                                     "~/.emacs.d/malabar-1.4.0/lisp"
-                                    "~/.emacs.d/auto-complete"
+                                    ;; "~/.emacs.d/auto-complete"
                                     "~/.emacs.d/vendor"
                                     ;;
                                     ;; add paths here
@@ -292,38 +292,38 @@
 (use 'auto-save-buffers
      (run-with-idle-timer 30 t 'auto-save-buffers))
 
-(use 'auto-complete
-     (setq load-path (append load-path '("~/.emacs.d/auto-complete/lib/ert"
-                                         "~/.emacs.d/auto-complete/lib/fuzzy"
-                                         "~/.emacs.d/auto-complete/lib/popup"))))
+;; (use 'auto-complete
+;;      (setq load-path (append load-path '("~/.emacs.d/auto-complete/lib/ert"
+;;                                          "~/.emacs.d/auto-complete/lib/fuzzy"
+;;                                          "~/.emacs.d/auto-complete/lib/popup"))))
 
-(use 'auto-complete-config
-     (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
-     (ac-config-default)
+;; (use 'auto-complete-config
+;;      (add-to-list 'ac-dictionary-directories "~/share/emacs/site-lisp/ac-dict")
+;;      (ac-config-default)
 
-     (global-auto-complete-mode t)
-;;     (auto-complete-mode t)
+;;      (global-auto-complete-mode t)
+;; ;;     (auto-complete-mode t)
 
-     (setq ac-auto-start nil)
-     (global-set-key (kbd "M-/") 'ac-start) ;; override dabbrev-expand
-     (define-key ac-complete-mode-map (kbd "RET") 'ac-stop) ;; test
+;;      (setq ac-auto-start nil)
+;;      (global-set-key (kbd "M-/") 'ac-start) ;; override dabbrev-expand
+;;      (define-key ac-complete-mode-map (kbd "RET") 'ac-stop) ;; test
 
-     (define-key ac-complete-mode-map "\C-n" 'ac-next)
-     (define-key ac-complete-mode-map "\C-p" 'ac-previous)
-     (ac-set-trigger-key "C-M-i")
+;;      (define-key ac-complete-mode-map "\C-n" 'ac-next)
+;;      (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;;      (ac-set-trigger-key "C-M-i")
 
-     ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
+;;      ;; (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
-     ;; (global-set-key "\C-c\C-a" 'ac-start)
-     ;; (global-set-key "\C-c\C-q" 'ac-stop)
+;;      ;; (global-set-key "\C-c\C-a" 'ac-start)
+;;      ;; (global-set-key "\C-c\C-q" 'ac-stop)
 
-     (add-to-list 'ac-sources 'ac-source-yasnippet)
+;;      (add-to-list 'ac-sources 'ac-source-yasnippet)
 
-     (defun emacs-lisp-ac-setup ()
-       (setq ac-sources (append '(ac-source-words-in-same-mode-buffers ac-source-symbols) ac-sources)))
-     (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
+;;      (defun emacs-lisp-ac-setup ()
+;;        (setq ac-sources (append '(ac-source-words-in-same-mode-buffers ac-source-symbols) ac-sources)))
+;;      (add-hook 'emacs-lisp-mode-hook 'emacs-lisp-ac-setup)
 
-)
+;; )
 
 
 ;; from-emacswiki
@@ -601,6 +601,7 @@
 
 ;; (use 'my-java-mode
 ;;      (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
+(use 'my-java-mode)
 
 (use 'coffee-mode
      ;; coffeescript
@@ -658,7 +659,7 @@
      (define-key my-yas-map (kbd "C-y") 'yas/insert-snippet)
      (define-key my-yas-map (kbd "C-c") 'yas/new-snippet)
 
-     (use 'auto-complete-yasnippet)
+     ;; (use 'auto-complete-yasnippet)
 
      )
 
@@ -680,7 +681,7 @@
          (set-face-foreground 'git-gutter-fr:modified "yellow")
          (set-face-foreground 'git-gutter-fr:added    "cyan")
          (set-face-foreground 'git-gutter-fr:deleted  "magenta"))
-  (use 'git-gutter+))
+  (use 'git-gutter))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
@@ -773,7 +774,10 @@
                '(lambda ()
                   (define-key ess-help-mode-map (kbd "C-c h") 'windmove-left))))
 
+(use 'spacemacs-common)
+
 ;;
 ;; should be the last
 ;;
 (use 'my-keys)
+

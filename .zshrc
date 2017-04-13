@@ -139,7 +139,7 @@ precmd () {
 if [ -d $HOME/.rbenv ]; then
     export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
     #eval "$(rbenv init - zsh)"
-    source ~/.rbenv_init
+    if [ -f ~/.rbenv_init ]; then source ~/.rbenv_init; fi
 fi
 
 [ -f ~/.zshrc.include ] && source ~/.zshrc.include
@@ -154,3 +154,8 @@ alias pg="ps aux | grep"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 #[[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"
+
+export NVM_DIR="/Users/takayuki/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

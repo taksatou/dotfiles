@@ -10,6 +10,8 @@
 
 (add-hook 'objc-mode-hook
           (lambda()
+            (setq c-basic-offset 2)
+            (setq tab-width 2)
             (define-key objc-mode-map (kbd "C-c C-o") 'ff-find-other-file)))
 
 (if (eq system-type 'darwin)

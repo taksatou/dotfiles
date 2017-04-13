@@ -100,6 +100,8 @@
          (compile (format "javac -J-Dfile.encoding=UTF8 %s && java %s" (buffer-file-name) (capitalize (file-name-base (buffer-file-name))))))
         ((eq major-mode 'go-mode)
          (compile (format "go run %s" (buffer-file-name))))
+        ((eq major-mode 'scala-mode)
+         (compile (format "scala %s" (buffer-file-name))))
         (t
          (message (format "not implemented for %s" major-mode)))))
 

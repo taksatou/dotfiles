@@ -22,6 +22,7 @@
 (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)
 (define-key objc-mode-map (kbd "C-c C-a") 'my-global-map)
+(define-key java-mode-map (kbd "C-c C-a") 'my-global-map)
 (use 'inf-ruby
      (define-key inf-ruby-mode-map (kbd "C-c C-a") 'my-global-map))
 
@@ -48,15 +49,24 @@
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
             (define-key sql-interactive-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'conf-space-mode-hook
+          (lambda ()
+            (define-key conf-space-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'csharp-mode-hook
+          (lambda ()
+            (define-key csharp-mode-map (kbd "C-c C-a") 'my-global-map)))
 
 ;;
 ;; git gutter
 ;;
-(define-key my-global-map (kbd "C-l") 'git-gutter+-mode)
-;(define-key my-global-map (kbd "9") 'git-gutter:toggle)
-(define-key my-global-map (kbd "C-n") 'git-gutter+-next-hunk)
-(define-key my-global-map (kbd "C-p") 'git-gutter+-previous-hunk)
-(define-key my-global-map (kbd "C-d") 'git-gutter+-show-hunk)
+(define-key my-global-map (kbd "C-l")
+  (lambda ()
+    (interactive)
+    (git-gutter-mode +1)))
+;(define-key my-global-map (kbd "9") 'git-guttertoggle)
+(define-key my-global-map (kbd "C-n") 'git-gutter:next-hunk)
+(define-key my-global-map (kbd "C-p") 'git-gutter:previous-hunk)
+(define-key my-global-map (kbd "C-d") 'git-gutter:popup-hunk)
 ;(define-key my-global-map (kbd "C-h") 'git-gutter+-popup-hunk)
 
 ;;
@@ -99,6 +109,12 @@
 (use 'dash-at-point
      (define-key my-global-map (kbd "q") 'dash-at-point))
 
+(defun region-to-osx (start end)
+  (interactive "r")
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc (buffer-substring start end))
+      (process-send-eof proc))))
 (defun paste-to-osx ()
   (interactive)
   (let ((process-connection-type nil))
@@ -110,7 +126,6 @@
   (insert (shell-command-to-string "pbpaste")))
 (define-key my-global-map (kbd "C-w") 'paste-to-osx)
 (define-key my-global-map (kbd "C-y") 'paste-from-osx)
-
-
+(define-key my-global-map (kbd "C-q") 'region-to-osx)
 
 (provide 'my-keys)
