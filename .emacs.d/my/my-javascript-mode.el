@@ -22,6 +22,7 @@
 
              (setq js2-global-externs (list "require" "export" "module" "FIVE" ))
              (setq js2-strict-missing-semi-warning nil)
+             (setq js2-strict-trailing-comma-warning nil)
              ))
 
 
