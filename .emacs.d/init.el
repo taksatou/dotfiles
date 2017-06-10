@@ -72,6 +72,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
+(setq-default show-trailing-whitespace t)
 (setq hscroll-step 1)
 (setq scroll-step 1)
 (setq scroll-conservatively 100000)
