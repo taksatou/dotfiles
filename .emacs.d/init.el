@@ -777,6 +777,11 @@
 
 (use 'spacemacs-common)
 
+
+(add-hook 'conf-colon-mode-hook
+          '(lambda ()
+             (define-key conf-mode-map (kbd "C-c C-a") 'my-global-map)))
+
 ;;
 ;; should be the last
 ;;
