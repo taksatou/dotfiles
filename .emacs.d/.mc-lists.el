@@ -7,6 +7,7 @@
         backward-delete-char
         backward-sexp
         backward-up-list
+        beginning-of-buffer
         c-electric-brace
         c-electric-colon
         c-electric-delete-forward
@@ -47,6 +48,7 @@
         skk-previous-candidate
         skk-undo
         toggle-truncate-lines
+        wdired-change-to-wdired-mode
         wdired-finish-edit
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
