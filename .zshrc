@@ -54,6 +54,12 @@ alias ssh='ssh -o ServerAliveInterval=60'
 alias pj="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
 alias py="ruby -ryaml -r pp -e 'pp YAML.load(ARGF.read)'"
 alias gitnp="git --no-pager"
+function msec2jst() {
+    echo $1 | ruby -e 'p Time.at(ARGF.read.to_i/1000).localtime("+09:00")'
+}
+function jst2msec() {
+    echo $1 | ruby -rtime -e 'p Time.parse(ARGF.read).localtime("+09:00").to_i*1000'
+}
 
 case ${OSTYPE} in
     darwin*)

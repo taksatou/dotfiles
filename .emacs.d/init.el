@@ -72,6 +72,7 @@
 ;;           )))
 (menu-bar-mode 0)
 
+(setq-default show-trailing-whitespace t)
 (setq hscroll-step 1)
 (setq scroll-step 1)
 (setq scroll-conservatively 100000)
@@ -775,6 +776,11 @@
                   (define-key ess-help-mode-map (kbd "C-c h") 'windmove-left))))
 
 (use 'spacemacs-common)
+
+
+(add-hook 'conf-colon-mode-hook
+          '(lambda ()
+             (define-key conf-mode-map (kbd "C-c C-a") 'my-global-map)))
 
 ;;
 ;; should be the last

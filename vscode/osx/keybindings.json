@@ -1,0 +1,84 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
+[
+  { "key": "ctrl+enter",
+    "command": "jupyter.execCurrentCell",
+    "when": "editorTextFocus"
+},{
+  "key": "cmd+0",
+  "command": "workbench.action.zoomReset",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+cmd+0",
+  "command": "workbench.action.closeEditorsInOtherGroups",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+cmd+escape",
+  "command": "workbench.action.closePanel",
+  "when": "editorTextFocus"
+},{
+  "key": "ctrl+c ctrl+k",
+  "command": "workbench.action.closeActiveEditor",
+  "when": "editorTextFocus"
+},{
+  "key": "ctrl+j",
+  "command": "editor.action.insertLineAfter",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+cmd+w",
+  "command": "undo_expand_region",
+  "when": "editorTextFocus"
+},{
+  "key": "cmd+w",
+  "command": "expand_region",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+alt+b",
+  "command": "cursorWordStartLeftSelect",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+alt+f",
+  "command": "cursorWordEndRightSelect",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+alt+.",
+  "command": "cursorBottom",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+f",
+  "command": "cursorWordEndRight",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+h",
+  "command": "deleteWordStartLeft",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+d",
+  "command": "deleteWordEndRight",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+b",
+  "command": "cursorWordStartLeft",
+  "when": "editorTextFocus"
+},{
+  "key": "shift+alt+,",
+  "command": "cursorTop",
+  "when": "editorTextFocus"
+},{
+  "key": "alt+v",
+  "command": "cursorPageUp",
+  "when": "editorTextFocus"
+},{
+  "key": "ctrl+v",
+  "command": "cursorPageDown",
+  "when": "editorTextFocus"
+},
+{
+  "key": "escape escape",
+  "command": "-workbench.action.exitZenMode",
+  "when": "inZenMode"
+},
+{
+  "key": "cmd+o",
+  "command": "-workbench.action.files.openFileFolder"
+}
+]

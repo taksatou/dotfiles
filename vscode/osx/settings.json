@@ -1,0 +1,30 @@
+{
+    "files.autoSave": "afterDelay",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/target": true,
+        ".idea/*": true,
+        ".git/*": true
+    },
+    "editor.tabSize": 2,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "jupyter.appendResults": false,
+    "python.linting.pylintArgs": [
+        "--disable", "missing-docstring"
+    ],
+    "[python]": {
+        "editor.tabSize": 4
+    }
+}
