@@ -1,4 +1,0 @@
-# name: p
-# key: p
-# --
-printf("$1", $2);

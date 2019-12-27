@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: log
-# key: log
-# --
-sfContext::getInstance()->getLogger()->${1:debug}($0);

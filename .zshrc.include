@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export PATH=$HOME/bin:${PATH}
+export PATH=$HOME/misc/bin:${PATH}
 
 #export LC_ALL=C
 #export LANG=en_US.UTF-8
@@ -8,6 +8,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export TERM=xterm-256color
 
-PROMPT="%B%(?..[%?] )%b%{[38;5;38m%}%n@%U%m%%%u%{[m%} "
-RPROMPT="%1(v|%F{blue}%1v%f|) %{$fg_no_bold[${1:-green}]%}%~%{$reset_color%}"
+PROMPT="%B%(?..[%?] )%b%{[38;5;98m%}%n@%U%m%%%u%{[m%} "
+
 

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: footnote
-# key: ^
-# --
-[^${1:num}] $0
-
-[^$1]: ${2:text}

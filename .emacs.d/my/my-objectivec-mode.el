@@ -105,7 +105,7 @@
                   ))
       ))
 
-(setq ac-modes (append ac-modes '(objc-mode)))
+;; (setq ac-modes (append ac-modes '(objc-mode))) ;
 
 
 (provide 'my-objectivec-mode)

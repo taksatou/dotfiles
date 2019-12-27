@@ -3,19 +3,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq load-path (append load-path '("~/.emacs.d"
                                     "~/.emacs.d/my"
-                                    "~/share/emacs"
-                                    "~/share/emacs/site-lisp"
-                                    "~/share/emacs/color-theme"
-                                    "~/.emacs.d/auto-install"
-                                    "~/.emacs.d/ddskk-15.1"
-                                    "~/.emacs.d/malabar-1.4.0/lisp"
-                                    ;; "~/.emacs.d/auto-complete"
-                                    "~/.emacs.d/vendor"
                                     ;;
                                     ;; add paths here
                                     ;;
                                     )))
 
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; global keybinds
@@ -114,6 +110,9 @@
 (when (eq system-type 'darwin)
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
+
+(add-to-list 'default-frame-alist
+             '(font . "Dejavu Sans Mono-14"))
 
 (cond (window-system
 
@@ -512,7 +511,7 @@
      ;;                       (and (boundp 'skk-mode-invoked) skk-mode-invoked
      ;;                            (skk-set-cursor-properly)))))
 
-(use 'my-objectivec-mode)
+;; (use 'my-objectivec-mode)
 (use 'applescript-mode)
 (use 'my-javascript-mode)
 

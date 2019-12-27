@@ -5,6 +5,7 @@ if [ -e ~/.zsh.d ]; then
     autoload -U ~/.zsh.d/*(:t)
 fi;
 
+export LC_ALL=en_US.UTF-8
 autoload -U compinit
 compinit
 
@@ -47,19 +48,10 @@ setopt nolistbeep
 #alias grep="grep -n"
 alias l='ls'
 alias e='emacs -nw'
-alias sc='screen -r -RR'
-alias ri='ri --format ansi'
 alias grepl='grep --line-buffered'
-alias ssh='ssh -o ServerAliveInterval=60'
 alias pj="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
 alias py="ruby -ryaml -r pp -e 'pp YAML.load(ARGF.read)'"
 alias gitnp="git --no-pager"
-function msec2jst() {
-    echo $1 | ruby -e 'p Time.at(ARGF.read.to_i/1000).localtime("+09:00")'
-}
-function jst2msec() {
-    echo $1 | ruby -rtime -e 'p Time.parse(ARGF.read).localtime("+09:00").to_i*1000'
-}
 
 case ${OSTYPE} in
     darwin*)
@@ -85,13 +77,6 @@ function tmr() {
 
 function jman() {
     LC_ALL=ja_JP.UTF8 man $*
-}
-
-function sudo() {
-    echo "[38;5;200m"
-    /usr/bin/sudo $*
-    echo "return: $?"
-    echo "[m"
 }
 
 function cd() {
@@ -157,11 +142,3 @@ typeset -U path cdpath fpath manpath
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
 alias pg="ps aux | grep"
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-#[[ -s "/home/takayuki/.gvm/bin/gvm-init.sh" ]] && source "/home/takayuki/.gvm/bin/gvm-init.sh"
-
-export NVM_DIR="/Users/takayuki/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

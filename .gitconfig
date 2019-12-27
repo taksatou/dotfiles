@@ -64,3 +64,5 @@
   gr = grep
   gn = grep -n
 [gui]
+[pager]
+  branch = cat

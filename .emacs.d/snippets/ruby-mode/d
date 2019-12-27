@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: d
-# key: d
-# --
-do
-  $0
-end

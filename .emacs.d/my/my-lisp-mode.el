@@ -70,15 +70,15 @@
 
      ;;      )
 
-     (use 'auto-complete
-          (use 'ac-slime
-               (add-hook 'slime-mode-hook 'set-up-slime-ac)
-               (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+     ;; (use 'auto-complete
+     ;;      (use 'ac-slime
+     ;;           (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     ;;           (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
-               (add-to-list 'ac-modes 'lisp-mode)
-               (add-to-list 'ac-modes 'slime-mode)
-               (add-to-list 'ac-modes 'slime-repl-mode)
-               ))
+     ;;           (add-to-list 'ac-modes 'lisp-mode)
+     ;;           (add-to-list 'ac-modes 'slime-mode)
+     ;;           (add-to-list 'ac-modes 'slime-repl-mode)
+     ;;           ))
      (if (file-exists-p inferior-lisp-program)
          (slime)))
 
