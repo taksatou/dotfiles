@@ -723,27 +723,10 @@
 
 
 
-
-;; evernote
-;; (use 'evernote-mode
-;; ;     (setq evernote-ruby-command "/home/takayuki/.rbenv/shims/ruby")
-;;      (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
-;;      (global-set-key "\C-cec" 'evernote-create-note)
-;;      (global-set-key "\C-ceo" 'evernote-open-note)
-;;      (global-set-key "\C-ces" 'evernote-search-notes)
-;;      (global-set-key "\C-ceS" 'evernote-do-saved-search)
-;;      (global-set-key "\C-cew" 'evernote-write-note)
-;;      (global-set-key "\C-cep" 'evernote-post-region)
-;;      (global-set-key "\C-ceb" 'evernote-browser)
-
-;;      (setq evernote-username "taksatou")
-
-;; ;;      (defvar evernote-password-cache nil
-;; ;;        "*Non-nil means that password cache is enabled.
-;; ;; It is recommended to encrypt the file with EasyPG.")
-
-;;      )
-
+(use 'protobuf-mode
+     (add-hook 'protobuf-mode-hook
+               '(lambda ()
+                  (define-key protobuf-mode-map (kbd "C-c C-k") 'kill-current-buffer))))
 
 (setq load-path (append load-path '("~/work/projects/taksatou/flashcard.el")))
 (use 'flashcard
