@@ -53,8 +53,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
-(if (boundp 'tool-bar-mode)
-    (tool-bar-mode 0))
+;; (if (boundp 'tool-bar-mode)
+;;     (tool-bar-mode 0))
 
 
 (if (boundp 'scroll-bar-mode)
