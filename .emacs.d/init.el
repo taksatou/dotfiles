@@ -335,7 +335,8 @@
      (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
      (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter)
 
-     (add-hook 'markdown-mode-hook 'skk-mode))
+;;     (add-hook 'markdown-mode-hook 'skk-mode)
+     )
 
 
 (use 'php-mode

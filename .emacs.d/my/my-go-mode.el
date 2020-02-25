@@ -1,5 +1,5 @@
 
-(use 'go-autocomplete)
+;; (use 'go-autocomplete)
 
 (add-hook 'go-mode-hook
           (lambda ()
