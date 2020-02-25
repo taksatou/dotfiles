@@ -51,6 +51,7 @@
         toggle-truncate-lines
         wdired-change-to-wdired-mode
         wdired-finish-edit
+        xterm-paste
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
         yaml-next-block

@@ -55,6 +55,12 @@
 (add-hook 'csharp-mode-hook
           (lambda ()
             (define-key csharp-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "C-c C-a") 'my-global-map)))
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (define-key c++-mode-map (kbd "C-c C-a") 'my-global-map)))
 
 ;;
 ;; git gutter
@@ -79,8 +85,8 @@
             (define-key gtags-mode-map (kbd "M-*") 'gtags-pop-stack)))
 
 
-(define-key my-global-map (kbd "C-j") 'anything-gtags-select)
-(define-key my-global-map (kbd "C-k") 'skk-mode)
+;; (define-key my-global-map (kbd "C-j") 'anything-gtags-select)
+;; (define-key my-global-map (kbd "C-k") 'skk-mode)
 (define-key my-global-map (kbd "C-w") 'delete-trailing-whitespace)
 
 

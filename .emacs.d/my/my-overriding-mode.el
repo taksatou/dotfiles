@@ -6,7 +6,7 @@
   "force settings"
   :init-value t                         ; デフォルト有効
   :lighter " my"                        ; mode-lineに表示しない
-  :keymap `((, (kbd "C-c C-j") . anything))
+  ;; :keymap `((, (kbd "C-c C-j") . anything))
   )
 
 

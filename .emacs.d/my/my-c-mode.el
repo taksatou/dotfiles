@@ -24,26 +24,29 @@
 ;;              (define-key c++-mode-map (kbd "C-C C-a") 'ac-start)
 ;;              (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)))
 
-(setq c-default-style "k&r")
+;; (setq c-default-style "k&r")
 
-;; (defun my-c-mode-hook ()
-;;   (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-;;   (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
-;;   (setq comment-start "//")
-;;   (setq comment-end "")
+(defun my-c-mode-hook ()
+  (define-key c-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+  (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
+  (define-key c-mode-map (kbd "C-c C-k") 'kill-current-buffer)
+  (define-key c++-mode-map (kbd "C-c C-k") 'kill-current-buffer)
+
+  (setq comment-start "//")
+  (setq comment-end "")
   
-;;   (if (boundp 'cc-search-directories)
-;;       nil
-;;     (use 'find-file
-;;          (setq-default ff-search-directories (append cc-search-directories
-;;                                                      '("./include"
-;;                                                        "./include/*"
-;;                                                        "../include"
-;;                                                        "../src"
-;;                                                        ".."
-;;                                                        "../..")))))
-;;   (c-set-offset 'inextern-lang 0)
-;;   (gtags-mode 1))
+  (if (boundp 'cc-search-directories)
+      nil
+    (use 'find-file
+         (setq-default ff-search-directories (append cc-search-directories
+                                                     '("./include"
+                                                       "./include/*"
+                                                       "../include"
+                                                       "../src"
+                                                       ".."
+                                                       "../..")))))
+  (c-set-offset 'inextern-lang 0)
+  (gtags-mode 1))
 
 (add-hook 'cc-mode-hook 'my-c-mode-hook)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
@@ -55,5 +58,9 @@
           ;; (lambda()
           ;;   (define-key c++-mode-map (kbd "C-c C-o") 'ff-find-other-file)
           ;;   (gtags-mode 1)))
+
+(use 'google-c-style
+     (add-hook 'c-mode-hook 'google-set-c-style)
+     (add-hook 'c++-mode-hook 'google-set-c-style))
 
 (provide 'my-c-mode)

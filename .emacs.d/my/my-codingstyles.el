@@ -1,6 +1,6 @@
 ;; default setting
-(setq tab-width 4)
-(setq c-basic-offset 4)
+;; (setq tab-width 4)
+;; (setq c-basic-offset 4)
 (setq indent-tabs-mode nil)
 (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
 ;;(c-set-offset 'arglist-close 0) ; 関数の引数リストの閉じ括弧はインデントしない
