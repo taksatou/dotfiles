@@ -53,8 +53,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; base settings
 ;;;;;;;;;;;;;;;;;;;;;;
-(if (boundp 'tool-bar-mode)
-    (tool-bar-mode 0))
+;; (if (boundp 'tool-bar-mode)
+;;     (tool-bar-mode 0))
 
 
 (if (boundp 'scroll-bar-mode)
@@ -337,7 +337,8 @@
      (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
      (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter)
 
-     (add-hook 'markdown-mode-hook 'skk-mode))
+;;     (add-hook 'markdown-mode-hook 'skk-mode)
+     )
 
 
 (use 'php-mode
