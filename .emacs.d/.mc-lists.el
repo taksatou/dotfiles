@@ -19,6 +19,7 @@
         c-indent-line-or-region
         comint-delchar-or-maybe-eof
         comment-dwim
+        counsel-recentf
         dabbrev-expand
         delete-trailing-whitespace
         down-list

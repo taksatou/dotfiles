@@ -245,6 +245,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; packages
 ;;;;;;;;;;;;;;;;;;;;;;
+(ac-config-default)
+
 (use 'my-elisp
      (global-set-key "\M-p" 'previous-line-and-recenter)
      (global-set-key "\M-n" 'next-line-and-recenter)
@@ -602,6 +604,7 @@
 (use 'go-mode
      (use 'my-go-mode)
      (define-key go-mode-map (kbd "C-c C-a") 'my-global-map)
+     (define-key go-mode-map (kbd "C-c C-j") 'counsel-recentf)
      (add-hook 'go-mode-hook
                '(lambda ()
                   (define-key go-mode-map (kbd "C-c C-o") 'my-go-switch-test)
