@@ -13,6 +13,7 @@
         c-electric-delete-forward
         c-electric-lt-gt
         c-electric-paren
+        c-electric-pound
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
@@ -22,9 +23,11 @@
         counsel-recentf
         dabbrev-expand
         delete-trailing-whitespace
+        delete-window
         down-list
         electric-newline-and-maybe-indent
         end-of-buffer
+        ff-find-other-file
         forward-sexp
         go-mode-insert-and-indent
         indent-for-tab-command
@@ -49,6 +52,7 @@
         skk-mode
         skk-previous-candidate
         skk-undo
+        swiper
         toggle-truncate-lines
         wdired-change-to-wdired-mode
         wdired-finish-edit

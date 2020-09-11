@@ -104,6 +104,8 @@
 (ad-activate 'split-window)
 
 
+(setq electric-indent-mode nil)
+
 ;;
 ;; http://stackoverflow.com/questions/4076360/error-in-dired-sorting-on-os-x
 ;;
@@ -336,6 +338,8 @@
      (define-key markdown-mode-map (kbd "C-M-f") 'forward-sexp)
      (define-key markdown-mode-map (kbd "M-p") 'previous-line-and-recenter)
      (define-key markdown-mode-map (kbd "M-n") 'next-line-and-recenter)
+     (define-key markdown-mode-map (kbd "C-c C-k") 'kill-current-buffer)
+     (define-key markdown-mode-map (kbd "C-c C-j") 'counsel-recentf)
 
 ;;     (add-hook 'markdown-mode-hook 'skk-mode)
      )
@@ -343,6 +347,7 @@
 
 (use 'php-mode
      (define-key php-mode-map (kbd "C-c C-a") 'my-global-map)
+     (define-key php-mode-map (kbd "C-c C-k") 'kill-current-buffer)
 
      (use 'symfony
           (define-key sf:minor-mode-map (kbd "C-c ; m") 'sf-cmd:model-files)
@@ -427,6 +432,12 @@
 ;; (use 'my-objectivec-mode)
 ;; (use 'applescript-mode)
 ;; (use 'my-javascript-mode)
+(add-hook 'js-mode-hook
+          '(lambda ()
+             (define-key js-mode-map (kbd "C-c C-a") 'my-global-map)
+             (define-key js-mode-map (kbd "C-c C-j") 'counsel-recentf)))
+(setq js-indent-level 2)
+
 
 (use 'dired-x
      (setq dired-omit-files "^\\...+$"))
@@ -512,6 +523,11 @@
 ;; (use 'multi-term
 ;;      (setq multi-term-program "/bin/zsh"))
 
+(add-hook 'java-mode-hook
+          '(lambda ()
+             (define-key java-mode-map (kbd "C-c C-a") 'my-global-map)
+             (define-key java-mode-map (kbd "C-c C-k") 'kill-current-buffer)))
+
 ;; (use 'my-java-mode
 ;;      (define-key malabar-mode-map (kbd "C-c C-a") 'my-global-map))
 ;; (use 'my-java-mode)
@@ -528,7 +544,7 @@
 ;;           (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)
 ;;           (define-key coffee-mode-map (kbd "C-c C-k") 'kill-current-buffer)
 ;;           (define-key coffee-mode-map (kbd "C-c C-a C-y") 'coffee-compile-buffer))))
-     
+
 
 ;; (use 'open-junk-file)
 ;; (use 'summarye)
@@ -582,7 +598,7 @@
 
 (use 'region-bindings-mode
      (region-bindings-mode-enable)
-     
+
      (use 'multiple-cursors
           ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
           (define-key region-bindings-mode-map (kbd "s") 'mc/skip-to-next-like-this)
@@ -659,4 +675,3 @@
 ;; should be the last
 ;;
 (use 'my-keys)
-
