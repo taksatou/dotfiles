@@ -636,9 +636,11 @@
                   (define-key protobuf-mode-map (kbd "C-c C-a") 'my-global-map)
                   (define-key protobuf-mode-map (kbd "C-c C-k") 'kill-current-buffer))))
 
-
-
 (add-hook 'conf-colon-mode-hook
+          '(lambda ()
+             (define-key conf-mode-map (kbd "C-c C-a") 'my-global-map)))
+
+(add-hook 'conf-mode-hook
           '(lambda ()
              (define-key conf-mode-map (kbd "C-c C-a") 'my-global-map)))
 
@@ -671,7 +673,23 @@
 
      )
 
+(use 'string-inflection
+     (global-set-key (kbd "C-c C-f C-c") 'string-inflection-all-cycle)
+     (global-set-key (kbd "C-c C-f C-p") 'string-inflection-camelcase)
+     (global-set-key (kbd "C-c C-f C-u") 'string-inflection-upcase)
+     )
+
+(use 'vue-html-mode
+     (add-to-list 'auto-mode-alist '("\\.vue?\\'" . vue-html-mode))
+     (add-hook 'vue-html-mode-hook
+               '(lambda ()
+                  (define-key vue-html-mode-map (kbd "C-c C-f C-c") 'string-inflection-all-cycle)
+                  (define-key vue-html-mode-map (kbd "C-c C-j") 'counsel-recentf)
+                  (define-key vue-html-mode-map (kbd "C-c C-a C-f") 'sgml-skip-tag-forward)
+                  (define-key vue-html-mode-map (kbd "C-c C-a C-b") 'sgml-skip-tag-backward)))
+)
 ;;
 ;; should be the last
 ;;
 (use 'my-keys)
+

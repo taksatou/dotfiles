@@ -24,6 +24,7 @@
         dabbrev-expand
         delete-trailing-whitespace
         delete-window
+        dired-mark
         down-list
         electric-newline-and-maybe-indent
         end-of-buffer
