@@ -4,6 +4,7 @@
 (add-hook 'go-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
+            (setq gofmt-command "goimports")
             (local-set-key (kbd "M-.") 'godef-jump)
             (local-set-key (kbd "C-c ;") 'go-import-add)))
 (add-hook 'before-save-hook
