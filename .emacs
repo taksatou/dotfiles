@@ -4,6 +4,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)
 
 (load-file "~/.emacs.d/init.el")
@@ -18,7 +19,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (string-inflection inf-ruby groovy-mode gradle-mode web-mode php-mode markdown-mode glsl-mode terraform-mode go-autocomplete vue-mode ivy google-c-style counsel dockerfile-mode yaml-mode swift-mode kotlin-mode go-mode scala-mode region-bindings-mode protobuf-mode multiple-cursors git-gutter color-moccur)))
+    (bazel-mode string-inflection inf-ruby groovy-mode gradle-mode web-mode php-mode markdown-mode glsl-mode terraform-mode go-autocomplete vue-mode ivy google-c-style counsel dockerfile-mode yaml-mode swift-mode kotlin-mode go-mode scala-mode region-bindings-mode protobuf-mode multiple-cursors git-gutter color-moccur)))
  '(recentf-auto-cleanup (quote never))
  '(recentf-exclude (quote ("tmp")))
  '(recentf-max-saved-items 9999999))
