@@ -688,6 +688,11 @@
                   (define-key vue-html-mode-map (kbd "C-c C-a C-f") 'sgml-skip-tag-forward)
                   (define-key vue-html-mode-map (kbd "C-c C-a C-b") 'sgml-skip-tag-backward)))
 )
+
+(use 'bazel-mode
+     (add-to-list 'auto-mode-alist '("BUILD" . bazel-mode))
+     )
+
 ;;
 ;; should be the last
 ;;

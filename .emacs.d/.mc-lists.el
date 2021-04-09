@@ -20,6 +20,7 @@
         c-indent-line-or-region
         comint-delchar-or-maybe-eof
         comment-dwim
+        counsel-M-x
         counsel-recentf
         dabbrev-expand
         delete-trailing-whitespace
@@ -33,6 +34,8 @@
         go-mode-insert-and-indent
         indent-for-tab-command
         indent-region
+        indent-rigidly
+        indent-rigidly-right
         kill-region
         markdown-enter-key
         next-line-and-recenter
@@ -53,6 +56,7 @@
         skk-mode
         skk-previous-candidate
         skk-undo
+        string-inflection-all-cycle
         swiper
         toggle-truncate-lines
         wdired-change-to-wdired-mode

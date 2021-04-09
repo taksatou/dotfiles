@@ -19,7 +19,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (bazel-mode string-inflection inf-ruby groovy-mode gradle-mode web-mode php-mode markdown-mode glsl-mode terraform-mode go-autocomplete vue-mode ivy google-c-style counsel dockerfile-mode yaml-mode swift-mode kotlin-mode go-mode scala-mode region-bindings-mode protobuf-mode multiple-cursors git-gutter color-moccur)))
+    (flappymacs bazel-mode string-inflection inf-ruby groovy-mode gradle-mode web-mode php-mode markdown-mode glsl-mode terraform-mode go-autocomplete vue-mode ivy google-c-style counsel dockerfile-mode yaml-mode swift-mode kotlin-mode go-mode scala-mode region-bindings-mode protobuf-mode multiple-cursors git-gutter color-moccur)))
  '(recentf-auto-cleanup (quote never))
  '(recentf-exclude (quote ("tmp")))
  '(recentf-max-saved-items 9999999))

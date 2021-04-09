@@ -143,3 +143,6 @@ typeset -U path cdpath fpath manpath
 echo -ne "\e]1;`hostname | awk -F'.' '{print $1}'`\a"
 alias cp="cp -p"
 alias pg="ps aux | grep"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/takayuki/misc/bin/terraform terraform
